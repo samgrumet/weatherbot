@@ -29,11 +29,72 @@ jobs:
         working-directory: weatherbot2_coldmath
         run: python paper_trader.py --forward --live
 
+      - name: Write job summary
+        run: |
+          python3 - <<'EOF'
+          import json, os
+          from pathlib import Path
+          state = json.loads(Path("weatherbot2_coldmath/paper_trader_state.json").read_text())
+          out = []
+          bal   = state.get("balance", 0)
+          start = state.get("starting_balance", 500)
+          pnl   = round(bal - start, 2)
+          sign  = "+" if pnl >= 0 else ""
+          out.append(f"## Paper Trader — {os.environ.get('GITHUB_RUN_STARTED_AT','')[:10]}")
+          out.append("")
+          out.append("### Portfolio")
+          out.append(f"| | Balance | Start | P&L |")
+          out.append(f"|---|---|---|---|")
+          out.append(f"| **Total** | **${bal:,.2f}** | ${start:,.2f} | **{sign}${pnl:,.2f}** |")
+          out.append(f"| S1 Layered No | ${state.get('s1_balance',0):,.2f} | $200.00 | |")
+          out.append(f"| S2 Lottery    | ${state.get('s2_balance',0):,.2f} | $100.00 | |")
+          out.append(f"| S3 High Conv  | ${state.get('s3_balance',0):,.2f} | $200.00 | |")
+          wins   = state.get("wins", 0)
+          losses = state.get("losses", 0)
+          total  = state.get("total_trades", 0)
+          out.append("")
+          out.append(f"**Trades:** {total}  |  **Wins:** {wins}  |  **Losses:** {losses}  |  **Peak:** ${state.get('peak_balance', start):,.2f}")
+          out.append("")
+          positions = state.get("positions", {})
+          out.append(f"### Open Positions ({len(positions)})")
+          if positions:
+              out.append("| Strategy | Side | Entry | Question |")
+              out.append("|---|---|---|---|")
+              for mid, p in positions.items():
+                  strat = p.get("strategy","?")
+                  out.append(f"| {strat} | {p['outcome']} @ {p['entry_price']:.4f} | ${p.get('cost',0):.2f} | {p['question'][:80]} |")
+          else:
+              out.append("_No open positions_")
+          trades = state.get("trades", [])
+          exits = [t for t in trades if t.get("type") == "exit"][-10:]
+          if exits:
+              out.append("")
+              out.append(f"### Recent Closed Trades (last {len(exits)})")
+              out.append("| Strategy | P&L | Question |")
+              out.append("|---|---|---|")
+              for t in reversed(exits):
+                  p = t.get("pnl", 0)
+                  sign = "+" if p >= 0 else ""
+                  out.append(f"| {t.get('strategy','?')} | {sign}${p:.2f} | {t['question'][:80]} |")
+          summary = os.environ.get("GITHUB_STEP_SUMMARY")
+          if summary:
+              with open(summary, "a") as f:
+                  f.write("\n".join(out) + "\n")
+          else:
+              print("\n".join(out))
+          EOF
+
+      - name: Publish dashboard to docs/
+        run: |
+          mkdir -p docs
+          cp weatherbot2_coldmath/paper_trader_state.json docs/paper_trader_state.json
+          cp weatherbot2_coldmath/dashboard.html docs/index.html
+
       - name: Commit updated state
         run: |
           git config user.name  "paper-trader-bot"
           git config user.email "bot@noreply.github.com"
-          git add weatherbot2_coldmath/paper_trader_state.json
+          git add weatherbot2_coldmath/paper_trader_state.json docs/
           # Only commit if the state actually changed
           git diff --staged --quiet || git commit -m "chore: paper trader run $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push
