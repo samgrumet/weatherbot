@@ -1,7 +1,7 @@
 {
-  "balance": 209.39,
-  "s1_balance": 160.0,
-  "s2_balance": 49.39,
+  "balance": 207.0,
+  "s1_balance": 159.97,
+  "s2_balance": 47.03,
   "s3_balance": 0.0,
   "starting_balance": 500.0,
   "positions": {
@@ -215,19 +215,33 @@
       "high": 71,
       "opened_at": "2026-03-13T14:00:49.736893"
     },
+    "1566214": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be 80\u00b0F or higher on March 14?",
+      "outcome": "Yes",
+      "entry_price": 0.0385,
+      "shares": 61.24,
+      "cost": 2.36,
+      "city": "atlanta",
+      "date_str": "2026-03-14",
+      "forecast_temp": 75,
+      "low": 80,
+      "high": 999,
+      "opened_at": "2026-03-13T18:32:54.666460"
+    },
     "1574988": {
       "strategy": "S1_layered_no",
       "question": "Will the highest temperature in Atlanta be between 68-69\u00b0F on March 15?",
       "outcome": "No",
-      "entry_price": 0.965,
-      "shares": 41.45,
-      "cost": 40.0,
+      "entry_price": 0.964,
+      "shares": 41.49,
+      "cost": 39.99,
       "city": "atlanta",
       "date_str": "2026-03-15",
       "forecast_temp": 76,
       "low": 68,
       "high": 69,
-      "opened_at": "2026-03-13T14:00:50.450293"
+      "opened_at": "2026-03-13T18:32:54.766392"
     },
     "1574982": {
       "strategy": "S3_high_conviction",
@@ -241,7 +255,7 @@
       "forecast_temp": 76,
       "low": -999,
       "high": 57,
-      "opened_at": "2026-03-13T14:00:50.450327"
+      "opened_at": "2026-03-13T18:32:54.766431"
     }
   },
   "trades": [
@@ -397,10 +411,57 @@
       "entry_price": 0.9975,
       "size": 200.0,
       "opened_at": "2026-03-13T14:00:50.450330"
+    },
+    {
+      "type": "exit",
+      "strategy": "S1_layered_no",
+      "question": "Will the highest temperature in Atlanta be between 68-69\u00b0F on March 15?",
+      "outcome": "No",
+      "entry_price": 0.965,
+      "exit_price": 0.964,
+      "pnl": -0.04,
+      "closed_at": "2026-03-13T18:32:34.774833"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Atlanta be 57\u00b0F or below on March 15?",
+      "outcome": "No",
+      "entry_price": 0.9975,
+      "exit_price": 0.9975,
+      "pnl": 0.0,
+      "closed_at": "2026-03-13T18:32:35.055548"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be 80\u00b0F or higher on March 14?",
+      "outcome": "Yes",
+      "entry_price": 0.0385,
+      "size": 2.36,
+      "opened_at": "2026-03-13T18:32:54.666466"
+    },
+    {
+      "type": "entry",
+      "strategy": "S1_layered_no",
+      "question": "Will the highest temperature in Atlanta be between 68-69\u00b0F on March 15?",
+      "outcome": "No",
+      "entry_price": 0.964,
+      "size": 39.99,
+      "opened_at": "2026-03-13T18:32:54.766398"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Atlanta be 57\u00b0F or below on March 15?",
+      "outcome": "No",
+      "entry_price": 0.9975,
+      "size": 200.0,
+      "opened_at": "2026-03-13T18:32:54.766434"
     }
   ],
-  "total_trades": 17,
+  "total_trades": 20,
   "wins": 0,
-  "losses": 0,
+  "losses": 2,
   "peak_balance": 500.0
 }
