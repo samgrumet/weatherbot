@@ -62,7 +62,7 @@ jobs:
               out.append("|---|---|---|---|")
               for mid, p in positions.items():
                   strat = p.get("strategy","?")
-                  out.append(f"| {strat} | {p['outcome']} @ {p['entry_price']:.4f} | ${p.get('cost',0):.2f} | {p['question'][:80]} |")
+                  out.append(f"| {strat} | {p['outcome']} @ {p['entry_price']:.4f} | ${p.get('cost',0):.2f} | {p['question']} |")
           else:
               out.append("_No open positions_")
           trades = state.get("trades", [])
@@ -75,7 +75,7 @@ jobs:
               for t in reversed(exits):
                   p = t.get("pnl", 0)
                   sign = "+" if p >= 0 else ""
-                  out.append(f"| {t.get('strategy','?')} | {sign}${p:.2f} | {t['question'][:80]} |")
+                  out.append(f"| {t.get('strategy','?')} | {sign}${p:.2f} | {t['question']} |")
           summary = os.environ.get("GITHUB_STEP_SUMMARY")
           if summary:
               with open(summary, "a") as f:
