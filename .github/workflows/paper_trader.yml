@@ -1,0 +1,39 @@
+name: Paper Trader
+
+on:
+  schedule:
+    # Every 6 hours: midnight, 6am, noon, 6pm UTC
+    - cron: "0 0,6,12,18 * * *"
+  workflow_dispatch:   # also allows manual trigger from GitHub UI
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # needed to commit state file back
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        working-directory: weatherbot2_coldmath
+        run: pip install -r requirements_trader.txt
+
+      - name: Run paper trader
+        working-directory: weatherbot2_coldmath
+        run: python paper_trader.py --forward --live
+
+      - name: Commit updated state
+        run: |
+          git config user.name  "paper-trader-bot"
+          git config user.email "bot@noreply.github.com"
+          git add weatherbot2_coldmath/paper_trader_state.json
+          # Only commit if the state actually changed
+          git diff --staged --quiet || git commit -m "chore: paper trader run $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push

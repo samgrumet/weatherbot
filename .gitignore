@@ -205,3 +205,8 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Paper trader artifacts
+weatherbot2_coldmath/logs/
+weatherbot2_coldmath/backtest_results.csv
+weatherbot2_coldmath/paper_trader_actions.yml
