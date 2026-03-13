@@ -387,7 +387,7 @@ function posHTML(p) {
         <div class="pos-badges">
           <span class="badge ${oc.toLowerCase()}">${oc.toUpperCase()}</span>
         </div>
-        <div class="pos-q">${(p.question || '').substring(0, 65)}</div>
+        <div class="pos-q">${p.question || ''}</div>
       </div>
       <div class="pos-right"><div class="pos-cost">${fmtU(p.cost || 0)}</div></div>
     </div>
@@ -453,7 +453,7 @@ function renderTrades(trades) {
       <span class="t-badge ${cls}">${lbl}</span>
       <span class="t-strat ${sk}">${sl}</span>
       <div class="t-info">
-        <div class="t-q">${(t.question || '').substring(0, 50)}</div>
+        <div class="t-q">${t.question || ''}</div>
         <div class="t-meta">${meta}</div>
       </div>
       <div class="t-right"><div class="t-amt ${amtCls}">${amtStr}</div></div>
