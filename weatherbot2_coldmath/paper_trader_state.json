@@ -1,7 +1,7 @@
 {
-  "balance": 192.97,
-  "s1_balance": 159.82,
-  "s2_balance": 33.15,
+  "balance": 160.01,
+  "s1_balance": 127.86,
+  "s2_balance": 32.15,
   "s3_balance": 0.0,
   "starting_balance": 500.0,
   "positions": {
@@ -329,20 +329,65 @@
       "high": 51,
       "opened_at": "2026-03-13T19:55:07.526476"
     },
+    "1577616": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 22-23\u00b0F on March 16?",
+      "outcome": "No",
+      "entry_price": 0.985,
+      "effective_entry_price": 0.985291,
+      "shares": 101.53,
+      "cost": 100.04,
+      "city": "chicago",
+      "date_str": "2026-03-16",
+      "forecast_temp": 46,
+      "low": 22,
+      "high": 23,
+      "opened_at": "2026-03-13T20:27:07.733039"
+    },
     "1574981": {
       "strategy": "S3_high_conviction",
       "question": "Will the highest temperature in Dallas be 98\u00b0F or higher on March 15?",
       "outcome": "No",
       "entry_price": 0.997,
       "effective_entry_price": 0.99706,
-      "shares": 200.68,
-      "cost": 200.09,
+      "shares": 100.34,
+      "cost": 100.04,
       "city": "dallas",
       "date_str": "2026-03-15",
       "forecast_temp": 82,
       "low": 98,
       "high": 999,
-      "opened_at": "2026-03-13T19:57:07.272815"
+      "opened_at": "2026-03-13T20:27:08.650383"
+    },
+    "1566186": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 50-51\u00b0F on March 14?",
+      "outcome": "Yes",
+      "entry_price": 0.028,
+      "effective_entry_price": 0.028015,
+      "shares": 35.69,
+      "cost": 1.0,
+      "city": "seattle",
+      "date_str": "2026-03-14",
+      "forecast_temp": 45,
+      "low": 50,
+      "high": 51,
+      "opened_at": "2026-03-13T20:27:09.090783"
+    },
+    "1577560": {
+      "strategy": "S1_layered_no",
+      "question": "Will the highest temperature in Seattle be between 46-47\u00b0F on March 16?",
+      "outcome": "No",
+      "entry_price": 0.87,
+      "effective_entry_price": 0.871968,
+      "shares": 36.66,
+      "cost": 31.96,
+      "city": "seattle",
+      "date_str": "2026-03-16",
+      "forecast_temp": 54,
+      "low": 46,
+      "high": 47,
+      "opened_at": "2026-03-13T20:27:09.241576"
     }
   },
   "trades": [
@@ -675,10 +720,56 @@
       "entry_price": 0.997,
       "size": 200.09,
       "opened_at": "2026-03-13T19:57:07.272821"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be 98\u00b0F or higher on March 15?",
+      "outcome": "No",
+      "entry_price": 0.997,
+      "exit_price": 0.997,
+      "pnl": -0.01,
+      "closed_at": "2026-03-13T20:27:06.605580"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 22-23\u00b0F on March 16?",
+      "outcome": "No",
+      "entry_price": 0.985,
+      "size": 100.04,
+      "opened_at": "2026-03-13T20:27:07.733046"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be 98\u00b0F or higher on March 15?",
+      "outcome": "No",
+      "entry_price": 0.997,
+      "size": 100.04,
+      "opened_at": "2026-03-13T20:27:08.650389"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 50-51\u00b0F on March 14?",
+      "outcome": "Yes",
+      "entry_price": 0.028,
+      "size": 1.0,
+      "opened_at": "2026-03-13T20:27:09.090789"
+    },
+    {
+      "type": "entry",
+      "strategy": "S1_layered_no",
+      "question": "Will the highest temperature in Seattle be between 46-47\u00b0F on March 16?",
+      "outcome": "No",
+      "entry_price": 0.87,
+      "size": 31.96,
+      "opened_at": "2026-03-13T20:27:09.241583"
     }
   ],
-  "total_trades": 30,
+  "total_trades": 34,
   "wins": 1,
-  "losses": 5,
+  "losses": 6,
   "peak_balance": 500.0
 }
