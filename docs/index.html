@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ColdMath // Paper Trader</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#000;--bg2:#020c02;--bg3:#010801;
+  --border:#0a2a0a;--border2:#0d1f0d;
+  --green:#00ff41;--green-dim:rgba(0,255,65,.08);--green-glow:rgba(0,255,65,.4);
+  --red:#ff2244;--red-dim:rgba(255,34,68,.08);
+  --yellow:#ffcc00;--yellow-dim:rgba(255,204,0,.08);
+  --cyan:#00e5ff;--cyan-dim:rgba(0,229,255,.08);
+  --text:#88ff88;--text2:#2a5a2a;--text3:#1a3a1a;
+  --mono:'Share Tech Mono',monospace;--display:'Orbitron',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:var(--mono);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,255,65,.012) 2px,rgba(0,255,65,.012) 4px);pointer-events:none;z-index:999;}
+body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,255,65,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,65,.025) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;}
+
+/* ── Layout ── */
+.wrap{position:relative;z-index:1;max-width:1500px;margin:0 auto;padding:22px 26px;}
+
+/* ── Header ── */
+.header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border);position:relative;}
+.header::after{content:'';position:absolute;bottom:-1px;left:0;width:30%;height:1px;background:var(--green);box-shadow:0 0 14px var(--green-glow);}
+.brand-title{font-family:var(--display);font-size:22px;font-weight:900;color:var(--green);letter-spacing:4px;text-shadow:0 0 20px var(--green-glow);line-height:1;}
+.brand-sub{font-size:9px;color:var(--text2);letter-spacing:2px;margin-top:5px;}
+.header-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+.live-pill{display:flex;align-items:center;gap:6px;font-size:11px;letter-spacing:1px;color:var(--green);}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 1.5s infinite;}
+.dot.gray{background:var(--text2);box-shadow:none;animation:none;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.2;}}
+.ts{font-size:9px;color:var(--text2);}
+
+/* ── Server warning ── */
+.no-server{padding:16px 20px;margin-bottom:18px;background:rgba(255,204,0,.04);border:1px solid rgba(255,204,0,.2);border-radius:4px;font-size:11px;color:var(--yellow);line-height:1.8;display:none;}
+.no-server code{background:rgba(0,255,65,.06);border:1px solid rgba(0,255,65,.15);padding:1px 6px;border-radius:2px;color:var(--green);}
+
+/* ── Stat cards ── */
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:12px;}
+.stat{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:12px 14px;position:relative;overflow:hidden;}
+.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--green),transparent);opacity:.5;}
+.stat-label{font-size:9px;color:var(--text2);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.stat-val{font-family:var(--display);font-size:18px;font-weight:700;color:var(--green);line-height:1;text-shadow:0 0 8px rgba(0,255,65,.3);transition:color .3s;}
+.stat-val.red{color:var(--red);text-shadow:0 0 8px rgba(255,34,68,.3);}
+.stat-val.yellow{color:var(--yellow);text-shadow:0 0 8px rgba(255,204,0,.3);}
+.stat-val.cyan{color:var(--cyan);text-shadow:0 0 8px rgba(0,229,255,.3);}
+.stat-sub{font-size:9px;color:var(--text2);margin-top:3px;}
+
+/* ── Strategy row ── */
+.strat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px;}
+.strat-card{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:12px 15px;position:relative;overflow:hidden;}
+.strat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.strat-card.s1::before{background:linear-gradient(90deg,var(--green),transparent);}
+.strat-card.s2::before{background:linear-gradient(90deg,var(--yellow),transparent);}
+.strat-card.s3::before{background:linear-gradient(90deg,var(--cyan),transparent);}
+.strat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.strat-name{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:2px;}
+.strat-card.s1 .strat-name{color:var(--green);}
+.strat-card.s2 .strat-name{color:var(--yellow);}
+.strat-card.s3 .strat-name{color:var(--cyan);}
+.strat-desc{font-size:8px;color:var(--text2);letter-spacing:1px;margin-bottom:8px;}
+.strat-metrics{display:flex;gap:16px;}
+.strat-m{text-align:center;}
+.strat-m-val{font-family:var(--display);font-size:14px;font-weight:700;}
+.strat-card.s1 .strat-m-val{color:var(--green);}
+.strat-card.s2 .strat-m-val{color:var(--yellow);}
+.strat-card.s3 .strat-m-val{color:var(--cyan);}
+.strat-m-val.red{color:var(--red) !important;}
+.strat-m-label{font-size:8px;color:var(--text2);letter-spacing:1px;margin-top:2px;}
+.strat-badge{font-size:8px;padding:2px 7px;border-radius:2px;letter-spacing:1px;border:1px solid;}
+.strat-card.s1 .strat-badge{color:var(--green);border-color:rgba(0,255,65,.25);background:var(--green-dim);}
+.strat-card.s2 .strat-badge{color:var(--yellow);border-color:rgba(255,204,0,.25);background:var(--yellow-dim);}
+.strat-card.s3 .strat-badge{color:var(--cyan);border-color:rgba(0,229,255,.25);background:var(--cyan-dim);}
+
+/* ── Main layout ── */
+.main-layout{display:grid;grid-template-columns:1fr 380px;gap:12px;margin-bottom:12px;}
+.chart-card{background:var(--bg2);border:1px solid var(--border);border-radius:4px;overflow:hidden;position:relative;}
+.chart-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:.4;}
+.card-head{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.card-title{font-size:9px;color:var(--text2);letter-spacing:2px;text-transform:uppercase;}
+.card-badge{font-size:8px;padding:2px 8px;border-radius:2px;background:var(--green-dim);color:var(--green);border:1px solid rgba(0,255,65,.2);letter-spacing:1px;}
+.chart-body{padding:14px 16px;}
+.chart-wrap{height:215px;position:relative;}
+.deltas{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.delta{position:absolute;font-size:11px;font-weight:600;padding:2px 7px;border-radius:3px;animation:floatUp 2.5s ease forwards;white-space:nowrap;}
+.delta.pos{color:var(--green);background:rgba(0,255,65,.08);border:1px solid rgba(0,255,65,.2);}
+.delta.neg{color:var(--red);background:var(--red-dim);border:1px solid rgba(255,34,68,.2);}
+@keyframes floatUp{0%{opacity:0;transform:translateY(0);}15%{opacity:1;}80%{opacity:1;}100%{opacity:0;transform:translateY(-45px);}}
+
+/* ── Panels ── */
+.panel{background:var(--bg2);border:1px solid var(--border);border-radius:4px;overflow:hidden;position:relative;}
+.panel::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--green),transparent);opacity:.4;}
+.scroll{max-height:300px;overflow-y:auto;}
+.scroll::-webkit-scrollbar{width:2px;}
+.scroll::-webkit-scrollbar-thumb{background:var(--border);}
+.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.empty{padding:24px;text-align:center;color:var(--text2);font-size:9px;letter-spacing:2px;}
+
+/* ── Position items ── */
+.pos-item{padding:10px 14px;border-bottom:1px solid var(--border3,#050f05);animation:slideIn .3s ease;}
+.pos-item:last-child{border-bottom:none;}
+@keyframes slideIn{from{opacity:0;transform:translateX(-5px);}to{opacity:1;transform:none;}}
+.pos-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px;}
+.pos-left{display:flex;align-items:flex-start;gap:7px;flex:1;min-width:0;}
+.pos-badges{display:flex;flex-direction:column;gap:3px;flex-shrink:0;}
+.badge{font-size:8px;padding:2px 6px;border-radius:2px;letter-spacing:1px;border:1px solid;text-align:center;white-space:nowrap;}
+.badge.s1{color:var(--green);border-color:rgba(0,255,65,.3);background:var(--green-dim);}
+.badge.s2{color:var(--yellow);border-color:rgba(255,204,0,.3);background:var(--yellow-dim);}
+.badge.s3{color:var(--cyan);border-color:rgba(0,229,255,.3);background:var(--cyan-dim);}
+.badge.yes{color:#44ffaa;border-color:rgba(68,255,170,.25);background:rgba(68,255,170,.05);}
+.badge.no{color:#ff7755;border-color:rgba(255,119,85,.25);background:rgba(255,119,85,.05);}
+.pos-q{font-size:10px;color:var(--text);line-height:1.35;flex:1;min-width:0;}
+.pos-right{text-align:right;flex-shrink:0;}
+.pos-cost{font-size:11px;font-weight:600;color:var(--text);}
+.pos-meta{display:flex;flex-wrap:wrap;gap:8px;font-size:8px;color:var(--text2);margin-top:4px;}
+.pos-meta .hi{color:var(--yellow);}
+
+/* ── Trade items ── */
+.trade-item{padding:8px 14px;border-bottom:1px solid #050f05;display:flex;align-items:center;gap:9px;animation:slideIn .3s ease;}
+.trade-item:last-child{border-bottom:none;}
+.t-time{font-size:8px;color:var(--text2);flex-shrink:0;width:55px;}
+.t-badge{font-size:8px;padding:2px 6px;border-radius:2px;flex-shrink:0;letter-spacing:1px;border:1px solid;white-space:nowrap;}
+.t-badge.entry{color:var(--green);border-color:rgba(0,255,65,.25);background:var(--green-dim);}
+.t-badge.win{color:#44ffaa;border-color:rgba(68,255,170,.25);background:rgba(68,255,170,.06);}
+.t-badge.loss{color:var(--red);border-color:rgba(255,34,68,.25);background:var(--red-dim);}
+.t-strat{font-size:8px;padding:2px 5px;border-radius:2px;flex-shrink:0;border:1px solid;}
+.t-strat.s1{color:var(--green);border-color:rgba(0,255,65,.2);background:var(--green-dim);}
+.t-strat.s2{color:var(--yellow);border-color:rgba(255,204,0,.2);background:var(--yellow-dim);}
+.t-strat.s3{color:var(--cyan);border-color:rgba(0,229,255,.2);background:var(--cyan-dim);}
+.t-info{flex:1;min-width:0;}
+.t-q{font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text);margin-bottom:2px;}
+.t-meta{font-size:8px;color:var(--text2);}
+.t-right{text-align:right;flex-shrink:0;}
+.t-amt{font-size:11px;font-weight:600;}
+.t-amt.pos{color:var(--green);}
+.t-amt.neg{color:var(--red);}
+.t-amt.neutral{color:var(--text2);}
+
+/* ── City table ── */
+.city-row{padding:8px 14px;border-bottom:1px solid #050f05;display:flex;align-items:center;gap:10px;}
+.city-row:last-child{border-bottom:none;}
+.city-name{font-size:10px;color:var(--text);width:110px;flex-shrink:0;}
+.city-bar-wrap{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
+.city-bar{height:100%;border-radius:2px;background:var(--green);box-shadow:0 0 4px var(--green);transition:width .8s;}
+.city-count{font-size:9px;color:var(--text2);width:30px;text-align:right;flex-shrink:0;}
+.city-cost{font-size:9px;color:var(--yellow);width:60px;text-align:right;flex-shrink:0;}
+
+/* ── Footer ── */
+.footer{margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.footer-text{font-size:8px;color:var(--text2);letter-spacing:1px;}
+.footer-badges{display:flex;gap:8px;}
+.f-badge{font-size:8px;padding:2px 8px;border-radius:2px;}
+.f-badge.paper{background:rgba(255,204,0,.06);color:var(--yellow);border:1px solid rgba(255,204,0,.2);}
+.f-badge.cron{background:var(--green-dim);color:var(--green);border:1px solid rgba(0,255,65,.2);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- Header -->
+<div class="header">
+  <div>
+    <div class="brand-title">COLDMATH // PAPER TRADER</div>
+    <div class="brand-sub">Polymarket · NWS · Open-Meteo · S1 Layered No · S2 Lottery · S3 High Conviction</div>
+  </div>
+  <div class="header-right">
+    <div class="live-pill"><div class="dot" id="status-dot"></div><span id="status-text">CONNECTING...</span></div>
+    <div class="ts" id="ts">—</div>
+  </div>
+</div>
+
+<!-- Server warning -->
+<div id="no-server-msg" class="no-server">
+  ⚠️ &nbsp;Dashboard needs a local HTTP server to read <code>paper_trader_state.json</code>.<br>
+  In your <code>weatherbot2_coldmath/</code> folder run:<br><br>
+  <code>python3 -m http.server 8080</code><br><br>
+  Then open: <code>http://localhost:8080/dashboard.html</code>
+</div>
+
+<!-- Stat cards -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-label">Balance</div>
+    <div class="stat-val" id="s-bal">—</div>
+    <div class="stat-sub">virtual USDC</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Total P&amp;L</div>
+    <div class="stat-val" id="s-pnl">—</div>
+    <div class="stat-sub" id="s-pct">vs $10,000 start</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Deployed</div>
+    <div class="stat-val yellow" id="s-deployed">—</div>
+    <div class="stat-sub" id="s-open-count">in open positions</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Win Rate</div>
+    <div class="stat-val yellow" id="s-wr">—</div>
+    <div class="stat-sub" id="s-wl">0W / 0L</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Total Trades</div>
+    <div class="stat-val" id="s-total">—</div>
+    <div class="stat-sub">entries recorded</div>
+  </div>
+  <div class="stat">
+    <div class="stat-label">Peak Balance</div>
+    <div class="stat-val cyan" id="s-peak">—</div>
+    <div class="stat-sub">all-time high</div>
+  </div>
+</div>
+
+<!-- Strategy breakdown -->
+<div class="strat-row">
+  <div class="strat-card s1">
+    <div class="strat-head">
+      <div class="strat-name">S1 — LAYERED NO HEDGE</div>
+      <div class="strat-badge" id="s1-badge">0 OPEN</div>
+    </div>
+    <div class="strat-desc">Buy "No" on bands ≥6°F from forecast · sized by distance</div>
+    <div class="strat-metrics">
+      <div class="strat-m"><div class="strat-m-val" id="s1-trades">0</div><div class="strat-m-label">TRADES</div></div>
+      <div class="strat-m"><div class="strat-m-val" id="s1-wr">—</div><div class="strat-m-label">WIN RATE</div></div>
+      <div class="strat-m"><div class="strat-m-val" id="s1-pnl">$0</div><div class="strat-m-label">P&amp;L</div></div>
+      <div class="strat-m"><div class="strat-m-val" id="s1-deployed">$0</div><div class="strat-m-label">OPEN</div></div>
+    </div>
+  </div>
+  <div class="strat-card s2">
+    <div class="strat-head">
+      <div class="strat-name">S2 — LOTTERY TICKETS</div>
+      <div class="strat-badge" id="s2-badge">0 OPEN</div>
+    </div>
+    <div class="strat-desc">Buy "Yes" &lt;0.04 on near-miss bands within ±7°F</div>
+    <div class="strat-metrics">
+      <div class="strat-m"><div class="strat-m-val" id="s2-trades">0</div><div class="strat-m-label">TRADES</div></div>
+      <div class="strat-m"><div class="strat-m-val" id="s2-wr">—</div><div class="strat-m-label">WIN RATE</div></div>
+      <div class="strat-m"><div class="strat-m-val" id="s2-pnl">$0</div><div class="strat-m-label">P&amp;L</div></div>
+      <div class="strat-m"><div class="strat-m-val" id="s2-deployed">$0</div><div class="strat-m-label">OPEN</div></div>
+    </div>
+  </div>
+  <div class="strat-card s3">
+    <div class="strat-head">
+      <div class="strat-name">S3 — HIGH CONVICTION</div>
+      <div class="strat-badge" id="s3-badge">0 OPEN</div>
+    </div>
+    <div class="strat-desc">Single large "No" on bands ≥15°F from forecast · No ≥0.94</div>
+    <div class="strat-metrics">
+      <div class="strat-m"><div class="strat-m-val" id="s3-trades">0</div><div class="strat-m-label">TRADES</div></div>
+      <div class="strat-m"><div class="strat-m-val" id="s3-wr">—</div><div class="strat-m-label">WIN RATE</div></div>
+      <div class="strat-m"><div class="strat-m-val" id="s3-pnl">$0</div><div class="strat-m-label">P&amp;L</div></div>
+      <div class="strat-m"><div class="strat-m-val" id="s3-deployed">$0</div><div class="strat-m-label">OPEN</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Chart + open positions -->
+<div class="main-layout">
+  <div class="chart-card">
+    <div class="card-head">
+      <span class="card-title">Balance History</span>
+      <span class="card-badge">PAPER · $10,000 START</span>
+    </div>
+    <div class="chart-body">
+      <div class="chart-wrap">
+        <canvas id="chart"></canvas>
+        <div class="deltas" id="deltas"></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="card-head">
+      <span class="card-title">Open Positions</span>
+      <span class="card-badge" id="pos-badge">0 ACTIVE</span>
+    </div>
+    <div class="scroll" id="pos-list">
+      <div class="empty">No open positions</div>
+    </div>
+  </div>
+</div>
+
+<!-- Trade history + city breakdown -->
+<div class="bottom-grid">
+  <div class="panel">
+    <div class="card-head">
+      <span class="card-title">Trade History</span>
+      <span class="card-badge">LAST 20</span>
+    </div>
+    <div class="scroll" id="trade-list">
+      <div class="empty">No trades yet</div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="card-head">
+      <span class="card-title">Exposure by City</span>
+      <span class="card-badge" id="city-badge">0 CITIES</span>
+    </div>
+    <div class="scroll" id="city-list">
+      <div class="empty">No open positions</div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-text">ColdMath Paper Trader · reads paper_trader_state.json · refreshes every 15s</div>
+  <div class="footer-badges">
+    <div class="f-badge cron">⏱ CRON 0,6,12,18 UTC</div>
+    <div class="f-badge paper">⚡ $10,000 PAPER</div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const $ = id => document.getElementById(id);
+const fmt  = (v, pre='$') => (v >= 0 ? '+' : '-') + pre + Math.abs(v).toFixed(2);
+const fmtU = v => '$' + Math.abs(v).toFixed(2);
+const now  = () => new Date().toLocaleTimeString('en-US', {hour12: false});
+const rand = (a, b) => Math.random() * (b - a) + a;
+
+const STRAT_KEY = s => s === 'S1_layered_no' ? 's1' : s === 'S2_lottery' ? 's2' : 's3';
+const STRAT_LBL = s => s === 'S1_layered_no' ? 'S1' : s === 'S2_lottery' ? 'S2' : 'S3';
+
+let prevBal = null, chart = null, balHistory = [], timeLabels = [];
+
+// Init chart
+chart = new Chart($('chart'), {
+  type: 'line',
+  data: {
+    labels: [],
+    datasets: [{
+      data: [],
+      borderColor: '#00ff41',
+      backgroundColor: 'rgba(0,255,65,.05)',
+      fill: true,
+      tension: .45,
+      pointRadius: 0,
+      borderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    animation: {duration: 500},
+    plugins: {
+      legend: {display: false},
+      tooltip: {
+        backgroundColor: '#010801',
+        borderColor: '#0a2a0a',
+        borderWidth: 1,
+        callbacks: {label: c => '$' + c.parsed.y.toFixed(2)}
+      }
+    },
+    scales: {
+      x: {ticks: {color: '#1a3a1a', font: {family: 'Share Tech Mono', size: 8}, maxTicksLimit: 8}, grid: {color: '#050f05'}},
+      y: {ticks: {color: '#2a5a2a', font: {family: 'Share Tech Mono', size: 9}, callback: v => '$'+v.toFixed(0)}, grid: {color: '#050f05'}}
+    }
+  }
+});
+
+function spawnDelta(v) {
+  const l = $('deltas');
+  const e = document.createElement('div');
+  e.className = 'delta ' + (v >= 0 ? 'pos' : 'neg');
+  e.textContent = (v >= 0 ? '+$' : '-$') + Math.abs(v).toFixed(2);
+  e.style.left = rand(20, l.offsetWidth - 100) + 'px';
+  e.style.top  = rand(l.offsetHeight * .2, l.offsetHeight * .7) + 'px';
+  l.appendChild(e);
+  setTimeout(() => e.remove(), 2500);
+}
+
+function posHTML(p) {
+  const sk   = STRAT_KEY(p.strategy || '');
+  const oc   = p.outcome || '?';
+  const lo   = p.low === -999 ? null : p.low;
+  const hi   = p.high === 999 ? null : p.high;
+  const band = lo === null ? `≤${hi}°F` : hi === null ? `≥${lo}°F` : `${lo}-${hi}°F`;
+  const city = (p.city || '').replace(/-/g, ' ').toUpperCase();
+  return `<div class="pos-item">
+    <div class="pos-top">
+      <div class="pos-left">
+        <div class="pos-badges">
+          <span class="badge ${oc.toLowerCase()}">${oc.toUpperCase()}</span>
+        </div>
+        <div class="pos-q">${(p.question || '').substring(0, 65)}</div>
+      </div>
+      <div class="pos-right"><div class="pos-cost">${fmtU(p.cost || 0)}</div></div>
+    </div>
+    <div class="pos-meta">
+      <span class="hi">${city}</span>
+      <span>${p.date_str || ''}</span>
+      <span>fcst <span class="hi">${p.forecast_temp || '?'}°F</span></span>
+      <span>band <span class="hi">${band}</span></span>
+      <span>@ ${(p.entry_price || 0).toFixed(4)}</span>
+      <span>${(p.shares || 0).toFixed(0)} shr</span>
+    </div>
+  </div>`;
+}
+
+function stratSection(label, sk, items) {
+  if (!items.length) return '';
+  const colors = {s1:'#00ff41', s2:'#ffcc00', s3:'#00e5ff'};
+  const col = colors[sk] || '#00ff41';
+  const total = items.reduce((s, p) => s + (p.cost||0), 0);
+  return `<div style="padding:6px 14px 4px;border-bottom:1px solid #0a2a0a;display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-size:8px;letter-spacing:2px;color:${col};">${label}</span>
+    <span style="font-size:8px;color:#2a5a2a;">${items.length} pos · $${total.toFixed(0)} deployed</span>
+  </div>` + items.map(posHTML).join('');
+}
+
+function renderPositions(positions) {
+  const el = $('pos-list');
+  const all = Object.values(positions);
+  $('pos-badge').textContent = all.length + ' ACTIVE';
+  if (!all.length) { el.innerHTML = '<div class="empty">No open positions</div>'; return; }
+
+  const s1 = all.filter(p => p.strategy === 'S1_layered_no');
+  const s2 = all.filter(p => p.strategy === 'S2_lottery');
+  const s3 = all.filter(p => p.strategy === 'S3_high_conviction');
+
+  el.innerHTML =
+    stratSection('S1 — LAYERED NO HEDGE', 's1', s1) +
+    stratSection('S2 — LOTTERY TICKETS',  's2', s2) +
+    stratSection('S3 — HIGH CONVICTION',  's3', s3);
+}
+
+function renderTrades(trades) {
+  const el = $('trade-list');
+  if (!trades || !trades.length) { el.innerHTML = '<div class="empty">No trades yet</div>'; return; }
+  const recent = [...trades].reverse().slice(0, 20);
+  el.innerHTML = recent.map(t => {
+    const isEntry = t.type === 'entry';
+    const isWin   = t.type === 'exit' && (t.pnl || 0) > 0;
+    const cls     = isEntry ? 'entry' : isWin ? 'win' : 'loss';
+    const lbl     = isEntry ? 'ENTRY' : isWin ? 'WIN' : 'LOSS';
+    const sk      = STRAT_KEY(t.strategy || '');
+    const sl      = STRAT_LBL(t.strategy || '');
+    const oc      = t.outcome || '';
+    const amtRaw  = isEntry ? -(t.size || 0) : (t.pnl || 0);
+    const amtCls  = isEntry ? 'neutral' : amtRaw >= 0 ? 'pos' : 'neg';
+    const amtStr  = isEntry ? `-${fmtU(t.size || 0)}` : fmt(t.pnl || 0);
+    const time    = (t.opened_at || t.closed_at || '').substring(11, 16) || '—';
+    const meta    = isEntry
+      ? `@ ${(t.entry_price || 0).toFixed(4)}  ${oc}`
+      : `entry ${(t.entry_price||0).toFixed(4)} → exit ${(t.exit_price||0).toFixed(4)}`;
+    return `<div class="trade-item">
+      <div class="t-time">${time}</div>
+      <span class="t-badge ${cls}">${lbl}</span>
+      <span class="t-strat ${sk}">${sl}</span>
+      <div class="t-info">
+        <div class="t-q">${(t.question || '').substring(0, 50)}</div>
+        <div class="t-meta">${meta}</div>
+      </div>
+      <div class="t-right"><div class="t-amt ${amtCls}">${amtStr}</div></div>
+    </div>`;
+  }).join('');
+}
+
+function renderCities(positions) {
+  const el = $('city-list');
+  const map = {};
+  for (const p of Object.values(positions)) {
+    const c = (p.city || 'unknown').replace(/-/g, ' ');
+    if (!map[c]) map[c] = {count: 0, cost: 0};
+    map[c].count++;
+    map[c].cost += p.cost || 0;
+  }
+  const entries = Object.entries(map).sort((a, b) => b[1].cost - a[1].cost);
+  $('city-badge').textContent = entries.length + ' CITIES';
+  if (!entries.length) { el.innerHTML = '<div class="empty">No open positions</div>'; return; }
+  const maxCost = Math.max(...entries.map(e => e[1].cost), 1);
+  el.innerHTML = entries.map(([city, d]) => `
+    <div class="city-row">
+      <div class="city-name">${city.toUpperCase()}</div>
+      <div class="city-bar-wrap"><div class="city-bar" style="width:${(d.cost/maxCost*100).toFixed(1)}%"></div></div>
+      <div class="city-count">${d.count}</div>
+      <div class="city-cost">${fmtU(d.cost)}</div>
+    </div>`).join('');
+}
+
+function stratStats(trades, positions, key) {
+  const stratName = key === 's1' ? 'S1_layered_no' : key === 's2' ? 'S2_lottery' : 'S3_high_conviction';
+  const closed = (trades || []).filter(t => t.type === 'exit' && t.strategy === stratName);
+  const wins   = closed.filter(t => (t.pnl || 0) > 0).length;
+  const pnl    = closed.reduce((s, t) => s + (t.pnl || 0), 0);
+  const open   = Object.values(positions).filter(p => p.strategy === stratName);
+  const deployed = open.reduce((s, p) => s + (p.cost || 0), 0);
+  const wr = closed.length > 0 ? (wins / closed.length * 100).toFixed(0) + '%' : '—';
+
+  $(key + '-trades').textContent = (trades || []).filter(t => t.type === 'entry' && t.strategy === stratName).length;
+  $(key + '-wr').textContent  = wr;
+  const pnlEl = $(key + '-pnl');
+  pnlEl.textContent = (pnl >= 0 ? '+' : '') + '$' + Math.abs(pnl).toFixed(0);
+  pnlEl.className = 'strat-m-val' + (pnl < 0 ? ' red' : '');
+  $(key + '-deployed').textContent = '$' + deployed.toFixed(0);
+  $(key + '-badge').textContent = open.length + ' OPEN';
+}
+
+async function loadData() {
+  try {
+    const r   = await fetch('paper_trader_state.json?t=' + Date.now());
+    if (!r.ok) throw new Error('not found');
+    const sim = await r.json();
+
+    $('no-server-msg').style.display = 'none';
+    $('status-dot').className = 'dot';
+    $('status-text').textContent = 'LIVE';
+    $('ts').textContent = 'Updated: ' + now();
+
+    const bal       = sim.balance || 0;
+    const start     = sim.starting_balance || 10000;
+    const wins      = sim.wins || 0;
+    const losses    = sim.losses || 0;
+    const positions = sim.positions || {};
+    const trades    = sim.trades || [];
+    const peak      = sim.peak_balance || bal;
+
+    // Deployed capital
+    const deployed = Object.values(positions).reduce((s, p) => s + (p.cost || 0), 0);
+    const total    = bal + deployed;   // balance + open cost = total portfolio value
+    const pnl      = total - start;
+    const pct      = pnl / start * 100;
+
+    // Stats row
+    $('s-bal').textContent = '$' + total.toFixed(2);
+    const pnlEl = $('s-pnl');
+    pnlEl.textContent = (pnl >= 0 ? '+' : '-') + '$' + Math.abs(pnl).toFixed(2);
+    pnlEl.className = 'stat-val' + (pnl < 0 ? ' red' : '');
+    $('s-pct').textContent = (pct >= 0 ? '+' : '') + pct.toFixed(1) + '% return';
+    $('s-deployed').textContent = '$' + deployed.toFixed(2);
+    $('s-open-count').textContent = Object.keys(positions).length + ' open positions';
+    const wr = wins + losses > 0 ? (wins / (wins + losses) * 100).toFixed(0) + '%' : '—';
+    $('s-wr').textContent = wr;
+    $('s-wl').textContent = wins + 'W / ' + losses + 'L';
+    $('s-total').textContent = sim.total_trades || 0;
+    $('s-peak').textContent = '$' + peak.toFixed(2);
+
+    // Chart
+    if (prevBal !== null && Math.abs(bal - prevBal) > 0.1) spawnDelta(bal - prevBal);
+    prevBal = bal;
+    balHistory.push(parseFloat(total.toFixed(2)));
+    timeLabels.push(now());
+    if (balHistory.length > 60) { balHistory.shift(); timeLabels.shift(); }
+    chart.data.labels = [...timeLabels];
+    chart.data.datasets[0].data = [...balHistory];
+    chart.update();
+
+    // Strategy stats
+    stratStats(trades, positions, 's1');
+    stratStats(trades, positions, 's2');
+    stratStats(trades, positions, 's3');
+
+    // Panels
+    renderPositions(positions);
+    renderTrades(trades);
+    renderCities(positions);
+
+  } catch (e) {
+    $('status-dot').className = 'dot gray';
+    $('status-text').textContent = 'WAITING';
+    $('ts').textContent = 'Cannot read paper_trader_state.json';
+    if (location.protocol === 'file:') {
+      $('no-server-msg').style.display = 'block';
+    }
+  }
+}
+
+loadData();
+setInterval(loadData, 15000);
+</script>
+</body>
+</html>
