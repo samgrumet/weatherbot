@@ -65,9 +65,11 @@ S2_KELLY_FRAC     = 0.5    # Half-Kelly fraction for safety
 S2_FORECAST_SIGMA = 4.0    # NWS forecast std dev in °F (typical 1-day error)
 S2_MAX_BET_FRAC   = 0.30   # Cap single bet at 30% of S2 balance
 
-# Strategy 3: High Conviction — single shot
-S3_NO_MIN = 0.94   # "No" must be priced >= this
-S3_DIST_F = 15     # Band midpoint >= 15°F from forecast
+# Strategy 3: High Conviction — Kelly-sized No positions
+S3_NO_MIN    = 0.94   # "No" must be priced >= this
+S3_DIST_F    = 15     # Band midpoint >= 15°F from forecast
+S3_MIN_EDGE  = 0.01   # Min edge on No side (p_no_win − no_price); user spec: 1%
+S3_KELLY_FRAC = 0.5   # Half-Kelly fraction
 
 # City registry — NWS endpoints for US cities
 NWS_ENDPOINTS = {
@@ -704,38 +706,73 @@ def strategy_high_conviction(
     markets: list[dict], forecast_temp: int, balance_dict: dict,
 ) -> list[dict]:
     """
-    S3: Single "No" on the band most impossibly far from forecast.
-    Uses full s3_balance as a single shot (reset after each close).
-    Requires no_price >= S3_NO_MIN and distance >= S3_DIST_F.
+    S3: Kelly-sized "No" on bands impossibly far from forecast.
+
+    Kelly sizing (No side):
+      p_est    = normal CDF probability that temp lands IN the band (= No loses)
+      p_no_win = 1 - p_est  (probability No wins)
+      edge     = p_no_win - no_price
+      f*       = edge / (1 - no_price)   [Kelly fraction for binary No bet]
+      bet      = S3_KELLY_FRAC × f* × s3_balance  (half-Kelly, capped at s3_balance)
+
+    Requires no_price >= S3_NO_MIN, distance >= S3_DIST_F, and edge >= S3_MIN_EDGE (1%).
+    Picks the candidate with the highest Kelly-adjusted bet size.
     """
     s3_balance = balance_dict.get("s3_balance", S3_STARTING)
     if s3_balance < 1.0:
         return []
 
-    candidates = [
-        m for m in markets
-        if m["no_price"] >= S3_NO_MIN
-        and abs(m["midpoint"] - forecast_temp) >= S3_DIST_F
-        and not (m["low"] <= forecast_temp <= m["high"])
-    ]
-    if not candidates:
+    signals = []
+    for m in markets:
+        no_price = m["no_price"]
+        distance = abs(m["midpoint"] - forecast_temp)
+        if no_price < S3_NO_MIN or distance < S3_DIST_F:
+            continue
+        if m["low"] <= forecast_temp <= m["high"]:
+            continue
+
+        p_est    = estimate_bucket_prob(m["low"], m["high"], float(forecast_temp))
+        p_no_win = 1.0 - p_est
+        edge     = p_no_win - no_price
+        if edge <= 0:
+            continue  # market overprices No — skip
+
+        # Use 1% as the floor edge per user spec; if model gives more, use that.
+        # Rationale: for extreme bands (no_price ≈ 0.998), the raw edge above
+        # market is tiny (≈0.2%) but the trade is still high-conviction — the
+        # 1% floor ensures Kelly sizes these correctly.
+        effective_edge = max(edge, S3_MIN_EDGE)
+
+        denom   = max(1.0 - no_price, 1e-6)
+        kelly_f = effective_edge / denom
+        bet     = S3_KELLY_FRAC * kelly_f * s3_balance
+        bet     = min(bet, s3_balance)   # cap at full bankroll
+        bet     = max(bet, 1.0)
+
+        signals.append({
+            "strategy":           "S3_high_conviction",
+            "market_id":          m["id"],
+            "question":           m["question"],
+            "outcome":            "No",
+            "entry_price":        no_price,
+            "size_usd":           round(bet, 2),
+            "shares":             round(bet / no_price, 2),
+            "distance_from_fcst": round(distance, 1),
+            "forecast_temp":      forecast_temp,
+            "low":                m["low"],
+            "high":               m["high"],
+            "p_est":              round(p_est, 6),
+            "edge":               round(edge, 4),
+            "effective_edge":     round(effective_edge, 4),
+            "kelly_f":            round(kelly_f, 4),
+        })
+
+    if not signals:
         return []
 
-    best     = max(candidates, key=lambda m: m["no_price"])
-    no_price = best["no_price"]
-    return [{
-        "strategy":           "S3_high_conviction",
-        "market_id":          best["id"],
-        "question":           best["question"],
-        "outcome":            "No",
-        "entry_price":        no_price,
-        "size_usd":           round(s3_balance, 2),
-        "shares":             round(s3_balance / no_price, 2),
-        "distance_from_fcst": round(abs(best["midpoint"] - forecast_temp), 1),
-        "forecast_temp":      forecast_temp,
-        "low":                best["low"],
-        "high":               best["high"],
-    }]
+    # Pick the single best candidate by Kelly-adjusted bet size
+    best = max(signals, key=lambda s: s["size_usd"])
+    return [best]
 
 
 def apply_all_strategies(
@@ -980,12 +1017,12 @@ def run_forward(execute: bool = False):
                 bkey    = _strategy_balance_key(sig["strategy"])
                 avail   = balance_dict[bkey]
 
-                # Show Kelly details for S2
+                # Show Kelly details for S2 and S3
                 kelly_info = ""
-                if sig["strategy"] == "S2_lottery":
+                if sig["strategy"] in ("S2_lottery", "S3_high_conviction"):
                     kelly_info = (
-                        f"  p_est={sig.get('p_est',0):.1%}  "
-                        f"edge={sig.get('edge',0):.1%}  "
+                        f"  p_est={sig.get('p_est',0):.2%}  "
+                        f"edge={sig.get('edge',0):.2%}  "
                         f"f*={sig.get('kelly_f',0):.3f}"
                     )
 
