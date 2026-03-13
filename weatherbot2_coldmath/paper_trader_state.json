@@ -1,5 +1,5 @@
 {
-  "balance": 4800.0,
+  "balance": 3800.0,
   "starting_balance": 10000.0,
   "positions": {
     "1566195": {
@@ -310,19 +310,61 @@
       "high": 71,
       "opened_at": "2026-03-13T11:58:16.932051"
     },
+    "1566194": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 54-55\u00b0F on March 14?",
+      "outcome": "Yes",
+      "entry_price": 0.035,
+      "shares": 5714.29,
+      "cost": 200.0,
+      "city": "new-york-city",
+      "date_str": "2026-03-14",
+      "forecast_temp": 51,
+      "low": 54,
+      "high": 55,
+      "opened_at": "2026-03-13T13:44:08.921675"
+    },
+    "1566202": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 84-85\u00b0F on March 14?",
+      "outcome": "Yes",
+      "entry_price": 0.0375,
+      "shares": 5333.33,
+      "cost": 200.0,
+      "city": "dallas",
+      "date_str": "2026-03-14",
+      "forecast_temp": 83,
+      "low": 84,
+      "high": 85,
+      "opened_at": "2026-03-13T13:44:24.158194"
+    },
+    "1566214": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be 80\u00b0F or higher on March 14?",
+      "outcome": "Yes",
+      "entry_price": 0.0335,
+      "shares": 5970.15,
+      "cost": 200.0,
+      "city": "atlanta",
+      "date_str": "2026-03-14",
+      "forecast_temp": 75,
+      "low": 80,
+      "high": 999,
+      "opened_at": "2026-03-13T13:44:33.075970"
+    },
     "1574988": {
       "strategy": "S1_layered_no",
       "question": "Will the highest temperature in Atlanta be between 68-69\u00b0F on March 15?",
       "outcome": "No",
-      "entry_price": 0.963,
-      "shares": 207.68,
+      "entry_price": 0.965,
+      "shares": 207.25,
       "cost": 200.0,
       "city": "atlanta",
       "date_str": "2026-03-15",
       "forecast_temp": 76,
       "low": 68,
       "high": 69,
-      "opened_at": "2026-03-13T12:00:56.654459"
+      "opened_at": "2026-03-13T13:44:33.817599"
     },
     "1574982": {
       "strategy": "S3_high_conviction",
@@ -336,7 +378,7 @@
       "forecast_temp": 76,
       "low": -999,
       "high": 57,
-      "opened_at": "2026-03-13T12:00:56.654485"
+      "opened_at": "2026-03-13T13:44:33.817628"
     }
   },
   "trades": [
@@ -593,10 +635,75 @@
       "entry_price": 0.9975,
       "size": 200.0,
       "opened_at": "2026-03-13T12:00:56.654487"
+    },
+    {
+      "type": "exit",
+      "strategy": "S1_layered_no",
+      "question": "Will the highest temperature in Atlanta be between 68-69\u00b0F on March 15?",
+      "outcome": "No",
+      "entry_price": 0.963,
+      "exit_price": 0.965,
+      "pnl": 0.42,
+      "closed_at": "2026-03-13T13:44:03.813136"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Atlanta be 57\u00b0F or below on March 15?",
+      "outcome": "No",
+      "entry_price": 0.9975,
+      "exit_price": 0.9975,
+      "pnl": 0.0,
+      "closed_at": "2026-03-13T13:44:04.489888"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 54-55\u00b0F on March 14?",
+      "outcome": "Yes",
+      "entry_price": 0.035,
+      "size": 200.0,
+      "opened_at": "2026-03-13T13:44:08.921681"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 84-85\u00b0F on March 14?",
+      "outcome": "Yes",
+      "entry_price": 0.0375,
+      "size": 200.0,
+      "opened_at": "2026-03-13T13:44:24.158210"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be 80\u00b0F or higher on March 14?",
+      "outcome": "Yes",
+      "entry_price": 0.0335,
+      "size": 200.0,
+      "opened_at": "2026-03-13T13:44:33.075988"
+    },
+    {
+      "type": "entry",
+      "strategy": "S1_layered_no",
+      "question": "Will the highest temperature in Atlanta be between 68-69\u00b0F on March 15?",
+      "outcome": "No",
+      "entry_price": 0.965,
+      "size": 200.0,
+      "opened_at": "2026-03-13T13:44:33.817615"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Atlanta be 57\u00b0F or below on March 15?",
+      "outcome": "No",
+      "entry_price": 0.9975,
+      "size": 200.0,
+      "opened_at": "2026-03-13T13:44:33.817630"
     }
   ],
-  "total_trades": 26,
-  "wins": 0,
-  "losses": 2,
+  "total_trades": 31,
+  "wins": 1,
+  "losses": 3,
   "peak_balance": 10000.0
 }

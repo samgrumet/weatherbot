@@ -2,8 +2,8 @@ name: Paper Trader
 
 on:
   schedule:
-    # Every 6 hours: midnight, 6am, noon, 6pm UTC
-    - cron: "0 0,6,12,18 * * *"
+    # Every 30 minutes
+    - cron: "*/30 * * * *"
   workflow_dispatch:   # also allows manual trigger from GitHub UI
 
 jobs:
