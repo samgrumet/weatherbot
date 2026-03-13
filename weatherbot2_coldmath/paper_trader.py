@@ -4,10 +4,19 @@ Weather Market Paper Trader
 Implements ColdMath's 3 trading strategies on Polymarket temperature bucket markets.
 
 Strategies:
-  1. Layered No Hedge    — Buy "No" on multiple adjacent bands the forecast excludes,
-                           sizing proportional to distance from forecast
-  2. Lottery Tickets     — Buy cheap "Yes" on near-miss bands within forecast uncertainty
+  1. Layered No Hedge    — Buy "No" on multiple adjacent bands the forecast excludes
+  2. Lottery Tickets     — Buy cheap "Yes" on near-miss bands; Kelly-sized by forecast edge
   3. High Conviction     — Single large "No" on bands impossibly far from forecast
+
+Portfolio:  $500 total  |  S1=$200  S2=$100  S3=$200  (separate bankrolls)
+
+S2 Kelly sizing:
+  - Estimate true probability p_est using normal distribution around NWS forecast
+    with σ = S2_FORECAST_SIGMA (4°F, typical 1-day NWS error)
+  - edge = p_est − market_yes_price
+  - Only bet when edge ≥ S2_MIN_EDGE (5%)
+  - Kelly fraction f* = edge / (1 − market_yes_price)
+  - Bet size = S2_KELLY_FRAC × f* × s2_balance  (half-Kelly, capped at S2_MAX_BET_FRAC)
 
 Modes:
   python paper_trader.py --backtest             # Backtest on historical parquet data
@@ -16,18 +25,13 @@ Modes:
   python paper_trader.py --positions            # Show open positions with current prices
   python paper_trader.py --reset                # Reset portfolio to starting balance
   python paper_trader.py --backtest --lookback 6  # Limit backtest to last N months
-
-Notes:
-  - Backtest uses estimated entry prices (actual trade price history not available in data).
-    Entry prices modeled by band distance from actual temp; see ENTRY PRICE MODEL below.
-  - NWS API used for live US city forecasts; Open-Meteo used for all historical temps
-    and for international cities (London) in forward mode.
 """
 
 import re
 import json
 import argparse
 import requests
+from math import erf, sqrt
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Optional
@@ -38,27 +42,32 @@ import pandas as pd
 # CONFIG
 # =============================================================================
 
-STARTING_BALANCE = 10_000.0
+STARTING_BALANCE = 500.0   # Total across all strategies
+S1_STARTING      = 200.0   # S1 (Layered No Hedge) bankroll
+S2_STARTING      = 100.0   # S2 (Lottery Tickets) bankroll
+S3_STARTING      = 200.0   # S3 (High Conviction) bankroll
+
 STATE_FILE = Path(__file__).parent / "paper_trader_state.json"
 # Parquet data lives in prediction-market-analysis (kept separate from trading logs)
 DATA_DIR   = Path(__file__).parent.parent.parent / "prediction-market-analysis" / "data" / "polymarket" / "markets"
 
 # Strategy 1: Layered No Hedge
-S1_NO_MIN     = 0.80   # Min "No" price to enter (below = market sees real uncertainty)
-S1_NO_MAX     = 0.97   # Max "No" price (above = too illiquid/efficient)
-S1_MIN_DIST_F = 6      # Min °F from forecast — skip adjacent bands (forecast ≈ ±5°F noise)
-S1_SIZE_USD   = 200.0  # Fixed $200 per No layer
-S1_MAX_LAYERS = 5      # Max bands to buy "No" on per city/date
+S1_NO_MIN     = 0.80   # Min "No" price to enter
+S1_NO_MAX     = 0.97   # Max "No" price (too illiquid above)
+S1_MIN_DIST_F = 6      # Skip bands within 6°F of forecast (forecast ≈ ±5°F noise)
+S1_MAX_LAYERS = 5      # Max bands per city/date; each layer = s1_balance / S1_MAX_LAYERS
 
-# Strategy 2: Lottery Tickets
-S2_YES_MAX    = 0.040  # Buy "Yes" only if priced below this (must be very cheap)
-S2_SIZE_USD   = 200.0  # Fixed $200 per lottery ticket
-S2_WINDOW_F   = 7      # Only target bands within ±7°F of forecast (plausible misses)
+# Strategy 2: Lottery Tickets — Kelly-sized
+S2_YES_MAX        = 0.040  # Only buy Yes priced below this
+S2_WINDOW_F       = 7      # Only bands within ±7°F of forecast
+S2_MIN_EDGE       = 0.05   # Min edge (p_est − market_price) to bet; user spec: 5%
+S2_KELLY_FRAC     = 0.5    # Half-Kelly fraction for safety
+S2_FORECAST_SIGMA = 4.0    # NWS forecast std dev in °F (typical 1-day error)
+S2_MAX_BET_FRAC   = 0.30   # Cap single bet at 30% of S2 balance
 
-# Strategy 3: High Conviction
-S3_NO_MIN     = 0.94   # "No" must be priced >= this
-S3_DIST_F     = 15     # Band midpoint must be >= 15°F from forecast
-S3_SIZE_USD   = 200.0  # Fixed $200 per high-conviction shot
+# Strategy 3: High Conviction — single shot
+S3_NO_MIN = 0.94   # "No" must be priced >= this
+S3_DIST_F = 15     # Band midpoint >= 15°F from forecast
 
 # City registry — NWS endpoints for US cities
 NWS_ENDPOINTS = {
@@ -146,27 +155,50 @@ def err(msg):  print(f"{C.RED}  ✗ {msg}{C.RESET}")
 def load_state() -> dict:
     try:
         with open(STATE_FILE) as f:
-            return json.load(f)
+            s = json.load(f)
+        # Backfill per-strategy balances for states created before this feature
+        if "s1_balance" not in s:
+            s["s1_balance"] = S1_STARTING
+            s["s2_balance"] = S2_STARTING
+            s["s3_balance"] = S3_STARTING
+        return s
     except FileNotFoundError:
         return {
-            "balance": STARTING_BALANCE,
+            "balance":          STARTING_BALANCE,
+            "s1_balance":       S1_STARTING,
+            "s2_balance":       S2_STARTING,
+            "s3_balance":       S3_STARTING,
             "starting_balance": STARTING_BALANCE,
-            "positions": {},
-            "trades": [],
-            "total_trades": 0,
-            "wins": 0,
-            "losses": 0,
-            "peak_balance": STARTING_BALANCE,
+            "positions":        {},
+            "trades":           [],
+            "total_trades":     0,
+            "wins":             0,
+            "losses":           0,
+            "peak_balance":     STARTING_BALANCE,
         }
 
 def save_state(state: dict):
+    # Keep overall balance in sync with per-strategy balances
+    state["balance"] = round(
+        state["s1_balance"] + state["s2_balance"] + state["s3_balance"], 2
+    )
     with open(STATE_FILE, "w") as f:
         json.dump(state, f, indent=2, default=str)
 
 def reset_state():
     if STATE_FILE.exists():
         STATE_FILE.unlink()
-    print(f"{C.GREEN}  ✓ Reset — starting balance: ${STARTING_BALANCE:,.2f}{C.RESET}")
+    print(
+        f"{C.GREEN}  ✓ Reset — total: ${STARTING_BALANCE:,.2f}  "
+        f"(S1=${S1_STARTING:.0f}  S2=${S2_STARTING:.0f}  S3=${S3_STARTING:.0f}){C.RESET}"
+    )
+
+def _strategy_balance_key(strategy: str) -> str:
+    if strategy.startswith("S1"):
+        return "s1_balance"
+    if strategy.startswith("S2"):
+        return "s2_balance"
+    return "s3_balance"
 
 # =============================================================================
 # WEATHER: NWS LIVE FORECAST  (US cities, from bot_v1.py)
@@ -225,7 +257,6 @@ def get_openmeteo_temps(lat: float, lon: float, tz: str,
     today = datetime.now(timezone.utc).date().isoformat()
     results: dict[str, int] = {}
 
-    # Split into historical vs forecast portions
     if start_date <= today:
         hist_end = min(end_date, today)
         url = (
@@ -276,7 +307,6 @@ def get_forecast_for_city(city_slug: str) -> dict[str, int]:
         if nws:
             return nws
 
-    # Fallback / international: Open-Meteo
     return get_openmeteo_temps(city["lat"], city["lon"], city["tz"], start, end)
 
 # =============================================================================
@@ -292,7 +322,6 @@ def parse_market_question(question: str, default_year: Optional[int] = None) -> 
       "Will the highest temperature in NYC be 56°F or below on April 6?"
       "Will the highest temperature in London be 71°F or higher on May 23?"
       "Will the highest temperature in London be between 67–68°F on May 23?"
-      (Also handles en-dash – in ranges.)
 
     Returns dict with keys: city_slug, city_name, date_str, low, high, midpoint
     or None if not parseable.
@@ -301,7 +330,6 @@ def parse_market_question(question: str, default_year: Optional[int] = None) -> 
         return None
     q = question.lower().strip()
 
-    # Must reference a temperature in Fahrenheit with a bucket structure
     if "°f" not in q and "°F" not in question:
         return None
     if not any(kw in q for kw in ["highest temperature", "high temperature", "high temp"]):
@@ -310,7 +338,6 @@ def parse_market_question(question: str, default_year: Optional[int] = None) -> 
     # --- City ---
     city_slug: Optional[str] = None
     city_name: Optional[str] = None
-    # Sort by length descending so longer aliases match first
     for alias, slug in sorted(CITY_ALIASES.items(), key=lambda x: -len(x[0])):
         if alias in q:
             city_slug = slug
@@ -320,7 +347,7 @@ def parse_market_question(question: str, default_year: Optional[int] = None) -> 
         return None
 
     # --- Temperature range --- (handle both hyphen and en-dash)
-    q_norm = q.replace("\u2013", "-").replace("\u2014", "-")  # normalize dashes
+    q_norm = q.replace("\u2013", "-").replace("\u2014", "-")
     low: Optional[int] = None
     high: Optional[int] = None
 
@@ -360,7 +387,6 @@ def parse_market_question(question: str, default_year: Optional[int] = None) -> 
     if date_str is None:
         return None
 
-    # Midpoint (for distance calculations); use bound for open-ended ranges
     if low == -999 and high != 999:
         midpoint = float(high)
     elif high == 999 and low != -999:
@@ -380,14 +406,6 @@ def parse_market_question(question: str, default_year: Optional[int] = None) -> 
 # =============================================================================
 # ENTRY PRICE MODEL  (backtest only — no live price history in parquet data)
 # =============================================================================
-#
-# Since we don't have pre-resolution price time-series, we estimate what entry
-# prices would have been based on a band's distance from the actual temperature.
-# Model is calibrated against ColdMath's observed trades:
-#   - Correct band (0°F away):  Yes ~0.60, No ~0.40
-#   - Adjacent (1-5°F away):    Yes ~0.15, No ~0.85
-#   - Nearby (6-12°F away):     Yes ~0.05, No ~0.95
-#   - Far (>12°F away):         Yes ~0.025, No ~0.975
 
 def estimate_entry_prices(distance: float, is_correct_band: bool) -> tuple[float, float]:
     """Returns (yes_price, no_price) estimate given distance from actual temp."""
@@ -398,6 +416,29 @@ def estimate_entry_prices(distance: float, is_correct_band: bool) -> tuple[float
     if distance <= 12:
         return 0.05, 0.95
     return 0.025, 0.975
+
+# =============================================================================
+# KELLY PROBABILITY MODEL  (S2 lottery tickets)
+# =============================================================================
+
+def _norm_cdf(x: float, mu: float, sigma: float) -> float:
+    """Standard normal CDF using math.erf (no scipy needed)."""
+    return 0.5 * (1.0 + erf((x - mu) / (sigma * sqrt(2.0))))
+
+def estimate_bucket_prob(low: int, high: int, forecast_temp: float,
+                         sigma: float = S2_FORECAST_SIGMA) -> float:
+    """
+    Estimate the true probability that the day's high temperature lands in
+    [low, high]°F, modelling the forecast as N(forecast_temp, sigma^2).
+
+    Uses ±0.5°F bucket expansion to account for integer rounding.
+    Open-ended buckets (low=-999 or high=999) are handled as tails.
+    """
+    if low == -999 and high != 999:
+        return _norm_cdf(high + 0.5, forecast_temp, sigma)
+    if high == 999 and low != -999:
+        return 1.0 - _norm_cdf(low - 0.5, forecast_temp, sigma)
+    return _norm_cdf(high + 0.5, forecast_temp, sigma) - _norm_cdf(low - 0.5, forecast_temp, sigma)
 
 # =============================================================================
 # POLYMARKET DATA: LOCAL PARQUET LOADER
@@ -428,7 +469,6 @@ def load_historical_weather_markets(lookback_months: int = 12) -> pd.DataFrame:
                 "id", "question", "outcomes", "outcome_prices",
                 "end_date", "closed",
             ])
-            # Pre-filter: closed markets with °F in question
             mask = (
                 df["closed"].fillna(False)
                 & df["question"].str.contains(r"\d+.*°[Ff]", na=False, regex=True)
@@ -452,7 +492,6 @@ def load_historical_weather_markets(lookback_months: int = 12) -> pd.DataFrame:
 
     print(f"  {len(all_mkts)} closed weather markets after date filter")
 
-    # Parse each question
     rows = []
     for _, row in all_mkts.iterrows():
         end_year = row["end_date"].year if pd.notna(row["end_date"]) else None
@@ -462,14 +501,13 @@ def load_historical_weather_markets(lookback_months: int = 12) -> pd.DataFrame:
         if parsed["city_slug"] not in CITIES:
             continue
 
-        # Determine winner from outcome_prices (closed markets have 0 or 1)
         try:
             prices   = json.loads(row["outcome_prices"])
             outcomes = json.loads(row["outcomes"])
             pf       = [float(x) for x in prices]
             max_p    = max(pf)
             if max_p < 0.85:
-                continue  # Ambiguous resolution — skip
+                continue
             winner = outcomes[pf.index(max_p)]
         except Exception:
             continue
@@ -495,7 +533,6 @@ def load_historical_weather_markets(lookback_months: int = 12) -> pd.DataFrame:
 def get_live_markets(city_slug: str, date: datetime) -> list[dict]:
     """
     Fetch all active temperature bucket markets for a city/date from the Gamma API.
-    Tries multiple slug variants.
     Returns list of dicts: {id, question, yes_price, no_price, low, high, midpoint, hours_left}.
     """
     month = MONTHS[date.month - 1]
@@ -539,14 +576,14 @@ def get_live_markets(city_slug: str, date: datetime) -> list[dict]:
             continue
 
         markets.append({
-            "id":                mkt.get("id", ""),
-            "question":          question,
-            "yes_price":         yes_price,
-            "no_price":          no_price,
-            "low":               parsed["low"],
-            "high":              parsed["high"],
-            "midpoint":          parsed["midpoint"],
-            "hours_left":        hours_left,
+            "id":         mkt.get("id", ""),
+            "question":   question,
+            "yes_price":  yes_price,
+            "no_price":   no_price,
+            "low":        parsed["low"],
+            "high":       parsed["high"],
+            "midpoint":   parsed["midpoint"],
+            "hours_left": hours_left,
         })
 
     return markets
@@ -565,13 +602,16 @@ def _hours_until(end_date_str: Optional[str]) -> float:
 # =============================================================================
 
 def strategy_layered_no(
-    markets: list[dict], forecast_temp: int, balance: float,
+    markets: list[dict], forecast_temp: int, balance_dict: dict,
 ) -> list[dict]:
     """
     S1: Buy "No" on all bands that don't contain the forecast temp.
-    Size scales up with distance (farther away = more certain = bigger bet).
-    Only enters if no_price is in [S1_NO_MIN, S1_NO_MAX].
+    Each layer = s1_balance / S1_MAX_LAYERS (adapts as bankroll grows/shrinks).
+    Only enters if no_price in [S1_NO_MIN, S1_NO_MAX] and distance >= S1_MIN_DIST_F.
     """
+    s1_balance = balance_dict.get("s1_balance", S1_STARTING)
+    layer_size = s1_balance / S1_MAX_LAYERS
+
     non_forecast = [m for m in markets
                     if not (m["low"] <= forecast_temp <= m["high"])]
     non_forecast.sort(key=lambda m: abs(m["midpoint"] - forecast_temp))
@@ -580,69 +620,98 @@ def strategy_layered_no(
     for mkt in non_forecast[:S1_MAX_LAYERS]:
         no_price = mkt["no_price"]
         distance = abs(mkt["midpoint"] - forecast_temp)
-        # Skip bands too close to forecast — forecast uncertainty (≈±5°F) makes these risky
         if distance < S1_MIN_DIST_F:
             continue
         if not (S1_NO_MIN <= no_price <= S1_NO_MAX):
             continue
-        size = S1_SIZE_USD
+        if layer_size < 1.0:
+            continue
         signals.append({
-            "strategy":            "S1_layered_no",
-            "market_id":           mkt["id"],
-            "question":            mkt["question"],
-            "outcome":             "No",
-            "entry_price":         no_price,
-            "size_usd":            round(size, 2),
-            "shares":              round(size / no_price, 2),
-            "distance_from_fcst":  round(distance, 1),
-            "forecast_temp":       forecast_temp,
-            "low":                 mkt["low"],
-            "high":                mkt["high"],
+            "strategy":           "S1_layered_no",
+            "market_id":          mkt["id"],
+            "question":           mkt["question"],
+            "outcome":            "No",
+            "entry_price":        no_price,
+            "size_usd":           round(layer_size, 2),
+            "shares":             round(layer_size / no_price, 2),
+            "distance_from_fcst": round(distance, 1),
+            "forecast_temp":      forecast_temp,
+            "low":                mkt["low"],
+            "high":               mkt["high"],
         })
     return signals
 
 
 def strategy_lottery_tickets(
-    markets: list[dict], forecast_temp: int, balance: float,
+    markets: list[dict], forecast_temp: int, balance_dict: dict,
 ) -> list[dict]:
     """
-    S2: Buy cheap "Yes" on bands near (but outside) the forecast.
-    These are tail scenarios possible given NWS uncertainty.
-    Only enters if yes_price < S2_YES_MAX and band within ±S2_WINDOW_F of forecast.
+    S2: Buy cheap "Yes" on near-miss bands using Kelly criterion.
+
+    Kelly sizing:
+      p_est = normal CDF probability of bucket given N(forecast, sigma^2)
+      edge  = p_est − market_yes_price
+      f*    = edge / (1 − market_yes_price)   [Kelly fraction for binary bet]
+      bet   = S2_KELLY_FRAC × f* × s2_balance  (half-Kelly, capped at S2_MAX_BET_FRAC)
+
+    Only bets when edge >= S2_MIN_EDGE (5%).
     """
+    s2_balance = balance_dict.get("s2_balance", S2_STARTING)
     signals = []
+
     for mkt in markets:
         yes_price = mkt["yes_price"]
         if yes_price >= S2_YES_MAX:
             continue
-        # Skip the actual forecast band and bands too far away
         distance = abs(mkt["midpoint"] - forecast_temp)
         if distance > S2_WINDOW_F or (mkt["low"] <= forecast_temp <= mkt["high"]):
             continue
-        size = S2_SIZE_USD
+
+        # Kelly: estimate true probability from weather model
+        p_est = estimate_bucket_prob(mkt["low"], mkt["high"], float(forecast_temp))
+        edge  = p_est - yes_price
+        if edge < S2_MIN_EDGE:
+            continue
+
+        # f* = edge / (1 - yes_price)  then scale by half-Kelly
+        kelly_f = edge / max(1.0 - yes_price, 1e-6)
+        bet = S2_KELLY_FRAC * kelly_f * s2_balance
+        bet = min(bet, S2_MAX_BET_FRAC * s2_balance)  # cap at 30% of bankroll
+        bet = max(bet, 1.0)                            # minimum $1
+        if bet < 1.0 or s2_balance < 1.0:
+            continue
+
         signals.append({
-            "strategy":            "S2_lottery",
-            "market_id":           mkt["id"],
-            "question":            mkt["question"],
-            "outcome":             "Yes",
-            "entry_price":         yes_price,
-            "size_usd":            round(size, 2),
-            "shares":              round(size / yes_price, 2),
-            "distance_from_fcst":  round(distance, 1),
-            "forecast_temp":       forecast_temp,
-            "low":                 mkt["low"],
-            "high":                mkt["high"],
+            "strategy":           "S2_lottery",
+            "market_id":          mkt["id"],
+            "question":           mkt["question"],
+            "outcome":            "Yes",
+            "entry_price":        yes_price,
+            "size_usd":           round(bet, 2),
+            "shares":             round(bet / yes_price, 2),
+            "distance_from_fcst": round(distance, 1),
+            "forecast_temp":      forecast_temp,
+            "low":                mkt["low"],
+            "high":               mkt["high"],
+            "p_est":              round(p_est, 4),
+            "edge":               round(edge, 4),
+            "kelly_f":            round(kelly_f, 4),
         })
     return signals
 
 
 def strategy_high_conviction(
-    markets: list[dict], forecast_temp: int, balance: float,
+    markets: list[dict], forecast_temp: int, balance_dict: dict,
 ) -> list[dict]:
     """
-    S3: Single large "No" on the band most impossibly far from forecast.
+    S3: Single "No" on the band most impossibly far from forecast.
+    Uses full s3_balance as a single shot (reset after each close).
     Requires no_price >= S3_NO_MIN and distance >= S3_DIST_F.
     """
+    s3_balance = balance_dict.get("s3_balance", S3_STARTING)
+    if s3_balance < 1.0:
+        return []
+
     candidates = [
         m for m in markets
         if m["no_price"] >= S3_NO_MIN
@@ -654,29 +723,28 @@ def strategy_high_conviction(
 
     best     = max(candidates, key=lambda m: m["no_price"])
     no_price = best["no_price"]
-    size     = S3_SIZE_USD
     return [{
-        "strategy":            "S3_high_conviction",
-        "market_id":           best["id"],
-        "question":            best["question"],
-        "outcome":             "No",
-        "entry_price":         no_price,
-        "size_usd":            round(size, 2),
-        "shares":              round(size / no_price, 2),
-        "distance_from_fcst":  round(abs(best["midpoint"] - forecast_temp), 1),
-        "forecast_temp":       forecast_temp,
-        "low":                 best["low"],
-        "high":                best["high"],
+        "strategy":           "S3_high_conviction",
+        "market_id":          best["id"],
+        "question":           best["question"],
+        "outcome":            "No",
+        "entry_price":        no_price,
+        "size_usd":           round(s3_balance, 2),
+        "shares":             round(s3_balance / no_price, 2),
+        "distance_from_fcst": round(abs(best["midpoint"] - forecast_temp), 1),
+        "forecast_temp":      forecast_temp,
+        "low":                best["low"],
+        "high":               best["high"],
     }]
 
 
 def apply_all_strategies(
-    markets: list[dict], forecast_temp: int, balance: float,
+    markets: list[dict], forecast_temp: int, balance_dict: dict,
 ) -> list[dict]:
     signals = []
-    signals.extend(strategy_layered_no(markets, forecast_temp, balance))
-    signals.extend(strategy_lottery_tickets(markets, forecast_temp, balance))
-    signals.extend(strategy_high_conviction(markets, forecast_temp, balance))
+    signals.extend(strategy_layered_no(markets, forecast_temp, balance_dict))
+    signals.extend(strategy_lottery_tickets(markets, forecast_temp, balance_dict))
+    signals.extend(strategy_high_conviction(markets, forecast_temp, balance_dict))
     return signals
 
 # =============================================================================
@@ -686,12 +754,6 @@ def apply_all_strategies(
 def run_backtest(lookback_months: int = 12):
     """
     Backtest all 3 strategies on historical closed Polymarket weather markets.
-
-    Approach:
-      1. Load closed bucket markets from parquet (known outcomes).
-      2. For each city/date group, fetch actual temperature via Open-Meteo archive.
-      3. Estimate what entry prices would have been (see ENTRY PRICE MODEL above).
-      4. Simulate all 3 strategies and track P&L.
     """
     print(f"\n{C.BOLD}{C.CYAN}═══ BACKTEST MODE  (last {lookback_months} months) ═══{C.RESET}\n")
 
@@ -699,12 +761,15 @@ def run_backtest(lookback_months: int = 12):
     if df.empty:
         return
 
-    # Group by city + date
-    groups     = list(df.groupby(["city_slug", "date_str"]))
-    n_groups   = len(groups)
+    groups   = list(df.groupby(["city_slug", "date_str"]))
+    n_groups = len(groups)
     print(f"  {n_groups} unique city/date combos to simulate\n")
 
-    balance    = STARTING_BALANCE
+    balance_dict = {
+        "s1_balance": S1_STARTING,
+        "s2_balance": S2_STARTING,
+        "s3_balance": S3_STARTING,
+    }
     all_trades: list[dict] = []
     by_strat: dict[str, list[dict]] = {
         "S1_layered_no": [], "S2_lottery": [], "S3_high_conviction": [],
@@ -713,7 +778,6 @@ def run_backtest(lookback_months: int = 12):
     for i, ((city_slug, date_str), group) in enumerate(groups):
         city = CITIES[city_slug]
 
-        # Fetch actual historical temperature
         temps = get_openmeteo_temps(
             city["lat"], city["lon"], city["tz"], date_str, date_str
         )
@@ -722,7 +786,6 @@ def run_backtest(lookback_months: int = 12):
             skip(f"[{i+1}/{n_groups}] {city_slug} {date_str} — no temp data")
             continue
 
-        # Build simulated market list with estimated entry prices
         markets_sim: list[dict] = []
         for _, row in group.iterrows():
             is_correct = (row["low"] <= actual_temp <= row["high"])
@@ -739,7 +802,7 @@ def run_backtest(lookback_months: int = 12):
                 "winner":    row["winner"],
             })
 
-        signals = apply_all_strategies(markets_sim, actual_temp, balance)
+        signals = apply_all_strategies(markets_sim, actual_temp, balance_dict)
 
         for sig in signals:
             mkt = next((m for m in markets_sim if m["id"] == sig["market_id"]), None)
@@ -749,13 +812,14 @@ def run_backtest(lookback_months: int = 12):
             won   = mkt["winner"] == sig["outcome"]
             price = sig["entry_price"]
             size  = sig["size_usd"]
+            bkey  = _strategy_balance_key(sig["strategy"])
 
             if won:
-                pnl     = sig["shares"] * (1.0 - price)
-                balance += pnl
+                pnl = sig["shares"] * (1.0 - price)
             else:
-                pnl      = -size
-                balance += pnl  # balance already had this deducted implicitly
+                pnl = -size
+
+            balance_dict[bkey] = round(balance_dict[bkey] + pnl, 2)
 
             trade = {
                 "strategy":    sig["strategy"],
@@ -772,7 +836,8 @@ def run_backtest(lookback_months: int = 12):
             all_trades.append(trade)
             by_strat[sig["strategy"]].append(trade)
 
-    _print_backtest_summary(all_trades, by_strat, balance)
+    total_balance = sum(balance_dict.values())
+    _print_backtest_summary(all_trades, by_strat, balance_dict, total_balance)
 
     if all_trades:
         out = Path(__file__).parent / "backtest_results.csv"
@@ -780,7 +845,8 @@ def run_backtest(lookback_months: int = 12):
         ok(f"Full results → {out}")
 
 
-def _print_backtest_summary(trades: list[dict], by_strat: dict, final_balance: float):
+def _print_backtest_summary(trades: list[dict], by_strat: dict,
+                             balance_dict: dict, final_balance: float):
     print(f"\n{'═' * 60}")
     print(f"{C.BOLD}BACKTEST SUMMARY{C.RESET}")
     print(f"{'═' * 60}\n")
@@ -789,13 +855,17 @@ def _print_backtest_summary(trades: list[dict], by_strat: dict, final_balance: f
         warn("No trades were simulated — check city filter / date range.")
         return
 
-    total_pnl = sum(t["pnl"] for t in trades)
+    total_pnl = final_balance - STARTING_BALANCE
     ret_pct   = total_pnl / STARTING_BALANCE * 100
     wins      = sum(1 for t in trades if t["won"])
     color     = C.GREEN if total_pnl >= 0 else C.RED
 
-    print(f"  Starting balance:  ${STARTING_BALANCE:>10,.2f}")
-    print(f"  Final balance:     {color}${final_balance:>10,.2f}{C.RESET}")
+    print(f"  Starting balance:  ${STARTING_BALANCE:>10,.2f}  "
+          f"(S1=${S1_STARTING:.0f}  S2=${S2_STARTING:.0f}  S3=${S3_STARTING:.0f})")
+    print(f"  Final balance:     {color}${final_balance:>10,.2f}{C.RESET}  "
+          f"(S1=${balance_dict['s1_balance']:.2f}  "
+          f"S2=${balance_dict['s2_balance']:.2f}  "
+          f"S3=${balance_dict['s3_balance']:.2f})")
     print(f"  Total P&L:         {color}{'+'if total_pnl>=0 else ''}${total_pnl:,.2f}  "
           f"({ret_pct:+.1f}%){C.RESET}")
     print(f"  Total trades:      {len(trades)}")
@@ -804,7 +874,7 @@ def _print_backtest_summary(trades: list[dict], by_strat: dict, final_balance: f
 
     strat_labels = {
         "S1_layered_no":      "S1 — Layered No Hedge",
-        "S2_lottery":         "S2 — Lottery Tickets",
+        "S2_lottery":         "S2 — Lottery Tickets (Kelly)",
         "S3_high_conviction": "S3 — High Conviction",
     }
     print(f"\n{C.BOLD}By Strategy:{C.RESET}")
@@ -813,10 +883,10 @@ def _print_backtest_summary(trades: list[dict], by_strat: dict, final_balance: f
         if not ts:
             print(f"\n  {C.BOLD}{label}{C.RESET}  {C.GRAY}(no trades){C.RESET}")
             continue
-        pnl  = sum(t["pnl"] for t in ts)
-        wr   = sum(1 for t in ts if t["won"])
-        col  = C.GREEN if pnl >= 0 else C.RED
-        avg  = pnl / len(ts)
+        pnl = sum(t["pnl"] for t in ts)
+        wr  = sum(1 for t in ts if t["won"])
+        col = C.GREEN if pnl >= 0 else C.RED
+        avg = pnl / len(ts)
         print(f"\n  {C.BOLD}{label}{C.RESET}")
         print(f"    Trades:    {len(ts)}")
         print(f"    Win rate:  {wr}/{len(ts)}  ({wr/len(ts)*100:.1f}%)")
@@ -831,8 +901,7 @@ def _print_backtest_summary(trades: list[dict], by_strat: dict, final_balance: f
     for t in sorted_trades[-5:]:
         print(f"  {C.RED}${t['pnl']:.2f}{C.RESET}  [{t['strategy']}]  {t['question']}")
 
-    print(f"\n{C.GRAY}  ⚠  Entry prices are ESTIMATED (see ENTRY PRICE MODEL in source).{C.RESET}")
-    print(f"{C.GRAY}  Actual results may differ once live price-series data is available.{C.RESET}")
+    print(f"\n{C.GRAY}  ⚠  Entry prices are ESTIMATED (see ENTRY PRICE MODEL).{C.RESET}")
 
 # =============================================================================
 # FORWARD PAPER TRADING ENGINE
@@ -844,18 +913,21 @@ def run_forward(execute: bool = False):
     and optionally record paper trades.
     """
     print(f"\n{C.BOLD}{C.CYAN}═══ FORWARD PAPER TRADER ═══{C.RESET}")
-    state    = load_state()
-    balance  = state["balance"]
+    state     = load_state()
     positions = state["positions"]
-    mode_str = f"{C.GREEN}EXECUTE{C.RESET}" if execute else f"{C.YELLOW}SCAN ONLY{C.RESET}"
+    mode_str  = f"{C.GREEN}EXECUTE{C.RESET}" if execute else f"{C.YELLOW}SCAN ONLY{C.RESET}"
 
-    start_bal = state["starting_balance"]
-    ret       = (balance - start_bal) / start_bal * 100
-    ret_col   = C.GREEN if ret >= 0 else C.RED
+    total_bal  = state["s1_balance"] + state["s2_balance"] + state["s3_balance"]
+    start_bal  = state["starting_balance"]
+    ret        = (total_bal - start_bal) / start_bal * 100
+    ret_col    = C.GREEN if ret >= 0 else C.RED
 
     print(f"\n  Mode:      {mode_str}")
-    print(f"  Balance:   {C.BOLD}${balance:,.2f}{C.RESET}  "
+    print(f"  Balance:   {C.BOLD}${total_bal:,.2f}{C.RESET}  "
           f"(started ${start_bal:,.2f}  {ret_col}{ret:+.1f}%{C.RESET})")
+    print(f"  Buckets:   S1=${state['s1_balance']:.2f}  "
+          f"S2=${state['s2_balance']:.2f}  "
+          f"S3=${state['s3_balance']:.2f}")
     print(f"  Trades:    W:{state['wins']} / L:{state['losses']}  |  "
           f"Open positions: {len(positions)}")
 
@@ -866,6 +938,12 @@ def run_forward(execute: bool = False):
     # --- SCAN FOR ENTRIES ---
     print(f"\n{C.BOLD}Scanning for signals (next 4 days)...{C.RESET}")
     all_signals: list[dict] = []
+
+    balance_dict = {
+        "s1_balance": state["s1_balance"],
+        "s2_balance": state["s2_balance"],
+        "s3_balance": state["s3_balance"],
+    }
 
     for city_slug, city_info in CITIES.items():
         print(f"\n  {C.BOLD}{city_info['name']}{C.RESET}")
@@ -890,42 +968,55 @@ def run_forward(execute: bool = False):
 
             info(f"{date_str}: forecast {fcst_temp}°F | {len(live_markets)} buckets")
 
-            signals = apply_all_strategies(live_markets, fcst_temp, balance)
+            signals = apply_all_strategies(live_markets, fcst_temp, balance_dict)
             for sig in signals:
                 mid = sig["market_id"]
                 if mid in positions:
                     skip(f"Already open: {sig['question'][:55]}...")
                     continue
 
-                label = {"S1_layered_no": "S1", "S2_lottery": "S2",
-                         "S3_high_conviction": "S3"}[sig["strategy"]]
+                label   = {"S1_layered_no": "S1", "S2_lottery": "S2",
+                           "S3_high_conviction": "S3"}[sig["strategy"]]
+                bkey    = _strategy_balance_key(sig["strategy"])
+                avail   = balance_dict[bkey]
+
+                # Show Kelly details for S2
+                kelly_info = ""
+                if sig["strategy"] == "S2_lottery":
+                    kelly_info = (
+                        f"  p_est={sig.get('p_est',0):.1%}  "
+                        f"edge={sig.get('edge',0):.1%}  "
+                        f"f*={sig.get('kelly_f',0):.3f}"
+                    )
+
                 print(
                     f"\n    {C.GREEN}[{label}] {sig['outcome']} @ "
                     f"{sig['entry_price']:.3f}{C.RESET}  "
-                    f"${sig['size_usd']:.0f}  dist={sig['distance_from_fcst']}°F"
+                    f"${sig['size_usd']:.2f}  dist={sig['distance_from_fcst']}°F"
+                    f"{kelly_info}"
                 )
                 print(f"    {sig['question'][:70]}")
 
                 all_signals.append(sig)
 
                 if execute:
-                    if balance < sig["size_usd"]:
-                        skip("Insufficient balance")
+                    if avail < sig["size_usd"]:
+                        skip(f"Insufficient S{label[1]} balance (${avail:.2f})")
                         continue
-                    balance -= sig["size_usd"]
+                    balance_dict[bkey] = round(avail - sig["size_usd"], 2)
                     positions[mid] = {
-                        "strategy":    sig["strategy"],
-                        "question":    sig["question"],
-                        "outcome":     sig["outcome"],
-                        "entry_price": sig["entry_price"],
-                        "shares":      sig["shares"],
-                        "cost":        sig["size_usd"],
-                        "city":        city_slug,
-                        "date_str":    date_str,
+                        "strategy":      sig["strategy"],
+                        "question":      sig["question"],
+                        "outcome":       sig["outcome"],
+                        "entry_price":   sig["entry_price"],
+                        "shares":        sig["shares"],
+                        "cost":          sig["size_usd"],
+                        "city":          city_slug,
+                        "date_str":      date_str,
                         "forecast_temp": fcst_temp,
-                        "low":         sig["low"],
-                        "high":        sig["high"],
-                        "opened_at":   datetime.now().isoformat(),
+                        "low":           sig["low"],
+                        "high":          sig["high"],
+                        "opened_at":     datetime.now().isoformat(),
                     }
                     state["total_trades"] += 1
                     state["trades"].append({
@@ -937,32 +1028,40 @@ def run_forward(execute: bool = False):
                         "size":        sig["size_usd"],
                         "opened_at":   datetime.now().isoformat(),
                     })
-                    ok(f"Position opened — ${sig['size_usd']:.2f} deducted")
+                    ok(f"Position opened — ${sig['size_usd']:.2f} from {label} bankroll "
+                       f"(remaining: ${balance_dict[bkey]:.2f})")
 
     if not all_signals:
         skip("No signals found this run")
 
     if execute:
-        state["balance"]      = round(balance, 2)
-        state["positions"]    = positions
-        state["peak_balance"] = max(state.get("peak_balance", balance), balance)
+        state["s1_balance"] = round(balance_dict["s1_balance"], 2)
+        state["s2_balance"] = round(balance_dict["s2_balance"], 2)
+        state["s3_balance"] = round(balance_dict["s3_balance"], 2)
+        state["positions"]  = positions
+        total = state["s1_balance"] + state["s2_balance"] + state["s3_balance"]
+        state["peak_balance"] = max(state.get("peak_balance", total), total)
         save_state(state)
 
+    total_now = balance_dict["s1_balance"] + balance_dict["s2_balance"] + balance_dict["s3_balance"]
     print(f"\n{'─' * 50}")
-    info(f"Balance:  ${balance:,.2f}")
+    info(f"Balance:  ${total_now:,.2f}  "
+         f"(S1=${balance_dict['s1_balance']:.2f}  "
+         f"S2=${balance_dict['s2_balance']:.2f}  "
+         f"S3=${balance_dict['s3_balance']:.2f})")
     info(f"Signals:  {len(all_signals)}")
     if not execute:
         print(f"\n  {C.YELLOW}[Pass --live to record trades]{C.RESET}")
 
 
 def _check_exits(state: dict, execute: bool):
-    """Check open positions against live prices; close if resolved or at >0.95."""
+    """Check open positions against live prices; close if resolved or price >= 0.95."""
     positions = state["positions"]
     if not positions:
         skip("No open positions")
         return
 
-    headers = {"User-Agent": "paper-trader/1.0"}
+    headers  = {"User-Agent": "paper-trader/1.0"}
     to_close: list[str] = []
 
     for mid, pos in positions.items():
@@ -971,7 +1070,7 @@ def _check_exits(state: dict, execute: bool):
                 f"https://gamma-api.polymarket.com/markets/{mid}",
                 timeout=5, headers=headers,
             )
-            data = r.json()
+            data     = r.json()
             prices   = json.loads(data.get("outcomePrices", "[0.5,0.5]"))
             outcomes = json.loads(data.get("outcomes", '["Yes","No"]'))
             idx      = outcomes.index(pos["outcome"]) if pos["outcome"] in outcomes else 0
@@ -985,17 +1084,20 @@ def _check_exits(state: dict, execute: bool):
                    else f"{C.RED}-${abs(pnl):.2f}{C.RESET}")
 
         if closed or curr >= 0.95:
+            strat = pos.get("strategy", "S1_layered_no")
+            bkey  = _strategy_balance_key(strat)
             ok(f"CLOSE {pos['outcome']} @ {curr:.3f}  |  {pnl_str}  |  "
                f"{pos['question'][:50]}")
             if execute:
-                state["balance"] = round(state["balance"] + pos["cost"] + pnl, 2)
+                proceeds = round(pos["cost"] + pnl, 2)
+                state[bkey] = round(state.get(bkey, 0.0) + proceeds, 2)
                 if pnl > 0:
                     state["wins"] += 1
                 else:
                     state["losses"] += 1
                 state["trades"].append({
                     "type":        "exit",
-                    "strategy":    pos.get("strategy", ""),
+                    "strategy":    strat,
                     "question":    pos["question"],
                     "outcome":     pos["outcome"],
                     "entry_price": pos["entry_price"],
@@ -1054,10 +1156,13 @@ def show_positions():
               f"City: {pos.get('city', '?')}  Date: {pos.get('date_str', '?')}")
 
     pnl_col = C.GREEN if total_pnl >= 0 else C.RED
+    s1b = state.get("s1_balance", 0)
+    s2b = state.get("s2_balance", 0)
+    s3b = state.get("s3_balance", 0)
     print(f"\n  {'─' * 40}")
-    print(f"  Balance:    ${state['balance']:,.2f}")
-    print(f"  Open PnL:   {pnl_col}{'+'if total_pnl>=0 else ''}${total_pnl:.2f}{C.RESET}")
-    print(f"  W/L:        {state['wins']}/{state['losses']}")
+    print(f"  Available: S1=${s1b:.2f}  S2=${s2b:.2f}  S3=${s3b:.2f}")
+    print(f"  Open PnL:  {pnl_col}{'+'if total_pnl>=0 else ''}${total_pnl:.2f}{C.RESET}")
+    print(f"  W/L:       {state['wins']}/{state['losses']}")
 
 # =============================================================================
 # CLI
