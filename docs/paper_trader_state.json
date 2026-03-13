@@ -299,21 +299,6 @@
       "high": 89,
       "opened_at": "2026-03-13T19:27:38.143323"
     },
-    "1574981": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Dallas be 98\u00b0F or higher on March 15?",
-      "outcome": "No",
-      "entry_price": 0.997,
-      "effective_entry_price": 0.99706,
-      "shares": 200.69,
-      "cost": 200.1,
-      "city": "dallas",
-      "date_str": "2026-03-15",
-      "forecast_temp": 82,
-      "low": 98,
-      "high": 999,
-      "opened_at": "2026-03-13T19:55:07.458300"
-    },
     "1577582": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Dallas be between 52-53\u00b0F on March 16?",
@@ -343,6 +328,21 @@
       "low": 50,
       "high": 51,
       "opened_at": "2026-03-13T19:55:07.526476"
+    },
+    "1574981": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be 98\u00b0F or higher on March 15?",
+      "outcome": "No",
+      "entry_price": 0.997,
+      "effective_entry_price": 0.99706,
+      "shares": 200.68,
+      "cost": 200.09,
+      "city": "dallas",
+      "date_str": "2026-03-15",
+      "forecast_temp": 82,
+      "low": 98,
+      "high": 999,
+      "opened_at": "2026-03-13T19:57:07.272815"
     }
   },
   "trades": [
@@ -656,10 +656,29 @@
       "entry_price": 0.0155,
       "size": 2.37,
       "opened_at": "2026-03-13T19:55:07.526478"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be 98\u00b0F or higher on March 15?",
+      "outcome": "No",
+      "entry_price": 0.997,
+      "exit_price": 0.997,
+      "pnl": -0.01,
+      "closed_at": "2026-03-13T19:57:05.056436"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be 98\u00b0F or higher on March 15?",
+      "outcome": "No",
+      "entry_price": 0.997,
+      "size": 200.09,
+      "opened_at": "2026-03-13T19:57:07.272821"
     }
   ],
-  "total_trades": 29,
+  "total_trades": 30,
   "wins": 1,
-  "losses": 4,
+  "losses": 5,
   "peak_balance": 500.0
 }
