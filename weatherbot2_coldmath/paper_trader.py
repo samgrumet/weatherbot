@@ -47,6 +47,14 @@ S1_STARTING      = 200.0   # S1 (Layered No Hedge) bankroll
 S2_STARTING      = 100.0   # S2 (Lottery Tickets) bankroll
 S3_STARTING      = 200.0   # S3 (High Conviction) bankroll
 
+# Polymarket non-linear taker fee (no fee on settlement):
+#   fee_per_share = feeRate × p × (p × (1-p))^exponent
+#   effective_price = p + fee_per_share = p × (1 + feeRate × (p × (1-p))^exponent)
+# With exponent=1: fee ≈ 0 at extremes (p→0 or p→1), max at p=0.5.
+# Examples: p=0.03 → +0.006% fee; p=0.97 → +0.006%; p=0.50 → +0.50%
+POLYMARKET_FEE_RATE     = 0.02
+POLYMARKET_FEE_EXPONENT = 1
+
 STATE_FILE = Path(__file__).parent / "paper_trader_state.json"
 # Parquet data lives in prediction-market-analysis (kept separate from trading logs)
 DATA_DIR   = Path(__file__).parent.parent.parent / "prediction-market-analysis" / "data" / "polymarket" / "markets"
@@ -427,6 +435,19 @@ def _norm_cdf(x: float, mu: float, sigma: float) -> float:
     """Standard normal CDF using math.erf (no scipy needed)."""
     return 0.5 * (1.0 + erf((x - mu) / (sigma * sqrt(2.0))))
 
+def pm_eff_price(p: float) -> float:
+    """
+    Polymarket taker fee-inclusive effective price per share.
+      fee = feeRate × p × (p × (1-p))^exponent
+      effective = p + fee = p × (1 + feeRate × (p×(1-p))^exponent)
+    Fee approaches zero at extremes (p→0 or p→1) and peaks near p=0.5.
+    No fee applied on settlement.
+    """
+    variance = p * (1.0 - p)
+    fee = POLYMARKET_FEE_RATE * p * (variance ** POLYMARKET_FEE_EXPONENT)
+    return p + fee
+
+
 def estimate_bucket_prob(low: int, high: int, forecast_temp: float,
                          sigma: float = S2_FORECAST_SIGMA) -> float:
     """
@@ -628,14 +649,16 @@ def strategy_layered_no(
             continue
         if layer_size < 1.0:
             continue
+        eff_no = pm_eff_price(no_price)
         signals.append({
-            "strategy":           "S1_layered_no",
-            "market_id":          mkt["id"],
-            "question":           mkt["question"],
-            "outcome":            "No",
-            "entry_price":        no_price,
-            "size_usd":           round(layer_size, 2),
-            "shares":             round(layer_size / no_price, 2),
+            "strategy":              "S1_layered_no",
+            "market_id":             mkt["id"],
+            "question":              mkt["question"],
+            "outcome":               "No",
+            "entry_price":           no_price,
+            "effective_entry_price": round(eff_no, 6),
+            "size_usd":              round(layer_size, 2),
+            "shares":                round(layer_size / eff_no, 2),
             "distance_from_fcst": round(distance, 1),
             "forecast_temp":      forecast_temp,
             "low":                mkt["low"],
@@ -669,35 +692,37 @@ def strategy_lottery_tickets(
         if distance > S2_WINDOW_F or (mkt["low"] <= forecast_temp <= mkt["high"]):
             continue
 
-        # Kelly: estimate true probability from weather model
-        p_est = estimate_bucket_prob(mkt["low"], mkt["high"], float(forecast_temp))
-        edge  = p_est - yes_price
+        # Kelly: estimate true probability from weather model, fee-adjusted
+        p_est   = estimate_bucket_prob(mkt["low"], mkt["high"], float(forecast_temp))
+        eff_yes = pm_eff_price(yes_price)   # fee ≈ 0 at p→0; see pm_eff_price()
+        edge    = p_est - eff_yes           # edge vs fee-inclusive cost
         if edge < S2_MIN_EDGE:
             continue
 
-        # f* = edge / (1 - yes_price)  then scale by half-Kelly
-        kelly_f = edge / max(1.0 - yes_price, 1e-6)
+        # f* = edge / (1 - eff_yes), then half-Kelly
+        kelly_f = edge / max(1.0 - eff_yes, 1e-6)
         bet = S2_KELLY_FRAC * kelly_f * s2_balance
-        bet = min(bet, S2_MAX_BET_FRAC * s2_balance)  # cap at 30% of bankroll
-        bet = max(bet, 1.0)                            # minimum $1
-        if bet < 1.0 or s2_balance < 1.0:
+        bet = min(bet, S2_MAX_BET_FRAC * s2_balance)
+        bet = max(bet, 1.0)
+        if s2_balance < 1.0:
             continue
 
         signals.append({
-            "strategy":           "S2_lottery",
-            "market_id":          mkt["id"],
-            "question":           mkt["question"],
-            "outcome":            "Yes",
-            "entry_price":        yes_price,
-            "size_usd":           round(bet, 2),
-            "shares":             round(bet / yes_price, 2),
-            "distance_from_fcst": round(distance, 1),
-            "forecast_temp":      forecast_temp,
-            "low":                mkt["low"],
-            "high":               mkt["high"],
-            "p_est":              round(p_est, 4),
-            "edge":               round(edge, 4),
-            "kelly_f":            round(kelly_f, 4),
+            "strategy":              "S2_lottery",
+            "market_id":             mkt["id"],
+            "question":              mkt["question"],
+            "outcome":               "Yes",
+            "entry_price":           yes_price,
+            "effective_entry_price": round(eff_yes, 6),
+            "size_usd":              round(bet, 2),
+            "shares":                round(bet / eff_yes, 2),  # shares after fee
+            "distance_from_fcst":    round(distance, 1),
+            "forecast_temp":         forecast_temp,
+            "low":                   mkt["low"],
+            "high":                  mkt["high"],
+            "p_est":                 round(p_est, 4),
+            "edge":                  round(edge, 4),
+            "kelly_f":               round(kelly_f, 4),
         })
     return signals
 
@@ -733,38 +758,38 @@ def strategy_high_conviction(
 
         p_est    = estimate_bucket_prob(m["low"], m["high"], float(forecast_temp))
         p_no_win = 1.0 - p_est
-        edge     = p_no_win - no_price
+        eff_no   = pm_eff_price(no_price)   # fee ≈ 0 at p→1; see pm_eff_price()
+        edge     = p_no_win - eff_no
         if edge <= 0:
-            continue  # market overprices No — skip
+            continue  # market overprices No after fee — skip
 
-        # Use 1% as the floor edge per user spec; if model gives more, use that.
-        # Rationale: for extreme bands (no_price ≈ 0.998), the raw edge above
-        # market is tiny (≈0.2%) but the trade is still high-conviction — the
-        # 1% floor ensures Kelly sizes these correctly.
+        # 1% floor: for extreme bands (no_price≈0.998), raw edge is tiny but
+        # the trade is still valid high-conviction. Floor ensures proper sizing.
         effective_edge = max(edge, S3_MIN_EDGE)
 
-        denom   = max(1.0 - no_price, 1e-6)
+        denom   = max(1.0 - eff_no, 1e-6)
         kelly_f = effective_edge / denom
         bet     = S3_KELLY_FRAC * kelly_f * s3_balance
-        bet     = min(bet, s3_balance)   # cap at full bankroll
+        bet     = min(bet, s3_balance)
         bet     = max(bet, 1.0)
 
         signals.append({
-            "strategy":           "S3_high_conviction",
-            "market_id":          m["id"],
-            "question":           m["question"],
-            "outcome":            "No",
-            "entry_price":        no_price,
-            "size_usd":           round(bet, 2),
-            "shares":             round(bet / no_price, 2),
-            "distance_from_fcst": round(distance, 1),
-            "forecast_temp":      forecast_temp,
-            "low":                m["low"],
-            "high":               m["high"],
-            "p_est":              round(p_est, 6),
-            "edge":               round(edge, 4),
-            "effective_edge":     round(effective_edge, 4),
-            "kelly_f":            round(kelly_f, 4),
+            "strategy":              "S3_high_conviction",
+            "market_id":             m["id"],
+            "question":              m["question"],
+            "outcome":               "No",
+            "entry_price":           no_price,
+            "effective_entry_price": round(eff_no, 6),
+            "size_usd":              round(bet, 2),
+            "shares":                round(bet / eff_no, 2),
+            "distance_from_fcst":    round(distance, 1),
+            "forecast_temp":         forecast_temp,
+            "low":                   m["low"],
+            "high":                  m["high"],
+            "p_est":                 round(p_est, 6),
+            "edge":                  round(edge, 4),
+            "effective_edge":        round(effective_edge, 4),
+            "kelly_f":               round(kelly_f, 4),
         })
 
     if not signals:
@@ -1042,12 +1067,14 @@ def run_forward(execute: bool = False):
                         continue
                     balance_dict[bkey] = round(avail - sig["size_usd"], 2)
                     positions[mid] = {
-                        "strategy":      sig["strategy"],
-                        "question":      sig["question"],
-                        "outcome":       sig["outcome"],
-                        "entry_price":   sig["entry_price"],
-                        "shares":        sig["shares"],
-                        "cost":          sig["size_usd"],
+                        "strategy":              sig["strategy"],
+                        "question":              sig["question"],
+                        "outcome":               sig["outcome"],
+                        "entry_price":           sig["entry_price"],
+                        "effective_entry_price": sig.get("effective_entry_price",
+                                                         sig["entry_price"]),
+                        "shares":                sig["shares"],
+                        "cost":                  sig["size_usd"],
                         "city":          city_slug,
                         "date_str":      date_str,
                         "forecast_temp": fcst_temp,
@@ -1116,7 +1143,8 @@ def _check_exits(state: dict, execute: bool):
         except Exception:
             continue
 
-        pnl     = (curr - pos["entry_price"]) * pos["shares"]
+        eff_entry = pos.get("effective_entry_price", pos["entry_price"])
+        pnl       = (curr - eff_entry) * pos["shares"]
         pnl_str = (f"{C.GREEN}+${pnl:.2f}{C.RESET}" if pnl >= 0
                    else f"{C.RED}-${abs(pnl):.2f}{C.RESET}")
 
@@ -1180,14 +1208,15 @@ def show_positions():
         except Exception:
             curr = pos["entry_price"]
 
-        pnl      = (curr - pos["entry_price"]) * pos["shares"]
+        eff_entry = pos.get("effective_entry_price", pos["entry_price"])
+        pnl       = (curr - eff_entry) * pos["shares"]
         total_pnl += pnl
-        pnl_str  = (f"{C.GREEN}+${pnl:.2f}{C.RESET}" if pnl >= 0
-                    else f"{C.RED}-${abs(pnl):.2f}{C.RESET}")
-        strat    = pos.get("strategy", "?")
+        pnl_str   = (f"{C.GREEN}+${pnl:.2f}{C.RESET}" if pnl >= 0
+                     else f"{C.RED}-${abs(pnl):.2f}{C.RESET}")
+        strat     = pos.get("strategy", "?")
 
-        print(f"\n  [{strat}]  {pos['outcome']}  entry={pos['entry_price']:.3f}  "
-              f"now={curr:.3f}  |  {pnl_str}")
+        print(f"\n  [{strat}]  {pos['outcome']}  entry={pos['entry_price']:.3f}"
+              f"(eff={eff_entry:.4f})  now={curr:.3f}  |  {pnl_str}")
         print(f"  {pos['question'][:70]}")
         print(f"  Cost: ${pos['cost']:.2f}  |  Shares: {pos['shares']:.1f}  |  "
               f"City: {pos.get('city', '?')}  Date: {pos.get('date_str', '?')}")
