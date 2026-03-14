@@ -1,7 +1,7 @@
 {
-  "balance": 23.92,
+  "balance": 20.3,
   "s1_balance": 0.0,
-  "s2_balance": 23.92,
+  "s2_balance": 20.3,
   "s3_balance": 0.0,
   "starting_balance": 500.0,
   "positions": {
@@ -440,21 +440,6 @@
       "high": 39,
       "opened_at": "2026-03-14T06:04:34.827523"
     },
-    "1577795": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in New York City be between 34-35\u00b0F on March 17?",
-      "outcome": "No",
-      "entry_price": 0.9975,
-      "effective_entry_price": 0.99755,
-      "shares": 395.18,
-      "cost": 394.21,
-      "city": "new-york-city",
-      "date_str": "2026-03-17",
-      "forecast_temp": 54,
-      "low": 34,
-      "high": 35,
-      "opened_at": "2026-03-14T07:10:24.735454"
-    },
     "1566215": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Miami be 75\u00b0F or below on March 14?",
@@ -499,6 +484,81 @@
       "low": 40,
       "high": 41,
       "opened_at": "2026-03-14T07:10:25.921361"
+    },
+    "1566188": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be 43\u00b0F or below on March 14?",
+      "outcome": "Yes",
+      "entry_price": 0.0155,
+      "effective_entry_price": 0.015505,
+      "shares": 89.94,
+      "cost": 1.39,
+      "city": "new-york-city",
+      "date_str": "2026-03-14",
+      "forecast_temp": 48,
+      "low": -999,
+      "high": 43,
+      "opened_at": "2026-03-14T07:53:48.868777"
+    },
+    "1566189": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 44-45\u00b0F on March 14?",
+      "outcome": "Yes",
+      "entry_price": 0.037,
+      "effective_entry_price": 0.037026,
+      "shares": 33.1,
+      "cost": 1.23,
+      "city": "new-york-city",
+      "date_str": "2026-03-14",
+      "forecast_temp": 48,
+      "low": 44,
+      "high": 45,
+      "opened_at": "2026-03-14T07:53:48.868806"
+    },
+    "1577566": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 45\u00b0F or below on March 16?",
+      "outcome": "No",
+      "entry_price": 0.9945,
+      "effective_entry_price": 0.994609,
+      "shares": 367.57,
+      "cost": 365.59,
+      "city": "new-york-city",
+      "date_str": "2026-03-16",
+      "forecast_temp": 60,
+      "low": -999,
+      "high": 45,
+      "opened_at": "2026-03-14T07:53:49.070241"
+    },
+    "1577795": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 34-35\u00b0F on March 17?",
+      "outcome": "No",
+      "entry_price": 0.9975,
+      "effective_entry_price": 0.99755,
+      "shares": 28.67,
+      "cost": 28.6,
+      "city": "new-york-city",
+      "date_str": "2026-03-17",
+      "forecast_temp": 55,
+      "low": 34,
+      "high": 35,
+      "opened_at": "2026-03-14T07:53:49.163813"
+    },
+    "1574996": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 84-85\u00b0F on March 15?",
+      "outcome": "Yes",
+      "entry_price": 0.0395,
+      "effective_entry_price": 0.03953,
+      "shares": 25.3,
+      "cost": 1.0,
+      "city": "miami",
+      "date_str": "2026-03-15",
+      "forecast_temp": 80,
+      "low": 84,
+      "high": 85,
+      "opened_at": "2026-03-14T07:53:49.719880"
     }
   },
   "trades": [
@@ -1083,10 +1143,65 @@
       "entry_price": 0.0365,
       "size": 1.0,
       "opened_at": "2026-03-14T07:10:25.921368"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 34-35\u00b0F on March 17?",
+      "outcome": "No",
+      "entry_price": 0.9975,
+      "exit_price": 0.9975,
+      "pnl": -0.02,
+      "closed_at": "2026-03-14T07:53:48.147867"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be 43\u00b0F or below on March 14?",
+      "outcome": "Yes",
+      "entry_price": 0.0155,
+      "size": 1.39,
+      "opened_at": "2026-03-14T07:53:48.868792"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 44-45\u00b0F on March 14?",
+      "outcome": "Yes",
+      "entry_price": 0.037,
+      "size": 1.23,
+      "opened_at": "2026-03-14T07:53:48.868809"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 45\u00b0F or below on March 16?",
+      "outcome": "No",
+      "entry_price": 0.9945,
+      "size": 365.59,
+      "opened_at": "2026-03-14T07:53:49.070247"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 34-35\u00b0F on March 17?",
+      "outcome": "No",
+      "entry_price": 0.9975,
+      "size": 28.6,
+      "opened_at": "2026-03-14T07:53:49.163819"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 84-85\u00b0F on March 15?",
+      "outcome": "Yes",
+      "entry_price": 0.0395,
+      "size": 1.0,
+      "opened_at": "2026-03-14T07:53:49.719887"
     }
   ],
-  "total_trades": 48,
+  "total_trades": 53,
   "wins": 3,
-  "losses": 12,
+  "losses": 13,
   "peak_balance": 500.0
 }
