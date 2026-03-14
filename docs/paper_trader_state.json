@@ -564,61 +564,16 @@
       "strategy": "S3_high_conviction",
       "question": "Will the highest temperature in New York City be 45\u00b0F or below on March 16?",
       "outcome": "No",
-      "entry_price": 0.994,
-      "effective_entry_price": 0.994119,
-      "shares": 334.49,
-      "cost": 332.52,
+      "entry_price": 0.996,
+      "effective_entry_price": 0.996079,
+      "shares": 393.26,
+      "cost": 391.72,
       "city": "new-york-city",
       "date_str": "2026-03-16",
       "forecast_temp": 60,
       "low": -999,
       "high": 45,
-      "opened_at": "2026-03-14T14:52:40.125012"
-    },
-    "1577793": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in New York City be 31\u00b0F or below on March 17?",
-      "outcome": "No",
-      "entry_price": 0.994,
-      "effective_entry_price": 0.994119,
-      "shares": 50.13,
-      "cost": 49.83,
-      "city": "new-york-city",
-      "date_str": "2026-03-17",
-      "forecast_temp": 55,
-      "low": -999,
-      "high": 31,
-      "opened_at": "2026-03-14T14:52:40.522922"
-    },
-    "1577614": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be between 18-19\u00b0F on March 16?",
-      "outcome": "No",
-      "entry_price": 0.9905,
-      "effective_entry_price": 0.990686,
-      "shares": 4.76,
-      "cost": 4.72,
-      "city": "chicago",
-      "date_str": "2026-03-16",
-      "forecast_temp": 39,
-      "low": 18,
-      "high": 19,
-      "opened_at": "2026-03-14T14:52:41.136146"
-    },
-    "1574981": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Dallas be 98\u00b0F or higher on March 15?",
-      "outcome": "No",
-      "entry_price": 0.9955,
-      "effective_entry_price": 0.995589,
-      "shares": 4.09,
-      "cost": 4.07,
-      "city": "dallas",
-      "date_str": "2026-03-15",
-      "forecast_temp": 83,
-      "low": 98,
-      "high": 999,
-      "opened_at": "2026-03-14T14:52:42.474222"
+      "opened_at": "2026-03-14T15:21:20.923098"
     }
   },
   "trades": [
@@ -1788,10 +1743,59 @@
       "entry_price": 0.9955,
       "size": 4.07,
       "opened_at": "2026-03-14T14:52:42.474230"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 45\u00b0F or below on March 16?",
+      "outcome": "No",
+      "entry_price": 0.994,
+      "exit_price": 0.996,
+      "pnl": 0.63,
+      "closed_at": "2026-03-14T15:21:19.334770"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 31\u00b0F or below on March 17?",
+      "outcome": "No",
+      "entry_price": 0.994,
+      "exit_price": 0.993,
+      "pnl": -0.06,
+      "closed_at": "2026-03-14T15:21:19.458709"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 18-19\u00b0F on March 16?",
+      "outcome": "No",
+      "entry_price": 0.9905,
+      "exit_price": 0.9925,
+      "pnl": 0.01,
+      "closed_at": "2026-03-14T15:21:19.679428"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be 98\u00b0F or higher on March 15?",
+      "outcome": "No",
+      "entry_price": 0.9955,
+      "exit_price": 0.996,
+      "pnl": 0.0,
+      "closed_at": "2026-03-14T15:21:19.752394"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 45\u00b0F or below on March 16?",
+      "outcome": "No",
+      "entry_price": 0.996,
+      "size": 391.72,
+      "opened_at": "2026-03-14T15:21:20.923107"
     }
   ],
-  "total_trades": 83,
-  "wins": 7,
-  "losses": 35,
+  "total_trades": 84,
+  "wins": 10,
+  "losses": 36,
   "peak_balance": 500.0
 }
