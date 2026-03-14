@@ -43,9 +43,9 @@ import pandas as pd
 # =============================================================================
 
 STARTING_BALANCE = 500.0   # Total across all strategies
-S1_STARTING      = 200.0   # S1 (Layered No Hedge) bankroll
+S1_STARTING      = 0.0     # S1 suspended
 S2_STARTING      = 100.0   # S2 (Lottery Tickets) bankroll
-S3_STARTING      = 200.0   # S3 (High Conviction) bankroll
+S3_STARTING      = 400.0   # S3 (High Conviction) bankroll
 
 # Polymarket non-linear taker fee (no fee on settlement):
 #   fee_per_share = feeRate × p × (p × (1-p))^exponent
@@ -66,7 +66,8 @@ S1_MIN_DIST_F = 6      # Skip bands within 6°F of forecast (forecast ≈ ±5°F
 S1_MAX_LAYERS = 5      # Max bands per city/date; each layer = s1_balance / S1_MAX_LAYERS
 
 # Strategy 2: Lottery Tickets — Kelly-sized
-S2_YES_MAX        = 0.040  # Only buy Yes priced below this
+S2_YES_MIN        = 0.050  # Only buy Yes priced at or above this (avoid dust)
+S2_YES_MAX        = 0.150  # Only buy Yes priced below this
 S2_WINDOW_F       = 7      # Only bands within ±7°F of forecast
 S2_MIN_EDGE       = 0.05   # Min edge (p_est − market_price) to bet; user spec: 5%
 S2_KELLY_FRAC     = 0.5    # Half-Kelly fraction for safety
@@ -74,10 +75,12 @@ S2_FORECAST_SIGMA = 4.0    # NWS forecast std dev in °F (typical 1-day error)
 S2_MAX_BET_FRAC   = 0.30   # Cap single bet at 30% of S2 balance
 
 # Strategy 3: High Conviction — Kelly-sized No positions
-S3_NO_MIN    = 0.94   # "No" must be priced >= this
+S3_NO_MIN    = 0.95   # "No" must be priced >= this
+S3_NO_MAX    = 0.99   # "No" must be priced <= this (above 99% market is too illiquid)
 S3_DIST_F    = 15     # Band midpoint >= 15°F from forecast
 S3_MIN_EDGE  = 0.01   # Min edge on No side (p_no_win − no_price); user spec: 1%
 S3_KELLY_FRAC = 0.5   # Half-Kelly fraction
+S3_STOP_LOSS  = 0.04  # Exit S3 if No price drops by 4% from entry (e.g. 0.996 → 0.956)
 
 # City registry — NWS endpoints for US cities
 NWS_ENDPOINTS = {
@@ -686,7 +689,7 @@ def strategy_lottery_tickets(
 
     for mkt in markets:
         yes_price = mkt["yes_price"]
-        if yes_price >= S2_YES_MAX:
+        if yes_price < S2_YES_MIN or yes_price >= S2_YES_MAX:
             continue
         distance = abs(mkt["midpoint"] - forecast_temp)
         if distance > S2_WINDOW_F or (mkt["low"] <= forecast_temp <= mkt["high"]):
@@ -751,7 +754,7 @@ def strategy_high_conviction(
     for m in markets:
         no_price = m["no_price"]
         distance = abs(m["midpoint"] - forecast_temp)
-        if no_price < S3_NO_MIN or distance < S3_DIST_F:
+        if no_price < S3_NO_MIN or no_price > S3_NO_MAX or distance < S3_DIST_F:
             continue
         if m["low"] <= forecast_temp <= m["high"]:
             continue
@@ -804,7 +807,7 @@ def apply_all_strategies(
     markets: list[dict], forecast_temp: int, balance_dict: dict,
 ) -> list[dict]:
     signals = []
-    signals.extend(strategy_layered_no(markets, forecast_temp, balance_dict))
+    # S1 suspended — see strategy_layered_no() for implementation
     signals.extend(strategy_lottery_tickets(markets, forecast_temp, balance_dict))
     signals.extend(strategy_high_conviction(markets, forecast_temp, balance_dict))
     return signals
@@ -1148,8 +1151,13 @@ def _check_exits(state: dict, execute: bool):
         pnl_str = (f"{C.GREEN}+${pnl:.2f}{C.RESET}" if pnl >= 0
                    else f"{C.RED}-${abs(pnl):.2f}{C.RESET}")
 
-        if closed or curr >= 0.95:
-            strat = pos.get("strategy", "S1_layered_no")
+        strat = pos.get("strategy", "S1_layered_no")
+        is_s3 = strat.startswith("S3")
+        # S3: hold to resolution; only stop out on a 4% price drop (e.g. 0.996 → 0.956)
+        # S2: take profit when price >= 0.95
+        stop_loss = curr < eff_entry * (1 - S3_STOP_LOSS)
+        should_exit = closed or (stop_loss if is_s3 else curr >= 0.95)
+        if should_exit:
             bkey  = _strategy_balance_key(strat)
             ok(f"CLOSE {pos['outcome']} @ {curr:.3f}  |  {pnl_str}  |  "
                f"{pos['question'][:50]}")
