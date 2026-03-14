@@ -1,7 +1,7 @@
 {
-  "balance": 260.74,
+  "balance": 256.1,
   "s1_balance": 0.0,
-  "s2_balance": 60.41,
+  "s2_balance": 55.77,
   "s3_balance": 200.33,
   "starting_balance": 500.0,
   "positions": {
@@ -214,6 +214,36 @@
       "low": 48,
       "high": 49,
       "opened_at": "2026-03-14T22:18:56.265893"
+    },
+    "1575006": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 64-65\u00b0F on March 15?",
+      "outcome": "Yes",
+      "entry_price": 0.0565,
+      "effective_entry_price": 0.05656,
+      "shares": 44.79,
+      "cost": 2.53,
+      "city": "chicago",
+      "date_str": "2026-03-15",
+      "forecast_temp": 61,
+      "low": 64,
+      "high": 65,
+      "opened_at": "2026-03-14T23:21:26.228954"
+    },
+    "1577583": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 54-55\u00b0F on March 16?",
+      "outcome": "Yes",
+      "entry_price": 0.12,
+      "effective_entry_price": 0.120253,
+      "shares": 17.51,
+      "cost": 2.11,
+      "city": "dallas",
+      "date_str": "2026-03-16",
+      "forecast_temp": 53,
+      "low": 54,
+      "high": 55,
+      "opened_at": "2026-03-14T23:21:27.718305"
     }
   },
   "trades": [
@@ -342,9 +372,27 @@
       "entry_price": 0.11,
       "size": 1.85,
       "opened_at": "2026-03-14T22:18:56.265902"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 64-65\u00b0F on March 15?",
+      "outcome": "Yes",
+      "entry_price": 0.0565,
+      "size": 2.53,
+      "opened_at": "2026-03-14T23:21:26.228961"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 54-55\u00b0F on March 16?",
+      "outcome": "Yes",
+      "entry_price": 0.12,
+      "size": 2.11,
+      "opened_at": "2026-03-14T23:21:27.718311"
     }
   ],
-  "total_trades": 14,
+  "total_trades": 16,
   "wins": 0,
   "losses": 0,
   "peak_balance": 500.0
