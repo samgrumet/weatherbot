@@ -395,21 +395,6 @@
       "high": 69,
       "opened_at": "2026-03-14T05:07:59.317426"
     },
-    "1566226": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be between 34-35\u00b0F on March 14?",
-      "outcome": "Yes",
-      "entry_price": 0.0215,
-      "effective_entry_price": 0.021509,
-      "shares": 58.93,
-      "cost": 1.27,
-      "city": "chicago",
-      "date_str": "2026-03-14",
-      "forecast_temp": 39,
-      "low": 34,
-      "high": 35,
-      "opened_at": "2026-03-14T06:04:32.251189"
-    },
     "1574955": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Seattle be 39\u00b0F or below on March 15?",
@@ -534,16 +519,31 @@
       "strategy": "S3_high_conviction",
       "question": "Will the highest temperature in New York City be 45\u00b0F or below on March 16?",
       "outcome": "No",
-      "entry_price": 0.996,
-      "effective_entry_price": 0.996079,
-      "shares": 393.11,
-      "cost": 391.57,
+      "entry_price": 0.99,
+      "effective_entry_price": 0.990196,
+      "shares": 200.45,
+      "cost": 198.48,
       "city": "new-york-city",
       "date_str": "2026-03-16",
       "forecast_temp": 60,
       "low": -999,
       "high": 45,
-      "opened_at": "2026-03-14T17:50:26.987251"
+      "opened_at": "2026-03-14T18:28:56.811350"
+    },
+    "1577793": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 31\u00b0F or below on March 17?",
+      "outcome": "No",
+      "entry_price": 0.996,
+      "effective_entry_price": 0.996079,
+      "shares": 191.45,
+      "cost": 190.7,
+      "city": "new-york-city",
+      "date_str": "2026-03-17",
+      "forecast_temp": 55,
+      "low": -999,
+      "high": 31,
+      "opened_at": "2026-03-14T18:28:56.987274"
     }
   },
   "trades": [
@@ -1877,10 +1877,48 @@
       "entry_price": 0.996,
       "size": 391.57,
       "opened_at": "2026-03-14T17:50:26.987258"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 34-35\u00b0F on March 14?",
+      "outcome": "Yes",
+      "entry_price": 0.0215,
+      "exit_price": 0.0,
+      "pnl": -1.27,
+      "closed_at": "2026-03-14T18:28:53.704285"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 45\u00b0F or below on March 16?",
+      "outcome": "No",
+      "entry_price": 0.996,
+      "exit_price": 0.99,
+      "pnl": -2.39,
+      "closed_at": "2026-03-14T18:28:55.402876"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 45\u00b0F or below on March 16?",
+      "outcome": "No",
+      "entry_price": 0.99,
+      "size": 198.48,
+      "opened_at": "2026-03-14T18:28:56.811358"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 31\u00b0F or below on March 17?",
+      "outcome": "No",
+      "entry_price": 0.996,
+      "size": 190.7,
+      "opened_at": "2026-03-14T18:28:56.987282"
     }
   ],
-  "total_trades": 89,
+  "total_trades": 91,
   "wins": 10,
-  "losses": 43,
+  "losses": 45,
   "peak_balance": 500.0
 }
