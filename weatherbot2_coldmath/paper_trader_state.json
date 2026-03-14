@@ -566,14 +566,14 @@
       "outcome": "No",
       "entry_price": 0.996,
       "effective_entry_price": 0.996079,
-      "shares": 393.26,
-      "cost": 391.72,
+      "shares": 393.23,
+      "cost": 391.69,
       "city": "new-york-city",
       "date_str": "2026-03-16",
       "forecast_temp": 60,
       "low": -999,
       "high": 45,
-      "opened_at": "2026-03-14T15:21:20.923098"
+      "opened_at": "2026-03-14T15:49:12.044185"
     }
   },
   "trades": [
@@ -1792,10 +1792,29 @@
       "entry_price": 0.996,
       "size": 391.72,
       "opened_at": "2026-03-14T15:21:20.923107"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 45\u00b0F or below on March 16?",
+      "outcome": "No",
+      "entry_price": 0.996,
+      "exit_price": 0.996,
+      "pnl": -0.03,
+      "closed_at": "2026-03-14T15:49:11.564304"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 45\u00b0F or below on March 16?",
+      "outcome": "No",
+      "entry_price": 0.996,
+      "size": 391.69,
+      "opened_at": "2026-03-14T15:49:12.044192"
     }
   ],
-  "total_trades": 84,
+  "total_trades": 85,
   "wins": 10,
-  "losses": 36,
+  "losses": 37,
   "peak_balance": 500.0
 }
