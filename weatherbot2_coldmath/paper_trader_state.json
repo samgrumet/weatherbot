@@ -1,7 +1,7 @@
 {
-  "balance": 98.77,
+  "balance": 90.03,
   "s1_balance": 0.0,
-  "s2_balance": 48.48,
+  "s2_balance": 39.74,
   "s3_balance": 50.29,
   "starting_balance": 500.0,
   "positions": {
@@ -604,6 +604,36 @@
       "low": 44,
       "high": 45,
       "opened_at": "2026-03-15T20:20:54.846528"
+    },
+    "1577623": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be 36\u00b0F or higher on March 16?",
+      "outcome": "Yes",
+      "entry_price": 0.075,
+      "effective_entry_price": 0.075104,
+      "shares": 97.26,
+      "cost": 7.3,
+      "city": "chicago",
+      "date_str": "2026-03-16",
+      "forecast_temp": 34,
+      "low": 36,
+      "high": 999,
+      "opened_at": "2026-03-15T22:20:37.248707"
+    },
+    "1577790": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 56-57\u00b0F on March 17?",
+      "outcome": "Yes",
+      "entry_price": 0.1,
+      "effective_entry_price": 0.10018,
+      "shares": 14.36,
+      "cost": 1.44,
+      "city": "seattle",
+      "date_str": "2026-03-17",
+      "forecast_temp": 54,
+      "low": 56,
+      "high": 57,
+      "opened_at": "2026-03-15T22:20:39.636531"
     }
   },
   "trades": [
@@ -1080,9 +1110,27 @@
       "exit_price": 0.0,
       "pnl": -1.77,
       "closed_at": "2026-03-15T21:49:46.722932"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be 36\u00b0F or higher on March 16?",
+      "outcome": "Yes",
+      "entry_price": 0.075,
+      "size": 7.3,
+      "opened_at": "2026-03-15T22:20:37.248714"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 56-57\u00b0F on March 17?",
+      "outcome": "Yes",
+      "entry_price": 0.1,
+      "size": 1.44,
+      "opened_at": "2026-03-15T22:20:39.636538"
     }
   ],
-  "total_trades": 46,
+  "total_trades": 48,
   "wins": 2,
   "losses": 4,
   "peak_balance": 500.0
