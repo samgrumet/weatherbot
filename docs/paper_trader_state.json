@@ -1,7 +1,7 @@
 {
-  "balance": 235.23,
+  "balance": 232.53,
   "s1_balance": 0.0,
-  "s2_balance": 34.9,
+  "s2_balance": 32.2,
   "s3_balance": 200.33,
   "starting_balance": 500.0,
   "positions": {
@@ -454,6 +454,36 @@
       "low": 82,
       "high": 999,
       "opened_at": "2026-03-15T08:29:51.273652"
+    },
+    "1574993": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 78-79\u00b0F on March 15?",
+      "outcome": "Yes",
+      "entry_price": 0.115,
+      "effective_entry_price": 0.115234,
+      "shares": 11.82,
+      "cost": 1.36,
+      "city": "miami",
+      "date_str": "2026-03-15",
+      "forecast_temp": 80,
+      "low": 78,
+      "high": 79,
+      "opened_at": "2026-03-15T09:02:50.733053"
+    },
+    "1585991": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 56-57\u00b0F on March 18?",
+      "outcome": "Yes",
+      "entry_price": 0.09,
+      "effective_entry_price": 0.090147,
+      "shares": 14.9,
+      "cost": 1.34,
+      "city": "atlanta",
+      "date_str": "2026-03-18",
+      "forecast_temp": 54,
+      "low": 56,
+      "high": 57,
+      "opened_at": "2026-03-15T09:02:54.016291"
     }
   },
   "trades": [
@@ -726,9 +756,27 @@
       "entry_price": 0.13,
       "size": 1.26,
       "opened_at": "2026-03-15T08:29:51.273659"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 78-79\u00b0F on March 15?",
+      "outcome": "Yes",
+      "entry_price": 0.115,
+      "size": 1.36,
+      "opened_at": "2026-03-15T09:02:50.733060"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 56-57\u00b0F on March 18?",
+      "outcome": "Yes",
+      "entry_price": 0.09,
+      "size": 1.34,
+      "opened_at": "2026-03-15T09:02:54.016296"
     }
   ],
-  "total_trades": 30,
+  "total_trades": 32,
   "wins": 0,
   "losses": 0,
   "peak_balance": 500.0
