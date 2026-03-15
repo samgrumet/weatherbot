@@ -1,7 +1,7 @@
 {
-  "balance": 238.76,
+  "balance": 235.23,
   "s1_balance": 0.0,
-  "s2_balance": 38.43,
+  "s2_balance": 34.9,
   "s3_balance": 200.33,
   "starting_balance": 500.0,
   "positions": {
@@ -409,6 +409,51 @@
       "low": 50,
       "high": 51,
       "opened_at": "2026-03-15T07:40:13.326594"
+    },
+    "1585968": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 42-43\u00b0F on March 18?",
+      "outcome": "Yes",
+      "entry_price": 0.075,
+      "effective_entry_price": 0.075104,
+      "shares": 16.76,
+      "cost": 1.26,
+      "city": "new-york-city",
+      "date_str": "2026-03-18",
+      "forecast_temp": 39,
+      "low": 42,
+      "high": 43,
+      "opened_at": "2026-03-15T08:29:50.218988"
+    },
+    "1574975": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 86-87\u00b0F on March 15?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "effective_entry_price": 0.055057,
+      "shares": 18.28,
+      "cost": 1.01,
+      "city": "dallas",
+      "date_str": "2026-03-15",
+      "forecast_temp": 82,
+      "low": 86,
+      "high": 87,
+      "opened_at": "2026-03-15T08:29:51.134119"
+    },
+    "1585983": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be 82\u00b0F or higher on March 18?",
+      "outcome": "Yes",
+      "entry_price": 0.13,
+      "effective_entry_price": 0.130294,
+      "shares": 9.65,
+      "cost": 1.26,
+      "city": "dallas",
+      "date_str": "2026-03-18",
+      "forecast_temp": 78,
+      "low": 82,
+      "high": 999,
+      "opened_at": "2026-03-15T08:29:51.273652"
     }
   },
   "trades": [
@@ -654,9 +699,36 @@
       "entry_price": 0.07,
       "size": 1.4,
       "opened_at": "2026-03-15T07:40:13.326600"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 42-43\u00b0F on March 18?",
+      "outcome": "Yes",
+      "entry_price": 0.075,
+      "size": 1.26,
+      "opened_at": "2026-03-15T08:29:50.218996"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 86-87\u00b0F on March 15?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "size": 1.01,
+      "opened_at": "2026-03-15T08:29:51.134125"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be 82\u00b0F or higher on March 18?",
+      "outcome": "Yes",
+      "entry_price": 0.13,
+      "size": 1.26,
+      "opened_at": "2026-03-15T08:29:51.273659"
     }
   ],
-  "total_trades": 27,
+  "total_trades": 30,
   "wins": 0,
   "losses": 0,
   "peak_balance": 500.0
