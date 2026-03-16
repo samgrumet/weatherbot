@@ -1,7 +1,7 @@
 {
-  "balance": 122.15,
+  "balance": 120.15,
   "s1_balance": 0.0,
-  "s2_balance": 26.93,
+  "s2_balance": 24.93,
   "s3_balance": 95.22,
   "starting_balance": 500.0,
   "positions": {
@@ -94,21 +94,6 @@
       "low": 56,
       "high": 57,
       "opened_at": "2026-03-14T15:17:33.951128"
-    },
-    "1574961": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Seattle be between 50-51\u00b0F on March 15?",
-      "outcome": "Yes",
-      "entry_price": 0.054,
-      "effective_entry_price": 0.054055,
-      "shares": 42.16,
-      "cost": 2.28,
-      "city": "seattle",
-      "date_str": "2026-03-15",
-      "forecast_temp": 46,
-      "low": 50,
-      "high": 51,
-      "opened_at": "2026-03-14T15:17:51.060056"
     },
     "1577565": {
       "strategy": "S2_lottery",
@@ -694,6 +679,36 @@
       "low": 60,
       "high": 61,
       "opened_at": "2026-03-16T09:59:18.867898"
+    },
+    "1596599": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 72-73\u00b0F on March 19?",
+      "outcome": "Yes",
+      "entry_price": 0.13,
+      "effective_entry_price": 0.130294,
+      "shares": 7.67,
+      "cost": 1.0,
+      "city": "miami",
+      "date_str": "2026-03-19",
+      "forecast_temp": 74,
+      "low": 72,
+      "high": 73,
+      "opened_at": "2026-03-16T10:57:34.807844"
+    },
+    "1577563": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 52-53\u00b0F on March 16?",
+      "outcome": "Yes",
+      "entry_price": 0.095,
+      "effective_entry_price": 0.095163,
+      "shares": 10.51,
+      "cost": 1.0,
+      "city": "seattle",
+      "date_str": "2026-03-16",
+      "forecast_temp": 55,
+      "low": 52,
+      "high": 53,
+      "opened_at": "2026-03-16T10:57:35.884206"
     }
   },
   "trades": [
@@ -1414,10 +1429,38 @@
       "entry_price": 0.055,
       "size": 1.0,
       "opened_at": "2026-03-16T09:59:18.867906"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 50-51\u00b0F on March 15?",
+      "outcome": "Yes",
+      "entry_price": 0.054,
+      "exit_price": 0.0,
+      "pnl": -2.28,
+      "closed_at": "2026-03-16T10:57:21.087274"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 72-73\u00b0F on March 19?",
+      "outcome": "Yes",
+      "entry_price": 0.13,
+      "size": 1.0,
+      "opened_at": "2026-03-16T10:57:34.807850"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 52-53\u00b0F on March 16?",
+      "outcome": "Yes",
+      "entry_price": 0.095,
+      "size": 1.0,
+      "opened_at": "2026-03-16T10:57:35.884211"
     }
   ],
-  "total_trades": 62,
+  "total_trades": 64,
   "wins": 6,
-  "losses": 10,
+  "losses": 11,
   "peak_balance": 500.0
 }
