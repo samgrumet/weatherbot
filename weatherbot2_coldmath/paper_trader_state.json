@@ -1,8 +1,8 @@
 {
-  "balance": 50.46,
+  "balance": 41.89,
   "s1_balance": 0.0,
-  "s2_balance": 38.34,
-  "s3_balance": 12.12,
+  "s2_balance": 35.81,
+  "s3_balance": 6.08,
   "starting_balance": 500.0,
   "positions": {
     "1577576": {
@@ -874,6 +874,51 @@
       "low": 90,
       "high": 91,
       "opened_at": "2026-03-17T03:57:20.736437"
+    },
+    "1605733": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 72-73\u00b0F on March 20?",
+      "outcome": "No",
+      "entry_price": 0.985,
+      "effective_entry_price": 0.985291,
+      "shares": 6.13,
+      "cost": 6.04,
+      "city": "chicago",
+      "date_str": "2026-03-20",
+      "forecast_temp": 56,
+      "low": 72,
+      "high": 73,
+      "opened_at": "2026-03-17T05:21:06.710917"
+    },
+    "1585956": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 58-59\u00b0F on March 18?",
+      "outcome": "Yes",
+      "entry_price": 0.105,
+      "effective_entry_price": 0.105197,
+      "shares": 11.78,
+      "cost": 1.24,
+      "city": "seattle",
+      "date_str": "2026-03-18",
+      "forecast_temp": 56,
+      "low": 58,
+      "high": 59,
+      "opened_at": "2026-03-17T05:21:07.731102"
+    },
+    "1605714": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be 80\u00b0F or higher on March 20?",
+      "outcome": "Yes",
+      "entry_price": 0.065,
+      "effective_entry_price": 0.065079,
+      "shares": 19.88,
+      "cost": 1.29,
+      "city": "atlanta",
+      "date_str": "2026-03-20",
+      "forecast_temp": 75,
+      "low": 80,
+      "high": 999,
+      "opened_at": "2026-03-17T05:21:08.353970"
     }
   },
   "trades": [
@@ -1797,9 +1842,36 @@
       "entry_price": 0.085,
       "size": 1.09,
       "opened_at": "2026-03-17T03:57:20.736444"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 72-73\u00b0F on March 20?",
+      "outcome": "No",
+      "entry_price": 0.985,
+      "size": 6.04,
+      "opened_at": "2026-03-17T05:21:06.710924"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 58-59\u00b0F on March 18?",
+      "outcome": "Yes",
+      "entry_price": 0.105,
+      "size": 1.24,
+      "opened_at": "2026-03-17T05:21:07.731109"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be 80\u00b0F or higher on March 20?",
+      "outcome": "Yes",
+      "entry_price": 0.065,
+      "size": 1.29,
+      "opened_at": "2026-03-17T05:21:08.353976"
     }
   ],
-  "total_trades": 79,
+  "total_trades": 82,
   "wins": 7,
   "losses": 14,
   "peak_balance": 500.0
