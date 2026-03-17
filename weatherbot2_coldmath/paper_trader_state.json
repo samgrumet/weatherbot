@@ -1,7 +1,7 @@
 {
-  "balance": 216.64,
+  "balance": 215.64,
   "s1_balance": 0.0,
-  "s2_balance": 30.65,
+  "s2_balance": 29.65,
   "s3_balance": 185.99,
   "starting_balance": 500.0,
   "positions": {
@@ -19,21 +19,6 @@
       "low": 20,
       "high": 21,
       "opened_at": "2026-03-14T15:17:16.658941"
-    },
-    "1577565": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Seattle be 56\u00b0F or higher on March 16?",
-      "outcome": "Yes",
-      "entry_price": 0.105,
-      "effective_entry_price": 0.105197,
-      "shares": 36.54,
-      "cost": 3.84,
-      "city": "seattle",
-      "date_str": "2026-03-16",
-      "forecast_temp": 52,
-      "low": 56,
-      "high": 999,
-      "opened_at": "2026-03-14T15:17:51.981291"
     },
     "1577818": {
       "strategy": "S2_lottery",
@@ -799,6 +784,21 @@
       "low": 62,
       "high": 999,
       "opened_at": "2026-03-17T09:50:05.629955"
+    },
+    "1596585": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 60-61\u00b0F on March 19?",
+      "outcome": "Yes",
+      "entry_price": 0.051,
+      "effective_entry_price": 0.051049,
+      "shares": 19.59,
+      "cost": 1.0,
+      "city": "atlanta",
+      "date_str": "2026-03-19",
+      "forecast_temp": 65,
+      "low": 60,
+      "high": 61,
+      "opened_at": "2026-03-17T10:43:35.966723"
     }
   },
   "trades": [
@@ -1943,10 +1943,29 @@
       "entry_price": 0.08,
       "size": 1.0,
       "opened_at": "2026-03-17T09:50:05.629962"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be 56\u00b0F or higher on March 16?",
+      "outcome": "Yes",
+      "entry_price": 0.105,
+      "exit_price": 0.0,
+      "pnl": -3.84,
+      "closed_at": "2026-03-17T10:43:20.705513"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 60-61\u00b0F on March 19?",
+      "outcome": "Yes",
+      "entry_price": 0.051,
+      "size": 1.0,
+      "opened_at": "2026-03-17T10:43:35.966731"
     }
   ],
-  "total_trades": 88,
+  "total_trades": 89,
   "wins": 11,
-  "losses": 24,
+  "losses": 25,
   "peak_balance": 500.0
 }
