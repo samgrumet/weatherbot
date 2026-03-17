@@ -1,7 +1,7 @@
 {
-  "balance": 245.13,
+  "balance": 243.29,
   "s1_balance": 0.0,
-  "s2_balance": 59.14,
+  "s2_balance": 57.3,
   "s3_balance": 185.99,
   "starting_balance": 500.0,
   "positions": {
@@ -844,6 +844,21 @@
       "low": 44,
       "high": 45,
       "opened_at": "2026-03-17T21:02:50.732316"
+    },
+    "1596568": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 46-47\u00b0F on March 19?",
+      "outcome": "Yes",
+      "entry_price": 0.13,
+      "effective_entry_price": 0.130294,
+      "shares": 14.09,
+      "cost": 1.84,
+      "city": "new-york-city",
+      "date_str": "2026-03-19",
+      "forecast_temp": 45,
+      "low": 46,
+      "high": 47,
+      "opened_at": "2026-03-17T22:40:15.747089"
     }
   },
   "trades": [
@@ -2091,9 +2106,18 @@
       "entry_price": 0.08,
       "size": 1.84,
       "opened_at": "2026-03-17T21:02:50.732322"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 46-47\u00b0F on March 19?",
+      "outcome": "Yes",
+      "entry_price": 0.13,
+      "size": 1.84,
+      "opened_at": "2026-03-17T22:40:15.747097"
     }
   ],
-  "total_trades": 95,
+  "total_trades": 96,
   "wins": 12,
   "losses": 27,
   "peak_balance": 500.0
