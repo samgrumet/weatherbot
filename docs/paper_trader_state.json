@@ -1,7 +1,7 @@
 {
-  "balance": 261.74,
+  "balance": 271.8,
   "s1_balance": 0.0,
-  "s2_balance": 43.78,
+  "s2_balance": 53.84,
   "s3_balance": 217.96,
   "starting_balance": 500.0,
   "positions": {
@@ -34,21 +34,6 @@
       "low": 82,
       "high": 999,
       "opened_at": "2026-03-15T08:29:51.273652"
-    },
-    "1585991": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Atlanta be between 56-57\u00b0F on March 18?",
-      "outcome": "Yes",
-      "entry_price": 0.09,
-      "effective_entry_price": 0.090147,
-      "shares": 14.9,
-      "cost": 1.34,
-      "city": "atlanta",
-      "date_str": "2026-03-18",
-      "forecast_temp": 54,
-      "low": 56,
-      "high": 57,
-      "opened_at": "2026-03-15T09:02:54.016291"
     },
     "1585967": {
       "strategy": "S2_lottery",
@@ -274,21 +259,6 @@
       "low": 48,
       "high": 49,
       "opened_at": "2026-03-16T21:32:39.019197"
-    },
-    "1585978": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Dallas be between 72-73\u00b0F on March 18?",
-      "outcome": "Yes",
-      "entry_price": 0.0525,
-      "effective_entry_price": 0.052552,
-      "shares": 19.03,
-      "cost": 1.0,
-      "city": "dallas",
-      "date_str": "2026-03-18",
-      "forecast_temp": 77,
-      "low": 72,
-      "high": 73,
-      "opened_at": "2026-03-16T21:32:39.894194"
     },
     "1596569": {
       "strategy": "S2_lottery",
@@ -964,6 +934,36 @@
       "low": 50,
       "high": 51,
       "opened_at": "2026-03-18T22:29:52.778796"
+    },
+    "1605710": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 72-73\u00b0F on March 20?",
+      "outcome": "Yes",
+      "entry_price": 0.105,
+      "effective_entry_price": 0.105197,
+      "shares": 24.55,
+      "cost": 2.58,
+      "city": "atlanta",
+      "date_str": "2026-03-20",
+      "forecast_temp": 74,
+      "low": 72,
+      "high": 73,
+      "opened_at": "2026-03-18T23:31:56.908529"
+    },
+    "1625911": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 78-79\u00b0F on March 21?",
+      "outcome": "Yes",
+      "entry_price": 0.12,
+      "effective_entry_price": 0.120253,
+      "shares": 16.91,
+      "cost": 2.03,
+      "city": "atlanta",
+      "date_str": "2026-03-21",
+      "forecast_temp": 80,
+      "low": 78,
+      "high": 79,
+      "opened_at": "2026-03-18T23:31:57.002957"
     }
   },
   "trades": [
@@ -2720,10 +2720,48 @@
       "entry_price": 0.115,
       "size": 1.78,
       "opened_at": "2026-03-18T22:29:52.778803"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 56-57\u00b0F on March 18?",
+      "outcome": "Yes",
+      "entry_price": 0.09,
+      "exit_price": 0.985,
+      "pnl": 13.33,
+      "closed_at": "2026-03-18T23:31:43.692377"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 72-73\u00b0F on March 18?",
+      "outcome": "Yes",
+      "entry_price": 0.0525,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-18T23:31:45.989632"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 72-73\u00b0F on March 20?",
+      "outcome": "Yes",
+      "entry_price": 0.105,
+      "size": 2.58,
+      "opened_at": "2026-03-18T23:31:56.908535"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 78-79\u00b0F on March 21?",
+      "outcome": "Yes",
+      "entry_price": 0.12,
+      "size": 2.03,
+      "opened_at": "2026-03-18T23:31:57.002962"
     }
   ],
-  "total_trades": 126,
-  "wins": 14,
-  "losses": 48,
+  "total_trades": 128,
+  "wins": 15,
+  "losses": 49,
   "peak_balance": 500.0
 }
