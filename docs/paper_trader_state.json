@@ -1,8 +1,8 @@
 {
-  "balance": 100.64,
+  "balance": 73.29,
   "s1_balance": 0.0,
   "s2_balance": 45.93,
-  "s3_balance": 54.71,
+  "s3_balance": 27.36,
   "starting_balance": 500.0,
   "positions": {
     "1585968": {
@@ -1054,6 +1054,21 @@
       "low": 56,
       "high": 57,
       "opened_at": "2026-03-19T04:16:38.904862"
+    },
+    "1638128": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 74-75\u00b0F on March 22?",
+      "outcome": "No",
+      "entry_price": 0.983,
+      "effective_entry_price": 0.983329,
+      "shares": 27.81,
+      "cost": 27.35,
+      "city": "chicago",
+      "date_str": "2026-03-22",
+      "forecast_temp": 56,
+      "low": 74,
+      "high": 75,
+      "opened_at": "2026-03-19T06:50:29.302320"
     }
   },
   "trades": [
@@ -2921,9 +2936,18 @@
       "entry_price": 0.055,
       "size": 1.28,
       "opened_at": "2026-03-19T04:16:38.904868"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 74-75\u00b0F on March 22?",
+      "outcome": "No",
+      "entry_price": 0.983,
+      "size": 27.35,
+      "opened_at": "2026-03-19T06:50:29.302326"
     }
   ],
-  "total_trades": 135,
+  "total_trades": 136,
   "wins": 15,
   "losses": 50,
   "peak_balance": 500.0
