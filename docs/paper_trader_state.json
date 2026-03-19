@@ -1,8 +1,8 @@
 {
-  "balance": 58.88,
+  "balance": 68.36,
   "s1_balance": 0.0,
-  "s2_balance": 57.14,
-  "s3_balance": 1.74,
+  "s2_balance": 53.84,
+  "s3_balance": 14.52,
   "starting_balance": 500.0,
   "positions": {
     "1596583": {
@@ -19,21 +19,6 @@
       "low": 92,
       "high": 999,
       "opened_at": "2026-03-16T01:49:59.495244"
-    },
-    "1596573": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Dallas be 73\u00b0F or below on March 19?",
-      "outcome": "No",
-      "entry_price": 0.981,
-      "effective_entry_price": 0.981366,
-      "shares": 12.78,
-      "cost": 12.54,
-      "city": "dallas",
-      "date_str": "2026-03-19",
-      "forecast_temp": 88,
-      "low": -999,
-      "high": 73,
-      "opened_at": "2026-03-16T01:49:59.495264"
     },
     "1596586": {
       "strategy": "S2_lottery",
@@ -199,21 +184,6 @@
       "low": 62,
       "high": 999,
       "opened_at": "2026-03-17T09:50:05.629955"
-    },
-    "1596585": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Atlanta be between 60-61\u00b0F on March 19?",
-      "outcome": "Yes",
-      "entry_price": 0.051,
-      "effective_entry_price": 0.051049,
-      "shares": 19.59,
-      "cost": 1.0,
-      "city": "atlanta",
-      "date_str": "2026-03-19",
-      "forecast_temp": 65,
-      "low": 60,
-      "high": 61,
-      "opened_at": "2026-03-17T10:43:35.966723"
     },
     "1605702": {
       "strategy": "S2_lottery",
@@ -1039,6 +1009,36 @@
       "low": 88,
       "high": 89,
       "opened_at": "2026-03-19T18:47:10.385431"
+    },
+    "1638124": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 66-67\u00b0F on March 22?",
+      "outcome": "Yes",
+      "entry_price": 0.0525,
+      "effective_entry_price": 0.052552,
+      "shares": 30.8,
+      "cost": 1.62,
+      "city": "chicago",
+      "date_str": "2026-03-22",
+      "forecast_temp": 62,
+      "low": 66,
+      "high": 67,
+      "opened_at": "2026-03-19T20:30:00.767950"
+    },
+    "1625926": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 82-83\u00b0F on March 21?",
+      "outcome": "Yes",
+      "entry_price": 0.08,
+      "effective_entry_price": 0.080118,
+      "shares": 20.93,
+      "cost": 1.68,
+      "city": "miami",
+      "date_str": "2026-03-21",
+      "forecast_temp": 79,
+      "low": 82,
+      "high": 83,
+      "opened_at": "2026-03-19T20:30:02.165031"
     }
   },
   "trades": [
@@ -3258,10 +3258,48 @@
       "exit_price": 0.0,
       "pnl": -1.67,
       "closed_at": "2026-03-19T19:42:22.760614"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be 73\u00b0F or below on March 19?",
+      "outcome": "No",
+      "entry_price": 0.981,
+      "exit_price": 1.0,
+      "pnl": 0.24,
+      "closed_at": "2026-03-19T20:29:52.383618"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 60-61\u00b0F on March 19?",
+      "outcome": "Yes",
+      "entry_price": 0.051,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-19T20:29:53.147968"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 66-67\u00b0F on March 22?",
+      "outcome": "Yes",
+      "entry_price": 0.0525,
+      "size": 1.62,
+      "opened_at": "2026-03-19T20:30:00.767955"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 82-83\u00b0F on March 21?",
+      "outcome": "Yes",
+      "entry_price": 0.08,
+      "size": 1.68,
+      "opened_at": "2026-03-19T20:30:02.165037"
     }
   ],
-  "total_trades": 153,
-  "wins": 16,
-  "losses": 68,
+  "total_trades": 155,
+  "wins": 17,
+  "losses": 69,
   "peak_balance": 500.0
 }
