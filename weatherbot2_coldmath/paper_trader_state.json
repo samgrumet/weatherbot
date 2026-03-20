@@ -1,7 +1,7 @@
 {
-  "balance": 54.37,
+  "balance": 49.4,
   "s1_balance": 0.0,
-  "s2_balance": 52.54,
+  "s2_balance": 47.57,
   "s3_balance": 1.83,
   "starting_balance": 500.0,
   "positions": {
@@ -1129,6 +1129,36 @@
       "low": 82,
       "high": 83,
       "opened_at": "2026-03-20T03:43:58.356378"
+    },
+    "1649142": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 46-47\u00b0F on March 23?",
+      "outcome": "Yes",
+      "entry_price": 0.054,
+      "effective_entry_price": 0.054055,
+      "shares": 66.9,
+      "cost": 3.62,
+      "city": "chicago",
+      "date_str": "2026-03-23",
+      "forecast_temp": 45,
+      "low": 46,
+      "high": 47,
+      "opened_at": "2026-03-20T06:10:47.427038"
+    },
+    "1638119": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 84-85\u00b0F on March 22?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "effective_entry_price": 0.085132,
+      "shares": 15.88,
+      "cost": 1.35,
+      "city": "miami",
+      "date_str": "2026-03-22",
+      "forecast_temp": 81,
+      "low": 84,
+      "high": 85,
+      "opened_at": "2026-03-20T06:10:47.933233"
     }
   },
   "trades": [
@@ -3516,9 +3546,27 @@
       "entry_price": 0.0585,
       "size": 3.09,
       "opened_at": "2026-03-20T03:43:58.356384"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 46-47\u00b0F on March 23?",
+      "outcome": "Yes",
+      "entry_price": 0.054,
+      "size": 3.62,
+      "opened_at": "2026-03-20T06:10:47.427045"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 84-85\u00b0F on March 22?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "size": 1.35,
+      "opened_at": "2026-03-20T06:10:47.933240"
     }
   ],
-  "total_trades": 165,
+  "total_trades": 167,
   "wins": 18,
   "losses": 72,
   "peak_balance": 500.0
