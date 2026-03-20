@@ -1,8 +1,8 @@
 {
-  "balance": 82.14,
+  "balance": 61.5,
   "s1_balance": 0.0,
-  "s2_balance": 67.62,
-  "s3_balance": 14.52,
+  "s2_balance": 59.67,
+  "s3_balance": 1.83,
   "starting_balance": 500.0,
   "positions": {
     "1596583": {
@@ -1009,6 +1009,96 @@
       "low": 50,
       "high": 51,
       "opened_at": "2026-03-19T23:51:50.673660"
+    },
+    "1649101": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 68-69\u00b0F on March 23?",
+      "outcome": "No",
+      "entry_price": 0.976,
+      "effective_entry_price": 0.976457,
+      "shares": 7.42,
+      "cost": 7.25,
+      "city": "new-york-city",
+      "date_str": "2026-03-23",
+      "forecast_temp": 52,
+      "low": 68,
+      "high": 69,
+      "opened_at": "2026-03-20T01:26:10.160949"
+    },
+    "1638115": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 76-77\u00b0F on March 22?",
+      "outcome": "Yes",
+      "entry_price": 0.0845,
+      "effective_entry_price": 0.084631,
+      "shares": 22.28,
+      "cost": 1.89,
+      "city": "miami",
+      "date_str": "2026-03-22",
+      "forecast_temp": 80,
+      "low": 76,
+      "high": 77,
+      "opened_at": "2026-03-20T01:26:11.193134"
+    },
+    "1649104": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be between 66-67\u00b0F on March 23?",
+      "outcome": "No",
+      "entry_price": 0.9835,
+      "effective_entry_price": 0.983819,
+      "shares": 3.69,
+      "cost": 3.63,
+      "city": "dallas",
+      "date_str": "2026-03-23",
+      "forecast_temp": 85,
+      "low": 66,
+      "high": 67,
+      "opened_at": "2026-03-20T01:26:11.903876"
+    },
+    "1649089": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 56-57\u00b0F on March 23?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "effective_entry_price": 0.055057,
+      "shares": 32.32,
+      "cost": 1.78,
+      "city": "seattle",
+      "date_str": "2026-03-23",
+      "forecast_temp": 52,
+      "low": 56,
+      "high": 57,
+      "opened_at": "2026-03-20T01:26:12.531059"
+    },
+    "1649124": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be 84\u00b0F or higher on March 23?",
+      "outcome": "Yes",
+      "entry_price": 0.0655,
+      "effective_entry_price": 0.06558,
+      "shares": 65.33,
+      "cost": 4.28,
+      "city": "atlanta",
+      "date_str": "2026-03-23",
+      "forecast_temp": 80,
+      "low": 84,
+      "high": 999,
+      "opened_at": "2026-03-20T01:26:13.099332"
+    },
+    "1649114": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Atlanta be 65\u00b0F or below on March 23?",
+      "outcome": "No",
+      "entry_price": 0.955,
+      "effective_entry_price": 0.955821,
+      "shares": 1.9,
+      "cost": 1.81,
+      "city": "atlanta",
+      "date_str": "2026-03-23",
+      "forecast_temp": 80,
+      "low": -999,
+      "high": 65,
+      "opened_at": "2026-03-20T01:26:13.099353"
     }
   },
   "trades": [
@@ -3305,9 +3395,63 @@
       "entry_price": 0.051,
       "size": 2.02,
       "opened_at": "2026-03-19T23:51:50.673665"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 68-69\u00b0F on March 23?",
+      "outcome": "No",
+      "entry_price": 0.976,
+      "size": 7.25,
+      "opened_at": "2026-03-20T01:26:10.160956"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 76-77\u00b0F on March 22?",
+      "outcome": "Yes",
+      "entry_price": 0.0845,
+      "size": 1.89,
+      "opened_at": "2026-03-20T01:26:11.193143"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be between 66-67\u00b0F on March 23?",
+      "outcome": "No",
+      "entry_price": 0.9835,
+      "size": 3.63,
+      "opened_at": "2026-03-20T01:26:11.903883"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 56-57\u00b0F on March 23?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "size": 1.78,
+      "opened_at": "2026-03-20T01:26:12.531067"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be 84\u00b0F or higher on March 23?",
+      "outcome": "Yes",
+      "entry_price": 0.0655,
+      "size": 4.28,
+      "opened_at": "2026-03-20T01:26:13.099340"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Atlanta be 65\u00b0F or below on March 23?",
+      "outcome": "No",
+      "entry_price": 0.955,
+      "size": 1.81,
+      "opened_at": "2026-03-20T01:26:13.099355"
     }
   ],
-  "total_trades": 156,
+  "total_trades": 162,
   "wins": 18,
   "losses": 71,
   "peak_balance": 500.0
