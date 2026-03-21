@@ -1,25 +1,10 @@
 {
-  "balance": 186.36,
+  "balance": 209.71,
   "s1_balance": 0.0,
-  "s2_balance": 16.43,
-  "s3_balance": 169.93,
+  "s2_balance": 15.43,
+  "s3_balance": 194.28,
   "starting_balance": 500.0,
   "positions": {
-    "1605734": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be between 74-75\u00b0F on March 20?",
-      "outcome": "No",
-      "entry_price": 0.9855,
-      "effective_entry_price": 0.985782,
-      "shares": 24.35,
-      "cost": 24.0,
-      "city": "chicago",
-      "date_str": "2026-03-20",
-      "forecast_temp": 56,
-      "low": 74,
-      "high": 75,
-      "opened_at": "2026-03-17T01:26:58.864173"
-    },
     "1605703": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Dallas be 96\u00b0F or higher on March 20?",
@@ -1099,6 +1084,21 @@
       "low": 80,
       "high": 81,
       "opened_at": "2026-03-21T07:29:09.558359"
+    },
+    "1660769": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 42-43\u00b0F on March 24?",
+      "outcome": "Yes",
+      "entry_price": 0.0515,
+      "effective_entry_price": 0.05155,
+      "shares": 19.4,
+      "cost": 1.0,
+      "city": "new-york-city",
+      "date_str": "2026-03-24",
+      "forecast_temp": 47,
+      "low": 42,
+      "high": 43,
+      "opened_at": "2026-03-21T08:24:33.626821"
     }
   },
   "trades": [
@@ -4057,10 +4057,29 @@
       "entry_price": 0.1155,
       "size": 1.0,
       "opened_at": "2026-03-21T07:29:09.558364"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 74-75\u00b0F on March 20?",
+      "outcome": "No",
+      "entry_price": 0.9855,
+      "exit_price": 1.0,
+      "pnl": 0.35,
+      "closed_at": "2026-03-21T08:24:23.047962"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 42-43\u00b0F on March 24?",
+      "outcome": "Yes",
+      "entry_price": 0.0515,
+      "size": 1.0,
+      "opened_at": "2026-03-21T08:24:33.626827"
     }
   ],
-  "total_trades": 194,
-  "wins": 20,
+  "total_trades": 195,
+  "wins": 21,
   "losses": 101,
   "peak_balance": 500.0
 }
