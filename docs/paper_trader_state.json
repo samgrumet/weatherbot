@@ -1,7 +1,7 @@
 {
-  "balance": 24.34,
+  "balance": 23.34,
   "s1_balance": 0.0,
-  "s2_balance": 11.94,
+  "s2_balance": 10.94,
   "s3_balance": 12.4,
   "starting_balance": 500.0,
   "positions": {
@@ -1024,6 +1024,21 @@
       "low": 56,
       "high": 57,
       "opened_at": "2026-03-22T19:44:58.475925"
+    },
+    "1670788": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 78-79\u00b0F on March 25?",
+      "outcome": "Yes",
+      "entry_price": 0.11,
+      "effective_entry_price": 0.110215,
+      "shares": 9.07,
+      "cost": 1.0,
+      "city": "miami",
+      "date_str": "2026-03-25",
+      "forecast_temp": 81,
+      "low": 78,
+      "high": 79,
+      "opened_at": "2026-03-22T20:50:39.549340"
     }
   },
   "trades": [
@@ -4564,9 +4579,18 @@
       "exit_price": 0.0,
       "pnl": -1.0,
       "closed_at": "2026-03-22T20:19:31.418062"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 78-79\u00b0F on March 25?",
+      "outcome": "Yes",
+      "entry_price": 0.11,
+      "size": 1.0,
+      "opened_at": "2026-03-22T20:50:39.549352"
     }
   ],
-  "total_trades": 222,
+  "total_trades": 223,
   "wins": 22,
   "losses": 132,
   "peak_balance": 500.0
