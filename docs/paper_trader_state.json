@@ -20,36 +20,6 @@
       "high": 999,
       "opened_at": "2026-03-18T01:43:17.226125"
     },
-    "1625894": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in New York City be between 58-59\u00b0F on March 21?",
-      "outcome": "Yes",
-      "entry_price": 0.11,
-      "effective_entry_price": 0.110215,
-      "shares": 12.4,
-      "cost": 1.37,
-      "city": "new-york-city",
-      "date_str": "2026-03-21",
-      "forecast_temp": 57,
-      "low": 58,
-      "high": 59,
-      "opened_at": "2026-03-18T07:48:49.155005"
-    },
-    "1625895": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in New York City be 60\u00b0F or higher on March 21?",
-      "outcome": "Yes",
-      "entry_price": 0.0775,
-      "effective_entry_price": 0.077611,
-      "shares": 43.19,
-      "cost": 3.35,
-      "city": "new-york-city",
-      "date_str": "2026-03-21",
-      "forecast_temp": 57,
-      "low": 60,
-      "high": 999,
-      "opened_at": "2026-03-18T07:48:49.155234"
-    },
     "1625880": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Seattle be between 52-53\u00b0F on March 21?",
@@ -305,21 +275,6 @@
       "high": 67,
       "opened_at": "2026-03-19T20:30:00.767950"
     },
-    "1625926": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Miami be between 82-83\u00b0F on March 21?",
-      "outcome": "Yes",
-      "entry_price": 0.08,
-      "effective_entry_price": 0.080118,
-      "shares": 20.93,
-      "cost": 1.68,
-      "city": "miami",
-      "date_str": "2026-03-21",
-      "forecast_temp": 79,
-      "low": 82,
-      "high": 83,
-      "opened_at": "2026-03-19T20:30:02.165031"
-    },
     "1649101": {
       "strategy": "S3_high_conviction",
       "question": "Will the highest temperature in New York City be between 68-69\u00b0F on March 23?",
@@ -424,21 +379,6 @@
       "low": 54,
       "high": 55,
       "opened_at": "2026-03-20T03:43:55.629461"
-    },
-    "1625915": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Atlanta be between 86-87\u00b0F on March 21?",
-      "outcome": "Yes",
-      "entry_price": 0.0515,
-      "effective_entry_price": 0.05155,
-      "shares": 32.02,
-      "cost": 1.65,
-      "city": "atlanta",
-      "date_str": "2026-03-21",
-      "forecast_temp": 82,
-      "low": 86,
-      "high": 87,
-      "opened_at": "2026-03-20T03:43:58.155013"
     },
     "1649123": {
       "strategy": "S2_lottery",
@@ -4499,10 +4439,50 @@
       "entry_price": 0.075,
       "size": 1.0,
       "opened_at": "2026-03-22T06:41:56.202126"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 58-59\u00b0F on March 21?",
+      "outcome": "Yes",
+      "entry_price": 0.11,
+      "exit_price": 0.0,
+      "pnl": -1.37,
+      "closed_at": "2026-03-22T07:34:27.690788"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be 60\u00b0F or higher on March 21?",
+      "outcome": "Yes",
+      "entry_price": 0.0775,
+      "exit_price": 0.0,
+      "pnl": -3.35,
+      "closed_at": "2026-03-22T07:34:27.877561"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 82-83\u00b0F on March 21?",
+      "outcome": "Yes",
+      "entry_price": 0.08,
+      "exit_price": 0.0,
+      "pnl": -1.68,
+      "closed_at": "2026-03-22T07:34:29.144623"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 86-87\u00b0F on March 21?",
+      "outcome": "Yes",
+      "entry_price": 0.0515,
+      "exit_price": 0.0,
+      "pnl": -1.65,
+      "closed_at": "2026-03-22T07:34:29.909813"
     }
   ],
   "total_trades": 217,
   "wins": 22,
-  "losses": 121,
+  "losses": 125,
   "peak_balance": 500.0
 }
