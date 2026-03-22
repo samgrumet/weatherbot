@@ -1,7 +1,7 @@
 {
-  "balance": 56.86,
+  "balance": 55.62,
   "s1_balance": 0.0,
-  "s2_balance": 29.02,
+  "s2_balance": 27.78,
   "s3_balance": 27.84,
   "starting_balance": 500.0,
   "positions": {
@@ -154,21 +154,6 @@
       "low": 68,
       "high": 69,
       "opened_at": "2026-03-20T01:26:10.160949"
-    },
-    "1638115": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Miami be between 76-77\u00b0F on March 22?",
-      "outcome": "Yes",
-      "entry_price": 0.0845,
-      "effective_entry_price": 0.084631,
-      "shares": 22.28,
-      "cost": 1.89,
-      "city": "miami",
-      "date_str": "2026-03-22",
-      "forecast_temp": 80,
-      "low": 76,
-      "high": 77,
-      "opened_at": "2026-03-20T01:26:11.193134"
     },
     "1649104": {
       "strategy": "S3_high_conviction",
@@ -994,6 +979,21 @@
       "low": 74,
       "high": 75,
       "opened_at": "2026-03-22T21:47:55.175492"
+    },
+    "1649093": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 52-53\u00b0F on March 23?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "effective_entry_price": 0.085132,
+      "shares": 14.51,
+      "cost": 1.24,
+      "city": "new-york-city",
+      "date_str": "2026-03-23",
+      "forecast_temp": 55,
+      "low": 52,
+      "high": 53,
+      "opened_at": "2026-03-22T22:19:21.896133"
     }
   },
   "trades": [
@@ -4611,10 +4611,29 @@
       "entry_price": 0.05,
       "size": 1.83,
       "opened_at": "2026-03-22T21:47:55.175498"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 76-77\u00b0F on March 22?",
+      "outcome": "Yes",
+      "entry_price": 0.0845,
+      "exit_price": 0.0,
+      "pnl": -1.89,
+      "closed_at": "2026-03-22T22:19:09.998363"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 52-53\u00b0F on March 23?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "size": 1.24,
+      "opened_at": "2026-03-22T22:19:21.896140"
     }
   ],
-  "total_trades": 225,
+  "total_trades": 226,
   "wins": 25,
-  "losses": 134,
+  "losses": 135,
   "peak_balance": 500.0
 }
