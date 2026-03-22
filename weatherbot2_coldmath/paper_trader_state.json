@@ -155,21 +155,6 @@
       "high": 79,
       "opened_at": "2026-03-19T12:45:46.761529"
     },
-    "1638103": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Atlanta be between 78-79\u00b0F on March 22?",
-      "outcome": "Yes",
-      "entry_price": 0.055,
-      "effective_entry_price": 0.055057,
-      "shares": 18.16,
-      "cost": 1.0,
-      "city": "atlanta",
-      "date_str": "2026-03-22",
-      "forecast_temp": 83,
-      "low": 78,
-      "high": 79,
-      "opened_at": "2026-03-19T16:14:19.837772"
-    },
     "1638104": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Atlanta be between 80-81\u00b0F on March 22?",
@@ -4569,10 +4554,20 @@
       "entry_price": 0.085,
       "size": 1.0,
       "opened_at": "2026-03-22T19:44:58.475934"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 78-79\u00b0F on March 22?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-22T20:19:31.418062"
     }
   ],
   "total_trades": 222,
   "wins": 22,
-  "losses": 131,
+  "losses": 132,
   "peak_balance": 500.0
 }
