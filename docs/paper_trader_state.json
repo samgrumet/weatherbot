@@ -1,7 +1,7 @@
 {
-  "balance": 43.46,
+  "balance": 42.46,
   "s1_balance": 0.0,
-  "s2_balance": 18.94,
+  "s2_balance": 17.94,
   "s3_balance": 24.52,
   "starting_balance": 500.0,
   "positions": {
@@ -1069,6 +1069,21 @@
       "low": 80,
       "high": 81,
       "opened_at": "2026-03-22T01:42:46.168550"
+    },
+    "1638126": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 70-71\u00b0F on March 22?",
+      "outcome": "Yes",
+      "entry_price": 0.0715,
+      "effective_entry_price": 0.071595,
+      "shares": 13.97,
+      "cost": 1.0,
+      "city": "chicago",
+      "date_str": "2026-03-22",
+      "forecast_temp": 73,
+      "low": 70,
+      "high": 71,
+      "opened_at": "2026-03-22T04:13:27.458357"
     }
   },
   "trades": [
@@ -4427,9 +4442,18 @@
       "entry_price": 0.115,
       "size": 1.0,
       "opened_at": "2026-03-22T01:42:46.168556"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 70-71\u00b0F on March 22?",
+      "outcome": "Yes",
+      "entry_price": 0.0715,
+      "size": 1.0,
+      "opened_at": "2026-03-22T04:13:27.458365"
     }
   ],
-  "total_trades": 214,
+  "total_trades": 215,
   "wins": 22,
   "losses": 121,
   "peak_balance": 500.0
