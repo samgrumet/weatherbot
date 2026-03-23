@@ -590,21 +590,6 @@
       "high": 999,
       "opened_at": "2026-03-22T21:47:53.881750"
     },
-    "1649108": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Dallas be between 74-75\u00b0F on March 23?",
-      "outcome": "Yes",
-      "entry_price": 0.05,
-      "effective_entry_price": 0.050048,
-      "shares": 36.66,
-      "cost": 1.83,
-      "city": "dallas",
-      "date_str": "2026-03-23",
-      "forecast_temp": 72,
-      "low": 74,
-      "high": 75,
-      "opened_at": "2026-03-22T21:47:55.175492"
-    },
     "1649093": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in New York City be between 52-53\u00b0F on March 23?",
@@ -5311,10 +5296,20 @@
       "exit_price": 0.0,
       "pnl": -1.0,
       "closed_at": "2026-03-23T22:01:27.652924"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 74-75\u00b0F on March 23?",
+      "outcome": "Yes",
+      "entry_price": 0.05,
+      "exit_price": 0.0,
+      "pnl": -1.83,
+      "closed_at": "2026-03-23T22:58:30.525572"
     }
   ],
   "total_trades": 260,
   "wins": 34,
-  "losses": 153,
+  "losses": 154,
   "peak_balance": 500.0
 }
