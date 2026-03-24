@@ -1,7 +1,7 @@
 {
-  "balance": 244.34,
+  "balance": 253.18,
   "s1_balance": 0.0,
-  "s2_balance": 21.32,
+  "s2_balance": 30.16,
   "s3_balance": 223.02,
   "starting_balance": 500.0,
   "positions": {
@@ -514,21 +514,6 @@
       "low": 92,
       "high": 93,
       "opened_at": "2026-03-23T09:35:23.680583"
-    },
-    "1660780": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Dallas be between 82-83\u00b0F on March 24?",
-      "outcome": "Yes",
-      "entry_price": 0.11,
-      "effective_entry_price": 0.110215,
-      "shares": 9.07,
-      "cost": 1.0,
-      "city": "dallas",
-      "date_str": "2026-03-24",
-      "forecast_temp": 80,
-      "low": 82,
-      "high": 83,
-      "opened_at": "2026-03-23T10:46:46.498689"
     },
     "1680744": {
       "strategy": "S2_lottery",
@@ -5617,10 +5602,20 @@
       "exit_price": 0.985,
       "pnl": 11.14,
       "closed_at": "2026-03-24T22:27:23.234851"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 82-83\u00b0F on March 24?",
+      "outcome": "Yes",
+      "entry_price": 0.11,
+      "exit_price": 0.975,
+      "pnl": 7.84,
+      "closed_at": "2026-03-24T22:58:10.159890"
     }
   ],
   "total_trades": 279,
-  "wins": 42,
+  "wins": 43,
   "losses": 175,
   "peak_balance": 500.0
 }
