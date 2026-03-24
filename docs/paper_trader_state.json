@@ -1,25 +1,10 @@
 {
-  "balance": 51.85,
+  "balance": 226.35,
   "s1_balance": 0.0,
   "s2_balance": 3.33,
-  "s3_balance": 48.52,
+  "s3_balance": 223.02,
   "starting_balance": 500.0,
   "positions": {
-    "1660810": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be 37\u00b0F or below on March 24?",
-      "outcome": "No",
-      "entry_price": 0.986,
-      "effective_entry_price": 0.986272,
-      "shares": 47.16,
-      "cost": 46.51,
-      "city": "chicago",
-      "date_str": "2026-03-24",
-      "forecast_temp": 54,
-      "low": -999,
-      "high": 37,
-      "opened_at": "2026-03-21T01:21:28.107620"
-    },
     "1660817": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Chicago be between 50-51\u00b0F on March 24?",
@@ -79,21 +64,6 @@
       "low": 42,
       "high": 43,
       "opened_at": "2026-03-21T08:24:33.626821"
-    },
-    "1660811": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be between 38-39\u00b0F on March 24?",
-      "outcome": "No",
-      "entry_price": 0.9715,
-      "effective_entry_price": 0.972038,
-      "shares": 99.77,
-      "cost": 96.98,
-      "city": "chicago",
-      "date_str": "2026-03-24",
-      "forecast_temp": 55,
-      "low": 38,
-      "high": 39,
-      "opened_at": "2026-03-21T10:50:49.564703"
     },
     "1660784": {
       "strategy": "S2_lottery",
@@ -155,21 +125,6 @@
       "high": 81,
       "opened_at": "2026-03-21T17:20:27.583241"
     },
-    "1660789": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Atlanta be between 60-61\u00b0F on March 24?",
-      "outcome": "Yes",
-      "entry_price": 0.068,
-      "effective_entry_price": 0.068086,
-      "shares": 14.69,
-      "cost": 1.0,
-      "city": "atlanta",
-      "date_str": "2026-03-24",
-      "forecast_temp": 63,
-      "low": 60,
-      "high": 61,
-      "opened_at": "2026-03-21T19:00:25.703125"
-    },
     "1660798": {
       "strategy": "S3_high_conviction",
       "question": "Will the highest temperature in Atlanta be 78\u00b0F or higher on March 24?",
@@ -184,21 +139,6 @@
       "low": 78,
       "high": 999,
       "opened_at": "2026-03-21T19:00:25.703150"
-    },
-    "1660788": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Atlanta be 59\u00b0F or below on March 24?",
-      "outcome": "Yes",
-      "entry_price": 0.09,
-      "effective_entry_price": 0.090147,
-      "shares": 11.09,
-      "cost": 1.0,
-      "city": "atlanta",
-      "date_str": "2026-03-24",
-      "forecast_temp": 63,
-      "low": -999,
-      "high": 59,
-      "opened_at": "2026-03-21T21:45:32.863777"
     },
     "1660783": {
       "strategy": "S2_lottery",
@@ -800,21 +740,6 @@
       "high": 51,
       "opened_at": "2026-03-23T20:32:24.219559"
     },
-    "1660790": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Atlanta be between 62-63\u00b0F on March 24?",
-      "outcome": "Yes",
-      "entry_price": 0.09,
-      "effective_entry_price": 0.090147,
-      "shares": 11.09,
-      "cost": 1.0,
-      "city": "atlanta",
-      "date_str": "2026-03-24",
-      "forecast_temp": 65,
-      "low": 62,
-      "high": 63,
-      "opened_at": "2026-03-23T20:32:24.795351"
-    },
     "1660793": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Atlanta be between 68-69\u00b0F on March 24?",
@@ -919,21 +844,6 @@
       "low": 52,
       "high": 53,
       "opened_at": "2026-03-24T05:21:38.842754"
-    },
-    "1680751": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be 59\u00b0F or below on March 26?",
-      "outcome": "No",
-      "entry_price": 0.955,
-      "effective_entry_price": 0.955821,
-      "shares": 30.61,
-      "cost": 29.25,
-      "city": "chicago",
-      "date_str": "2026-03-26",
-      "forecast_temp": 74,
-      "low": -999,
-      "high": 59,
-      "opened_at": "2026-03-24T06:37:26.619255"
     },
     "1690157": {
       "strategy": "S2_lottery",
@@ -5634,10 +5544,70 @@
       "entry_price": 0.9895,
       "size": 48.37,
       "opened_at": "2026-03-24T16:54:31.323737"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be 37\u00b0F or below on March 24?",
+      "outcome": "No",
+      "entry_price": 0.986,
+      "exit_price": 1.0,
+      "pnl": 0.65,
+      "closed_at": "2026-03-24T19:50:25.236929"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 38-39\u00b0F on March 24?",
+      "outcome": "No",
+      "entry_price": 0.9715,
+      "exit_price": 1.0,
+      "pnl": 2.79,
+      "closed_at": "2026-03-24T19:50:25.447649"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 60-61\u00b0F on March 24?",
+      "outcome": "Yes",
+      "entry_price": 0.068,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-24T19:50:25.661175"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be 59\u00b0F or below on March 24?",
+      "outcome": "Yes",
+      "entry_price": 0.09,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-24T19:50:26.052578"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 62-63\u00b0F on March 24?",
+      "outcome": "Yes",
+      "entry_price": 0.09,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-24T19:50:28.606780"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be 59\u00b0F or below on March 26?",
+      "outcome": "No",
+      "entry_price": 0.955,
+      "exit_price": 0.901,
+      "pnl": -1.68,
+      "closed_at": "2026-03-24T19:50:28.957063"
     }
   ],
   "total_trades": 277,
-  "wins": 38,
-  "losses": 166,
+  "wins": 40,
+  "losses": 170,
   "peak_balance": 500.0
 }
