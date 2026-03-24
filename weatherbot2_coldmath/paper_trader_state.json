@@ -1,25 +1,10 @@
 {
-  "balance": 68.87,
+  "balance": 104.22,
   "s1_balance": 0.0,
   "s2_balance": 7.33,
-  "s3_balance": 61.54,
+  "s3_balance": 96.89,
   "starting_balance": 500.0,
   "positions": {
-    "1649089": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Seattle be between 56-57\u00b0F on March 23?",
-      "outcome": "Yes",
-      "entry_price": 0.055,
-      "effective_entry_price": 0.055057,
-      "shares": 32.32,
-      "cost": 1.78,
-      "city": "seattle",
-      "date_str": "2026-03-23",
-      "forecast_temp": 52,
-      "low": 56,
-      "high": 57,
-      "opened_at": "2026-03-20T01:26:12.531059"
-    },
     "1660810": {
       "strategy": "S3_high_conviction",
       "question": "Will the highest temperature in Chicago be 37\u00b0F or below on March 24?",
@@ -34,36 +19,6 @@
       "low": -999,
       "high": 37,
       "opened_at": "2026-03-21T01:21:28.107620"
-    },
-    "1649088": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Seattle be between 54-55\u00b0F on March 23?",
-      "outcome": "Yes",
-      "entry_price": 0.075,
-      "effective_entry_price": 0.075104,
-      "shares": 16.94,
-      "cost": 1.27,
-      "city": "seattle",
-      "date_str": "2026-03-23",
-      "forecast_temp": 52,
-      "low": 54,
-      "high": 55,
-      "opened_at": "2026-03-21T01:21:29.336523"
-    },
-    "1660755": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Seattle be 35\u00b0F or below on March 24?",
-      "outcome": "No",
-      "entry_price": 0.9895,
-      "effective_entry_price": 0.989706,
-      "shares": 23.52,
-      "cost": 23.28,
-      "city": "seattle",
-      "date_str": "2026-03-24",
-      "forecast_temp": 52,
-      "low": -999,
-      "high": 35,
-      "opened_at": "2026-03-21T01:21:29.400216"
     },
     "1660817": {
       "strategy": "S2_lottery",
@@ -109,21 +64,6 @@
       "low": 92,
       "high": 93,
       "opened_at": "2026-03-21T06:54:39.226776"
-    },
-    "1660756": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Seattle be between 36-37\u00b0F on March 24?",
-      "outcome": "No",
-      "entry_price": 0.9805,
-      "effective_entry_price": 0.980875,
-      "shares": 11.83,
-      "cost": 11.6,
-      "city": "seattle",
-      "date_str": "2026-03-24",
-      "forecast_temp": 52,
-      "low": 36,
-      "high": 37,
-      "opened_at": "2026-03-21T06:54:39.620772"
     },
     "1660769": {
       "strategy": "S2_lottery",
@@ -5534,10 +5474,50 @@
       "entry_price": 0.055,
       "size": 1.0,
       "opened_at": "2026-03-24T09:50:27.046418"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 56-57\u00b0F on March 23?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "exit_price": 0.0,
+      "pnl": -1.78,
+      "closed_at": "2026-03-24T10:44:08.371783"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 54-55\u00b0F on March 23?",
+      "outcome": "Yes",
+      "entry_price": 0.075,
+      "exit_price": 0.0,
+      "pnl": -1.27,
+      "closed_at": "2026-03-24T10:44:08.742798"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be 35\u00b0F or below on March 24?",
+      "outcome": "No",
+      "entry_price": 0.9895,
+      "exit_price": 1.0,
+      "pnl": 0.24,
+      "closed_at": "2026-03-24T10:44:08.862638"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be between 36-37\u00b0F on March 24?",
+      "outcome": "No",
+      "entry_price": 0.9805,
+      "exit_price": 1.0,
+      "pnl": 0.23,
+      "closed_at": "2026-03-24T10:44:09.399839"
     }
   ],
   "total_trades": 272,
-  "wins": 36,
-  "losses": 164,
+  "wins": 38,
+  "losses": 166,
   "peak_balance": 500.0
 }
