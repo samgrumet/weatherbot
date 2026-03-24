@@ -1,7 +1,7 @@
 {
-  "balance": 104.22,
+  "balance": 103.22,
   "s1_balance": 0.0,
-  "s2_balance": 7.33,
+  "s2_balance": 6.33,
   "s3_balance": 96.89,
   "starting_balance": 500.0,
   "positions": {
@@ -1024,6 +1024,21 @@
       "low": 60,
       "high": 61,
       "opened_at": "2026-03-24T09:50:27.046411"
+    },
+    "1690137": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 88-89\u00b0F on March 27?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "effective_entry_price": 0.055057,
+      "shares": 18.16,
+      "cost": 1.0,
+      "city": "atlanta",
+      "date_str": "2026-03-27",
+      "forecast_temp": 84,
+      "low": 88,
+      "high": 89,
+      "opened_at": "2026-03-24T11:40:44.171200"
     }
   },
   "trades": [
@@ -5514,9 +5529,18 @@
       "exit_price": 1.0,
       "pnl": 0.23,
       "closed_at": "2026-03-24T10:44:09.399839"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 88-89\u00b0F on March 27?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "size": 1.0,
+      "opened_at": "2026-03-24T11:40:44.171207"
     }
   ],
-  "total_trades": 272,
+  "total_trades": 273,
   "wins": 38,
   "losses": 166,
   "peak_balance": 500.0
