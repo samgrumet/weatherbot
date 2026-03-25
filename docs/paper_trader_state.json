@@ -1,7 +1,7 @@
 {
-  "balance": 122.67,
+  "balance": 132.98,
   "s1_balance": 0.0,
-  "s2_balance": 31.23,
+  "s2_balance": 41.54,
   "s3_balance": 91.44,
   "starting_balance": 500.0,
   "positions": {
@@ -154,36 +154,6 @@
       "low": 56,
       "high": 57,
       "opened_at": "2026-03-23T07:02:15.590094"
-    },
-    "1670803": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be between 62-63\u00b0F on March 25?",
-      "outcome": "Yes",
-      "entry_price": 0.13,
-      "effective_entry_price": 0.130294,
-      "shares": 7.67,
-      "cost": 1.0,
-      "city": "chicago",
-      "date_str": "2026-03-25",
-      "forecast_temp": 64,
-      "low": 62,
-      "high": 63,
-      "opened_at": "2026-03-23T08:11:45.131955"
-    },
-    "1670766": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Dallas be between 84-85\u00b0F on March 25?",
-      "outcome": "Yes",
-      "entry_price": 0.085,
-      "effective_entry_price": 0.085132,
-      "shares": 11.75,
-      "cost": 1.0,
-      "city": "dallas",
-      "date_str": "2026-03-25",
-      "forecast_temp": 88,
-      "low": 84,
-      "high": 85,
-      "opened_at": "2026-03-23T08:11:46.112649"
     },
     "1680731": {
       "strategy": "S2_lottery",
@@ -725,21 +695,6 @@
       "high": 87,
       "opened_at": "2026-03-25T07:49:44.959640"
     },
-    "1670804": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be between 64-65\u00b0F on March 25?",
-      "outcome": "Yes",
-      "entry_price": 0.055,
-      "effective_entry_price": 0.055057,
-      "shares": 18.16,
-      "cost": 1.0,
-      "city": "chicago",
-      "date_str": "2026-03-25",
-      "forecast_temp": 69,
-      "low": 64,
-      "high": 65,
-      "opened_at": "2026-03-25T08:41:41.493115"
-    },
     "1701783": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Atlanta be between 64-65\u00b0F on March 28?",
@@ -904,6 +859,21 @@
       "low": 82,
       "high": 83,
       "opened_at": "2026-03-25T19:42:33.890652"
+    },
+    "1680755": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 66-67\u00b0F on March 26?",
+      "outcome": "Yes",
+      "entry_price": 0.11,
+      "effective_entry_price": 0.110215,
+      "shares": 11.53,
+      "cost": 1.27,
+      "city": "chicago",
+      "date_str": "2026-03-26",
+      "forecast_temp": 69,
+      "low": 66,
+      "high": 67,
+      "opened_at": "2026-03-25T22:29:10.766370"
     }
   },
   "trades": [
@@ -6101,10 +6071,49 @@
       "exit_price": 0.0,
       "pnl": -1.0,
       "closed_at": "2026-03-25T21:32:30.314425"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 62-63\u00b0F on March 25?",
+      "outcome": "Yes",
+      "entry_price": 0.13,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-25T22:29:03.588829"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 84-85\u00b0F on March 25?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "exit_price": 0.9855,
+      "pnl": 10.58,
+      "closed_at": "2026-03-25T22:29:03.680344"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 64-65\u00b0F on March 25?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-25T22:29:07.889121"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 66-67\u00b0F on March 26?",
+      "outcome": "Yes",
+      "entry_price": 0.11,
+      "size": 1.27,
+      "opened_at": "2026-03-25T22:29:10.766377"
     }
   ],
-  "total_trades": 305,
-  "wins": 48,
-  "losses": 197,
+  "total_trades": 306,
+  "wins": 49,
+  "losses": 199,
   "peak_balance": 500.0
 }
