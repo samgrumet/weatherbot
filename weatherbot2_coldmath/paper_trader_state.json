@@ -1,8 +1,8 @@
 {
-  "balance": 68.38,
+  "balance": 117.25,
   "s1_balance": 0.0,
   "s2_balance": 25.81,
-  "s3_balance": 42.57,
+  "s3_balance": 91.44,
   "starting_balance": 500.0,
   "positions": {
     "1670760": {
@@ -34,21 +34,6 @@
       "low": 52,
       "high": 53,
       "opened_at": "2026-03-22T01:42:43.801227"
-    },
-    "1670787": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Miami be between 76-77\u00b0F on March 25?",
-      "outcome": "Yes",
-      "entry_price": 0.056,
-      "effective_entry_price": 0.056059,
-      "shares": 17.84,
-      "cost": 1.0,
-      "city": "miami",
-      "date_str": "2026-03-25",
-      "forecast_temp": 81,
-      "low": 76,
-      "high": 77,
-      "opened_at": "2026-03-22T01:42:44.302125"
     },
     "1670799": {
       "strategy": "S2_lottery",
@@ -649,21 +634,6 @@
       "low": 76,
       "high": 77,
       "opened_at": "2026-03-24T14:18:11.206885"
-    },
-    "1670797": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be between 50-51\u00b0F on March 25?",
-      "outcome": "No",
-      "entry_price": 0.9895,
-      "effective_entry_price": 0.989706,
-      "shares": 48.87,
-      "cost": 48.37,
-      "city": "chicago",
-      "date_str": "2026-03-25",
-      "forecast_temp": 68,
-      "low": 50,
-      "high": 51,
-      "opened_at": "2026-03-24T16:54:31.323731"
     },
     "1690125": {
       "strategy": "S2_lottery",
@@ -6079,10 +6049,30 @@
       "entry_price": 0.988,
       "size": 41.66,
       "opened_at": "2026-03-25T16:57:03.782751"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 76-77\u00b0F on March 25?",
+      "outcome": "Yes",
+      "entry_price": 0.056,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-25T17:57:12.621177"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 50-51\u00b0F on March 25?",
+      "outcome": "No",
+      "entry_price": 0.9895,
+      "exit_price": 1.0,
+      "pnl": 0.5,
+      "closed_at": "2026-03-25T17:57:15.765804"
     }
   ],
   "total_trades": 302,
-  "wins": 46,
-  "losses": 189,
+  "wins": 47,
+  "losses": 190,
   "peak_balance": 500.0
 }
