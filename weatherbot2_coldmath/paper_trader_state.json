@@ -1,7 +1,7 @@
 {
-  "balance": 117.25,
+  "balance": 127.29,
   "s1_balance": 0.0,
-  "s2_balance": 25.81,
+  "s2_balance": 35.85,
   "s3_balance": 91.44,
   "starting_balance": 500.0,
   "positions": {
@@ -19,21 +19,6 @@
       "low": 56,
       "high": 57,
       "opened_at": "2026-03-22T01:42:43.165754"
-    },
-    "1670798": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be between 52-53\u00b0F on March 25?",
-      "outcome": "Yes",
-      "entry_price": 0.07,
-      "effective_entry_price": 0.070091,
-      "shares": 15.72,
-      "cost": 1.1,
-      "city": "chicago",
-      "date_str": "2026-03-25",
-      "forecast_temp": 55,
-      "low": 52,
-      "high": 53,
-      "opened_at": "2026-03-22T01:42:43.801227"
     },
     "1670799": {
       "strategy": "S2_lottery",
@@ -79,21 +64,6 @@
       "low": 56,
       "high": 57,
       "opened_at": "2026-03-22T19:44:58.475925"
-    },
-    "1670788": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Miami be between 78-79\u00b0F on March 25?",
-      "outcome": "Yes",
-      "entry_price": 0.11,
-      "effective_entry_price": 0.110215,
-      "shares": 9.07,
-      "cost": 1.0,
-      "city": "miami",
-      "date_str": "2026-03-25",
-      "forecast_temp": 81,
-      "low": 78,
-      "high": 79,
-      "opened_at": "2026-03-22T20:50:39.549340"
     },
     "1680711": {
       "strategy": "S2_lottery",
@@ -154,21 +124,6 @@
       "low": 86,
       "high": 87,
       "opened_at": "2026-03-23T04:23:16.126595"
-    },
-    "1670806": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be 68\u00b0F or higher on March 25?",
-      "outcome": "Yes",
-      "entry_price": 0.1065,
-      "effective_entry_price": 0.106703,
-      "shares": 10.41,
-      "cost": 1.11,
-      "city": "chicago",
-      "date_str": "2026-03-25",
-      "forecast_temp": 64,
-      "low": 68,
-      "high": 999,
-      "opened_at": "2026-03-23T05:53:25.800326"
     },
     "1680759": {
       "strategy": "S2_lottery",
@@ -6069,10 +6024,40 @@
       "exit_price": 1.0,
       "pnl": 0.5,
       "closed_at": "2026-03-25T17:57:15.765804"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 52-53\u00b0F on March 25?",
+      "outcome": "Yes",
+      "entry_price": 0.07,
+      "exit_price": 0.0,
+      "pnl": -1.1,
+      "closed_at": "2026-03-25T18:54:41.219501"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 78-79\u00b0F on March 25?",
+      "outcome": "Yes",
+      "entry_price": 0.11,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-25T18:54:41.716282"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be 68\u00b0F or higher on March 25?",
+      "outcome": "Yes",
+      "entry_price": 0.1065,
+      "exit_price": 0.965,
+      "pnl": 8.93,
+      "closed_at": "2026-03-25T18:54:42.110776"
     }
   ],
   "total_trades": 302,
-  "wins": 47,
-  "losses": 190,
+  "wins": 48,
+  "losses": 192,
   "peak_balance": 500.0
 }
