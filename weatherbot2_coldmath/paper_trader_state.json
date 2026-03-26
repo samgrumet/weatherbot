@@ -1,7 +1,7 @@
 {
-  "balance": 67.09,
+  "balance": 65.09,
   "s1_balance": 0.0,
-  "s2_balance": 21.24,
+  "s2_balance": 19.24,
   "s3_balance": 45.85,
   "starting_balance": 500.0,
   "positions": {
@@ -199,21 +199,6 @@
       "low": 44,
       "high": 45,
       "opened_at": "2026-03-24T06:37:26.662767"
-    },
-    "1680715": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in New York City be between 62-63\u00b0F on March 26?",
-      "outcome": "Yes",
-      "entry_price": 0.12,
-      "effective_entry_price": 0.120253,
-      "shares": 8.32,
-      "cost": 1.0,
-      "city": "new-york-city",
-      "date_str": "2026-03-26",
-      "forecast_temp": 64,
-      "low": 62,
-      "high": 63,
-      "opened_at": "2026-03-24T07:51:13.077474"
     },
     "1680699": {
       "strategy": "S2_lottery",
@@ -439,21 +424,6 @@
       "low": 46,
       "high": 47,
       "opened_at": "2026-03-25T04:02:00.239224"
-    },
-    "1680716": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in New York City be between 64-65\u00b0F on March 26?",
-      "outcome": "Yes",
-      "entry_price": 0.105,
-      "effective_entry_price": 0.105197,
-      "shares": 18.38,
-      "cost": 1.93,
-      "city": "new-york-city",
-      "date_str": "2026-03-26",
-      "forecast_temp": 66,
-      "low": 64,
-      "high": 65,
-      "opened_at": "2026-03-25T05:42:13.304999"
     },
     "1701750": {
       "strategy": "S2_lottery",
@@ -1039,6 +1009,36 @@
       "low": 72,
       "high": 73,
       "opened_at": "2026-03-26T19:00:10.441592"
+    },
+    "1701758": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 38-39\u00b0F on March 28?",
+      "outcome": "Yes",
+      "entry_price": 0.08,
+      "effective_entry_price": 0.080118,
+      "shares": 12.48,
+      "cost": 1.0,
+      "city": "new-york-city",
+      "date_str": "2026-03-28",
+      "forecast_temp": 42,
+      "low": 38,
+      "high": 39,
+      "opened_at": "2026-03-26T19:56:34.834956"
+    },
+    "1714832": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 56-57\u00b0F on March 29?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "effective_entry_price": 0.055057,
+      "shares": 18.16,
+      "cost": 1.0,
+      "city": "new-york-city",
+      "date_str": "2026-03-29",
+      "forecast_temp": 52,
+      "low": 56,
+      "high": 57,
+      "opened_at": "2026-03-26T19:56:35.090297"
     }
   },
   "trades": [
@@ -6621,10 +6621,48 @@
       "entry_price": 0.085,
       "size": 1.0,
       "opened_at": "2026-03-26T19:00:10.441598"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 62-63\u00b0F on March 26?",
+      "outcome": "Yes",
+      "entry_price": 0.12,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-26T19:56:20.089472"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 64-65\u00b0F on March 26?",
+      "outcome": "Yes",
+      "entry_price": 0.105,
+      "exit_price": 0.0,
+      "pnl": -1.93,
+      "closed_at": "2026-03-26T19:56:23.804647"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 38-39\u00b0F on March 28?",
+      "outcome": "Yes",
+      "entry_price": 0.08,
+      "size": 1.0,
+      "opened_at": "2026-03-26T19:56:34.834962"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 56-57\u00b0F on March 29?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "size": 1.0,
+      "opened_at": "2026-03-26T19:56:35.090303"
     }
   ],
-  "total_trades": 330,
+  "total_trades": 332,
   "wins": 50,
-  "losses": 211,
+  "losses": 213,
   "peak_balance": 500.0
 }
