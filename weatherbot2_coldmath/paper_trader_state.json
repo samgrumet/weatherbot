@@ -1,25 +1,10 @@
 {
-  "balance": 57.42,
+  "balance": 143.55,
   "s1_balance": 0.0,
   "s2_balance": 30.65,
-  "s3_balance": 26.77,
+  "s3_balance": 112.9,
   "starting_balance": 500.0,
   "positions": {
-    "1680758": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be between 72-73\u00b0F on March 26?",
-      "outcome": "Yes",
-      "entry_price": 0.105,
-      "effective_entry_price": 0.105197,
-      "shares": 11.25,
-      "cost": 1.18,
-      "city": "chicago",
-      "date_str": "2026-03-26",
-      "forecast_temp": 71,
-      "low": 72,
-      "high": 73,
-      "opened_at": "2026-03-23T01:44:24.728651"
-    },
     "1680703": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Seattle be between 56-57\u00b0F on March 26?",
@@ -34,51 +19,6 @@
       "low": 56,
       "high": 57,
       "opened_at": "2026-03-23T07:02:15.590094"
-    },
-    "1680725": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Dallas be between 92-93\u00b0F on March 26?",
-      "outcome": "Yes",
-      "entry_price": 0.12,
-      "effective_entry_price": 0.120253,
-      "shares": 8.32,
-      "cost": 1.0,
-      "city": "dallas",
-      "date_str": "2026-03-26",
-      "forecast_temp": 91,
-      "low": 92,
-      "high": 93,
-      "opened_at": "2026-03-23T09:35:23.680583"
-    },
-    "1680761": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be 78\u00b0F or higher on March 26?",
-      "outcome": "Yes",
-      "entry_price": 0.106,
-      "effective_entry_price": 0.106201,
-      "shares": 9.42,
-      "cost": 1.0,
-      "city": "chicago",
-      "date_str": "2026-03-26",
-      "forecast_temp": 74,
-      "low": 78,
-      "high": 999,
-      "opened_at": "2026-03-23T18:43:09.860018"
-    },
-    "1690118": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Dallas be 67\u00b0F or below on March 27?",
-      "outcome": "No",
-      "entry_price": 0.9785,
-      "effective_entry_price": 0.978912,
-      "shares": 59.66,
-      "cost": 58.4,
-      "city": "dallas",
-      "date_str": "2026-03-27",
-      "forecast_temp": 83,
-      "low": -999,
-      "high": 67,
-      "opened_at": "2026-03-24T01:24:55.517978"
     },
     "1690100": {
       "strategy": "S2_lottery",
@@ -425,21 +365,6 @@
       "high": 81,
       "opened_at": "2026-03-25T15:42:47.090879"
     },
-    "1680724": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Dallas be between 90-91\u00b0F on March 26?",
-      "outcome": "Yes",
-      "entry_price": 0.105,
-      "effective_entry_price": 0.105197,
-      "shares": 9.51,
-      "cost": 1.0,
-      "city": "dallas",
-      "date_str": "2026-03-26",
-      "forecast_temp": 88,
-      "low": 90,
-      "high": 91,
-      "opened_at": "2026-03-25T15:42:47.266685"
-    },
     "1701745": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Seattle be 51\u00b0F or below on March 28?",
@@ -469,21 +394,6 @@
       "low": 54,
       "high": 55,
       "opened_at": "2026-03-25T16:57:03.782742"
-    },
-    "1680757": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be between 70-71\u00b0F on March 26?",
-      "outcome": "Yes",
-      "entry_price": 0.065,
-      "effective_entry_price": 0.065079,
-      "shares": 35.12,
-      "cost": 2.29,
-      "city": "chicago",
-      "date_str": "2026-03-26",
-      "forecast_temp": 69,
-      "low": 70,
-      "high": 71,
-      "opened_at": "2026-03-25T19:42:32.410413"
     },
     "1690158": {
       "strategy": "S2_lottery",
@@ -544,21 +454,6 @@
       "low": 66,
       "high": 999,
       "opened_at": "2026-03-26T02:01:57.415258"
-    },
-    "1680756": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be between 68-69\u00b0F on March 26?",
-      "outcome": "Yes",
-      "entry_price": 0.11,
-      "effective_entry_price": 0.110215,
-      "shares": 14.39,
-      "cost": 1.59,
-      "city": "chicago",
-      "date_str": "2026-03-26",
-      "forecast_temp": 70,
-      "low": 68,
-      "high": 69,
-      "opened_at": "2026-03-26T02:01:58.020327"
     },
     "1714862": {
       "strategy": "S2_lottery",
@@ -725,21 +620,6 @@
       "high": 67,
       "opened_at": "2026-03-26T07:40:46.977508"
     },
-    "1690121": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Dallas be between 72-73\u00b0F on March 27?",
-      "outcome": "Yes",
-      "entry_price": 0.051,
-      "effective_entry_price": 0.051049,
-      "shares": 24.27,
-      "cost": 1.24,
-      "city": "dallas",
-      "date_str": "2026-03-27",
-      "forecast_temp": 75,
-      "low": 72,
-      "high": 73,
-      "opened_at": "2026-03-26T09:56:09.862786"
-    },
     "1701777": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Dallas be 68\u00b0F or higher on March 28?",
@@ -859,21 +739,6 @@
       "low": 74,
       "high": 75,
       "opened_at": "2026-03-26T21:25:36.515766"
-    },
-    "1690119": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Dallas be between 68-69\u00b0F on March 27?",
-      "outcome": "No",
-      "entry_price": 0.9885,
-      "effective_entry_price": 0.988725,
-      "shares": 26.47,
-      "cost": 26.17,
-      "city": "dallas",
-      "date_str": "2026-03-27",
-      "forecast_temp": 84,
-      "low": 68,
-      "high": 69,
-      "opened_at": "2026-03-27T01:49:35.867336"
     },
     "1714825": {
       "strategy": "S2_lottery",
@@ -6690,10 +6555,100 @@
       "entry_price": 0.075,
       "size": 1.53,
       "opened_at": "2026-03-27T08:08:33.693000"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 72-73\u00b0F on March 26?",
+      "outcome": "Yes",
+      "entry_price": 0.105,
+      "exit_price": 0.0,
+      "pnl": -1.18,
+      "closed_at": "2026-03-27T09:12:43.649953"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 92-93\u00b0F on March 26?",
+      "outcome": "Yes",
+      "entry_price": 0.12,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-27T09:12:43.876191"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be 78\u00b0F or higher on March 26?",
+      "outcome": "Yes",
+      "entry_price": 0.106,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-27T09:12:44.076292"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be 67\u00b0F or below on March 27?",
+      "outcome": "No",
+      "entry_price": 0.9785,
+      "exit_price": 1.0,
+      "pnl": 1.26,
+      "closed_at": "2026-03-27T09:12:44.116763"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 90-91\u00b0F on March 26?",
+      "outcome": "Yes",
+      "entry_price": 0.105,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-27T09:12:45.740340"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 70-71\u00b0F on March 26?",
+      "outcome": "Yes",
+      "entry_price": 0.065,
+      "exit_price": 0.0,
+      "pnl": -2.29,
+      "closed_at": "2026-03-27T09:12:46.031318"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 68-69\u00b0F on March 26?",
+      "outcome": "Yes",
+      "entry_price": 0.11,
+      "exit_price": 0.0,
+      "pnl": -1.59,
+      "closed_at": "2026-03-27T09:12:46.389381"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 72-73\u00b0F on March 27?",
+      "outcome": "Yes",
+      "entry_price": 0.051,
+      "exit_price": 0.0,
+      "pnl": -1.24,
+      "closed_at": "2026-03-27T09:12:46.892127"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be between 68-69\u00b0F on March 27?",
+      "outcome": "No",
+      "entry_price": 0.9885,
+      "exit_price": 1.0,
+      "pnl": 0.3,
+      "closed_at": "2026-03-27T09:12:47.587245"
     }
   ],
   "total_trades": 336,
-  "wins": 52,
-  "losses": 224,
+  "wins": 54,
+  "losses": 231,
   "peak_balance": 500.0
 }
