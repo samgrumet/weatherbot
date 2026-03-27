@@ -20,21 +20,6 @@
       "high": 53,
       "opened_at": "2026-03-24T03:55:51.190201"
     },
-    "1690144": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Miami be between 78-79\u00b0F on March 27?",
-      "outcome": "Yes",
-      "entry_price": 0.065,
-      "effective_entry_price": 0.065079,
-      "shares": 15.37,
-      "cost": 1.0,
-      "city": "miami",
-      "date_str": "2026-03-27",
-      "forecast_temp": 81,
-      "low": 78,
-      "high": 79,
-      "opened_at": "2026-03-24T05:21:37.905043"
-    },
     "1690127": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Dallas be between 84-85\u00b0F on March 27?",
@@ -6798,10 +6783,20 @@
       "entry_price": 0.08,
       "size": 1.0,
       "opened_at": "2026-03-27T16:45:37.934548"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 78-79\u00b0F on March 27?",
+      "outcome": "Yes",
+      "entry_price": 0.065,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-27T17:44:00.182449"
     }
   ],
   "total_trades": 343,
   "wins": 55,
-  "losses": 233,
+  "losses": 234,
   "peak_balance": 500.0
 }
