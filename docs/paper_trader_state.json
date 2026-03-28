@@ -1,8 +1,8 @@
 {
-  "balance": 333.23,
+  "balance": 390.45,
   "s1_balance": 0.0,
   "s2_balance": 36.58,
-  "s3_balance": 296.65,
+  "s3_balance": 353.87,
   "starting_balance": 500.0,
   "positions": {
     "1701806": {
@@ -94,36 +94,6 @@
       "low": 86,
       "high": 87,
       "opened_at": "2026-03-25T07:49:44.959640"
-    },
-    "1701783": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Atlanta be between 64-65\u00b0F on March 28?",
-      "outcome": "Yes",
-      "entry_price": 0.055,
-      "effective_entry_price": 0.055057,
-      "shares": 25.43,
-      "cost": 1.4,
-      "city": "atlanta",
-      "date_str": "2026-03-28",
-      "forecast_temp": 68,
-      "low": 64,
-      "high": 65,
-      "opened_at": "2026-03-25T10:42:01.655922"
-    },
-    "1701793": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Miami be between 80-81\u00b0F on March 28?",
-      "outcome": "Yes",
-      "entry_price": 0.1,
-      "effective_entry_price": 0.10018,
-      "shares": 13.66,
-      "cost": 1.37,
-      "city": "miami",
-      "date_str": "2026-03-28",
-      "forecast_temp": 82,
-      "low": 80,
-      "high": 81,
-      "opened_at": "2026-03-25T15:42:47.090879"
     },
     "1701745": {
       "strategy": "S2_lottery",
@@ -574,21 +544,6 @@
       "low": 66,
       "high": 67,
       "opened_at": "2026-03-28T01:28:14.701067"
-    },
-    "1701782": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Atlanta be between 62-63\u00b0F on March 28?",
-      "outcome": "No",
-      "entry_price": 0.9835,
-      "effective_entry_price": 0.983819,
-      "shares": 57.21,
-      "cost": 56.29,
-      "city": "atlanta",
-      "date_str": "2026-03-28",
-      "forecast_temp": 79,
-      "low": 62,
-      "high": 63,
-      "opened_at": "2026-03-28T01:28:16.607781"
     },
     "1714823": {
       "strategy": "S2_lottery",
@@ -6976,10 +6931,40 @@
       "entry_price": 0.0505,
       "size": 1.1,
       "opened_at": "2026-03-28T20:22:01.425349"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 64-65\u00b0F on March 28?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "exit_price": 0.0,
+      "pnl": -1.4,
+      "closed_at": "2026-03-28T21:23:42.964484"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 80-81\u00b0F on March 28?",
+      "outcome": "Yes",
+      "entry_price": 0.1,
+      "exit_price": 0.0,
+      "pnl": -1.37,
+      "closed_at": "2026-03-28T21:23:43.163281"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Atlanta be between 62-63\u00b0F on March 28?",
+      "outcome": "No",
+      "entry_price": 0.9835,
+      "exit_price": 1.0,
+      "pnl": 0.93,
+      "closed_at": "2026-03-28T21:23:46.620432"
     }
   ],
   "total_trades": 355,
-  "wins": 60,
-  "losses": 250,
+  "wins": 61,
+  "losses": 252,
   "peak_balance": 500.0
 }
