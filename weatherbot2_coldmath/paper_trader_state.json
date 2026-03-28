@@ -5,21 +5,6 @@
   "s3_balance": 296.65,
   "starting_balance": 500.0,
   "positions": {
-    "1690104": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Seattle be between 60-61\u00b0F on March 27?",
-      "outcome": "Yes",
-      "entry_price": 0.055,
-      "effective_entry_price": 0.055057,
-      "shares": 18.16,
-      "cost": 1.0,
-      "city": "seattle",
-      "date_str": "2026-03-27",
-      "forecast_temp": 56,
-      "low": 60,
-      "high": 61,
-      "opened_at": "2026-03-24T09:50:27.046411"
-    },
     "1701806": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Chicago be between 54-55\u00b0F on March 28?",
@@ -6914,10 +6899,20 @@
       "exit_price": 0.0,
       "pnl": -1.06,
       "closed_at": "2026-03-28T09:31:22.344075"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 60-61\u00b0F on March 27?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-28T10:25:36.278469"
     }
   ],
   "total_trades": 352,
   "wins": 60,
-  "losses": 248,
+  "losses": 249,
   "peak_balance": 500.0
 }
