@@ -1,8 +1,8 @@
 {
-  "balance": 390.45,
+  "balance": 212.7,
   "s1_balance": 0.0,
-  "s2_balance": 36.58,
-  "s3_balance": 353.87,
+  "s2_balance": 35.48,
+  "s3_balance": 177.22,
   "starting_balance": 500.0,
   "positions": {
     "1701806": {
@@ -634,6 +634,36 @@
       "low": 62,
       "high": 63,
       "opened_at": "2026-03-28T20:22:01.425341"
+    },
+    "1741239": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 56-57\u00b0F on March 31?",
+      "outcome": "No",
+      "entry_price": 0.9705,
+      "effective_entry_price": 0.971056,
+      "shares": 181.91,
+      "cost": 176.65,
+      "city": "new-york-city",
+      "date_str": "2026-03-31",
+      "forecast_temp": 73,
+      "low": 56,
+      "high": 57,
+      "opened_at": "2026-03-28T21:51:48.428942"
+    },
+    "1714855": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 70-71\u00b0F on March 29?",
+      "outcome": "Yes",
+      "entry_price": 0.08,
+      "effective_entry_price": 0.080118,
+      "shares": 13.79,
+      "cost": 1.1,
+      "city": "atlanta",
+      "date_str": "2026-03-29",
+      "forecast_temp": 67,
+      "low": 70,
+      "high": 71,
+      "opened_at": "2026-03-28T21:51:50.444429"
     }
   },
   "trades": [
@@ -6961,9 +6991,27 @@
       "exit_price": 1.0,
       "pnl": 0.93,
       "closed_at": "2026-03-28T21:23:46.620432"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 56-57\u00b0F on March 31?",
+      "outcome": "No",
+      "entry_price": 0.9705,
+      "size": 176.65,
+      "opened_at": "2026-03-28T21:51:48.429138"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 70-71\u00b0F on March 29?",
+      "outcome": "Yes",
+      "entry_price": 0.08,
+      "size": 1.1,
+      "opened_at": "2026-03-28T21:51:50.444435"
     }
   ],
-  "total_trades": 355,
+  "total_trades": 357,
   "wins": 61,
   "losses": 252,
   "peak_balance": 500.0
