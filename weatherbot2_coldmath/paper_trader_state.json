@@ -95,21 +95,6 @@
       "high": 87,
       "opened_at": "2026-03-25T07:49:44.959640"
     },
-    "1701745": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Seattle be 51\u00b0F or below on March 28?",
-      "outcome": "Yes",
-      "entry_price": 0.053,
-      "effective_entry_price": 0.053053,
-      "shares": 20.69,
-      "cost": 1.1,
-      "city": "seattle",
-      "date_str": "2026-03-28",
-      "forecast_temp": 56,
-      "low": -999,
-      "high": 51,
-      "opened_at": "2026-03-25T15:42:47.928565"
-    },
     "1714827": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in New York City be 47\u00b0F or below on March 29?",
@@ -244,21 +229,6 @@
       "low": 56,
       "high": 999,
       "opened_at": "2026-03-26T06:08:33.546226"
-    },
-    "1701784": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Atlanta be between 66-67\u00b0F on March 28?",
-      "outcome": "Yes",
-      "entry_price": 0.105,
-      "effective_entry_price": 0.105197,
-      "shares": 9.51,
-      "cost": 1.0,
-      "city": "atlanta",
-      "date_str": "2026-03-28",
-      "forecast_temp": 68,
-      "low": 66,
-      "high": 67,
-      "opened_at": "2026-03-26T07:40:46.977508"
     },
     "1701777": {
       "strategy": "S2_lottery",
@@ -7009,10 +6979,30 @@
       "entry_price": 0.08,
       "size": 1.1,
       "opened_at": "2026-03-28T21:51:50.444435"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be 51\u00b0F or below on March 28?",
+      "outcome": "Yes",
+      "entry_price": 0.053,
+      "exit_price": 0.0,
+      "pnl": -1.1,
+      "closed_at": "2026-03-28T22:21:48.676946"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 66-67\u00b0F on March 28?",
+      "outcome": "Yes",
+      "entry_price": 0.105,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-28T22:21:49.445350"
     }
   ],
   "total_trades": 357,
   "wins": 61,
-  "losses": 252,
+  "losses": 254,
   "peak_balance": 500.0
 }
