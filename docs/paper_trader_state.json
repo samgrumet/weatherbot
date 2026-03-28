@@ -1,7 +1,7 @@
 {
-  "balance": 335.74,
+  "balance": 334.33,
   "s1_balance": 0.0,
-  "s2_balance": 39.09,
+  "s2_balance": 37.68,
   "s3_balance": 296.65,
   "starting_balance": 500.0,
   "positions": {
@@ -34,21 +34,6 @@
       "low": 56,
       "high": 57,
       "opened_at": "2026-03-25T01:29:09.863603"
-    },
-    "1701792": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Miami be between 78-79\u00b0F on March 28?",
-      "outcome": "Yes",
-      "entry_price": 0.06,
-      "effective_entry_price": 0.060068,
-      "shares": 31.81,
-      "cost": 1.91,
-      "city": "miami",
-      "date_str": "2026-03-28",
-      "forecast_temp": 82,
-      "low": 78,
-      "high": 79,
-      "opened_at": "2026-03-25T01:29:10.219724"
     },
     "1701762": {
       "strategy": "S2_lottery",
@@ -664,6 +649,21 @@
       "low": 48,
       "high": 49,
       "opened_at": "2026-03-28T16:59:31.411794"
+    },
+    "1714866": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 82-83\u00b0F on March 29?",
+      "outcome": "Yes",
+      "entry_price": 0.0685,
+      "effective_entry_price": 0.068587,
+      "shares": 20.53,
+      "cost": 1.41,
+      "city": "miami",
+      "date_str": "2026-03-29",
+      "forecast_temp": 79,
+      "low": 82,
+      "high": 83,
+      "opened_at": "2026-03-28T19:25:33.446632"
     }
   },
   "trades": [
@@ -6933,10 +6933,29 @@
       "entry_price": 0.08,
       "size": 1.22,
       "opened_at": "2026-03-28T16:59:31.411800"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 78-79\u00b0F on March 28?",
+      "outcome": "Yes",
+      "entry_price": 0.06,
+      "exit_price": 0.0,
+      "pnl": -1.91,
+      "closed_at": "2026-03-28T19:25:30.062879"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 82-83\u00b0F on March 29?",
+      "outcome": "Yes",
+      "entry_price": 0.0685,
+      "size": 1.41,
+      "opened_at": "2026-03-28T19:25:33.446639"
     }
   ],
-  "total_trades": 353,
+  "total_trades": 354,
   "wins": 60,
-  "losses": 249,
+  "losses": 250,
   "peak_balance": 500.0
 }
