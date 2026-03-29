@@ -1,8 +1,8 @@
 {
-  "balance": 34.81,
+  "balance": 23.97,
   "s1_balance": 0.0,
   "s2_balance": 13.04,
-  "s3_balance": 21.77,
+  "s3_balance": 10.93,
   "starting_balance": 500.0,
   "positions": {
     "1714837": {
@@ -139,21 +139,6 @@
       "low": 54,
       "high": 55,
       "opened_at": "2026-03-27T04:29:48.388425"
-    },
-    "1714874": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be between 58-59\u00b0F on March 29?",
-      "outcome": "Yes",
-      "entry_price": 0.075,
-      "effective_entry_price": 0.075104,
-      "shares": 20.37,
-      "cost": 1.53,
-      "city": "chicago",
-      "date_str": "2026-03-29",
-      "forecast_temp": 61,
-      "low": 58,
-      "high": 59,
-      "opened_at": "2026-03-27T08:08:33.692994"
     },
     "1714824": {
       "strategy": "S2_lottery",
@@ -694,6 +679,21 @@
       "low": 76,
       "high": 999,
       "opened_at": "2026-03-29T20:24:02.579502"
+    },
+    "1757096": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be between 70-71\u00b0F on April 1?",
+      "outcome": "No",
+      "entry_price": 0.989,
+      "effective_entry_price": 0.989215,
+      "shares": 10.96,
+      "cost": 10.84,
+      "city": "dallas",
+      "date_str": "2026-04-01",
+      "forecast_temp": 87,
+      "low": 70,
+      "high": 71,
+      "opened_at": "2026-03-29T20:56:08.963422"
     }
   },
   "trades": [
@@ -7437,10 +7437,29 @@
       "entry_price": 0.145,
       "size": 1.81,
       "opened_at": "2026-03-29T20:24:02.579512"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 58-59\u00b0F on March 29?",
+      "outcome": "Yes",
+      "entry_price": 0.075,
+      "exit_price": 0.0,
+      "pnl": -1.53,
+      "closed_at": "2026-03-29T20:55:59.221168"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be between 70-71\u00b0F on April 1?",
+      "outcome": "No",
+      "entry_price": 0.989,
+      "size": 10.84,
+      "opened_at": "2026-03-29T20:56:08.963430"
     }
   ],
-  "total_trades": 379,
+  "total_trades": 380,
   "wins": 61,
-  "losses": 272,
+  "losses": 273,
   "peak_balance": 500.0
 }
