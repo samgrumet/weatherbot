@@ -1,7 +1,7 @@
 {
-  "balance": 209.87,
+  "balance": 208.48,
   "s1_balance": 0.0,
-  "s2_balance": 32.65,
+  "s2_balance": 31.26,
   "s3_balance": 177.22,
   "starting_balance": 500.0,
   "positions": {
@@ -275,21 +275,6 @@
       "high": 47,
       "opened_at": "2026-03-26T16:55:18.029970"
     },
-    "1701801": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be between 44-45\u00b0F on March 28?",
-      "outcome": "Yes",
-      "entry_price": 0.055,
-      "effective_entry_price": 0.055057,
-      "shares": 18.16,
-      "cost": 1.0,
-      "city": "chicago",
-      "date_str": "2026-03-28",
-      "forecast_temp": 49,
-      "low": 44,
-      "high": 45,
-      "opened_at": "2026-03-26T19:00:09.236954"
-    },
     "1714856": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Atlanta be between 72-73\u00b0F on March 29?",
@@ -530,21 +515,6 @@
       "high": 51,
       "opened_at": "2026-03-28T06:50:57.047178"
     },
-    "1701746": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Seattle be between 52-53\u00b0F on March 28?",
-      "outcome": "Yes",
-      "entry_price": 0.095,
-      "effective_entry_price": 0.095163,
-      "shares": 22.8,
-      "cost": 2.17,
-      "city": "seattle",
-      "date_str": "2026-03-28",
-      "forecast_temp": 54,
-      "low": 52,
-      "high": 53,
-      "opened_at": "2026-03-28T08:31:17.820245"
-    },
     "1714819": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Seattle be between 42-43\u00b0F on March 29?",
@@ -664,6 +634,21 @@
       "low": 76,
       "high": 77,
       "opened_at": "2026-03-28T23:24:29.368476"
+    },
+    "1757102": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 76-77\u00b0F on April 1?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "effective_entry_price": 0.085132,
+      "shares": 16.33,
+      "cost": 1.39,
+      "city": "dallas",
+      "date_str": "2026-04-01",
+      "forecast_temp": 79,
+      "low": 76,
+      "high": 77,
+      "opened_at": "2026-03-29T01:50:29.964300"
     }
   },
   "trades": [
@@ -7047,10 +7032,39 @@
       "entry_price": 0.075,
       "size": 1.63,
       "opened_at": "2026-03-28T23:24:29.368485"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 44-45\u00b0F on March 28?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-29T01:50:25.625552"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 52-53\u00b0F on March 28?",
+      "outcome": "Yes",
+      "entry_price": 0.095,
+      "exit_price": 0.0,
+      "pnl": -2.17,
+      "closed_at": "2026-03-29T01:50:26.635538"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 76-77\u00b0F on April 1?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "size": 1.39,
+      "opened_at": "2026-03-29T01:50:29.964308"
     }
   ],
-  "total_trades": 359,
+  "total_trades": 360,
   "wins": 61,
-  "losses": 254,
+  "losses": 256,
   "peak_balance": 500.0
 }
