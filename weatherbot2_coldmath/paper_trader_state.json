@@ -1,7 +1,7 @@
 {
-  "balance": 23.97,
+  "balance": 22.97,
   "s1_balance": 0.0,
-  "s2_balance": 13.04,
+  "s2_balance": 12.04,
   "s3_balance": 10.93,
   "starting_balance": 500.0,
   "positions": {
@@ -275,21 +275,6 @@
       "high": 43,
       "opened_at": "2026-03-28T08:31:17.882578"
     },
-    "1714828": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in New York City be between 48-49\u00b0F on March 29?",
-      "outcome": "Yes",
-      "entry_price": 0.08,
-      "effective_entry_price": 0.080118,
-      "shares": 15.2,
-      "cost": 1.22,
-      "city": "new-york-city",
-      "date_str": "2026-03-29",
-      "forecast_temp": 52,
-      "low": 48,
-      "high": 49,
-      "opened_at": "2026-03-28T16:59:31.411794"
-    },
     "1714866": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Miami be between 82-83\u00b0F on March 29?",
@@ -364,21 +349,6 @@
       "low": 48,
       "high": 49,
       "opened_at": "2026-03-28T22:54:46.227724"
-    },
-    "1714863": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Miami be between 76-77\u00b0F on March 29?",
-      "outcome": "Yes",
-      "entry_price": 0.075,
-      "effective_entry_price": 0.075104,
-      "shares": 21.7,
-      "cost": 1.63,
-      "city": "miami",
-      "date_str": "2026-03-29",
-      "forecast_temp": 79,
-      "low": 76,
-      "high": 77,
-      "opened_at": "2026-03-28T23:24:29.368476"
     },
     "1757102": {
       "strategy": "S2_lottery",
@@ -694,6 +664,21 @@
       "low": 70,
       "high": 71,
       "opened_at": "2026-03-29T20:56:08.963422"
+    },
+    "1779498": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 62-63\u00b0F on March 30?",
+      "outcome": "Yes",
+      "entry_price": 0.07,
+      "effective_entry_price": 0.070091,
+      "shares": 14.27,
+      "cost": 1.0,
+      "city": "new-york-city",
+      "date_str": "2026-03-30",
+      "forecast_temp": 64,
+      "low": 62,
+      "high": 63,
+      "opened_at": "2026-03-29T21:27:21.026886"
     }
   },
   "trades": [
@@ -7456,10 +7441,39 @@
       "entry_price": 0.989,
       "size": 10.84,
       "opened_at": "2026-03-29T20:56:08.963430"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 48-49\u00b0F on March 29?",
+      "outcome": "Yes",
+      "entry_price": 0.08,
+      "exit_price": 0.0,
+      "pnl": -1.22,
+      "closed_at": "2026-03-29T21:27:18.369854"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 76-77\u00b0F on March 29?",
+      "outcome": "Yes",
+      "entry_price": 0.075,
+      "exit_price": 0.0,
+      "pnl": -1.63,
+      "closed_at": "2026-03-29T21:27:18.759963"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 62-63\u00b0F on March 30?",
+      "outcome": "Yes",
+      "entry_price": 0.07,
+      "size": 1.0,
+      "opened_at": "2026-03-29T21:27:21.026893"
     }
   ],
-  "total_trades": 380,
+  "total_trades": 381,
   "wins": 61,
-  "losses": 273,
+  "losses": 275,
   "peak_balance": 500.0
 }
