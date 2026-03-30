@@ -1,8 +1,8 @@
 {
-  "balance": 32.93,
+  "balance": 46.53,
   "s1_balance": 0.0,
-  "s2_balance": 19.94,
-  "s3_balance": 12.99,
+  "s2_balance": 17.94,
+  "s3_balance": 28.59,
   "starting_balance": 500.0,
   "positions": {
     "1741244": {
@@ -139,21 +139,6 @@
       "low": 72,
       "high": 73,
       "opened_at": "2026-03-29T18:32:18.643267"
-    },
-    "1779536": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be between 58-59\u00b0F on March 30?",
-      "outcome": "No",
-      "entry_price": 0.98,
-      "effective_entry_price": 0.980384,
-      "shares": 44.18,
-      "cost": 43.32,
-      "city": "chicago",
-      "date_str": "2026-03-30",
-      "forecast_temp": 75,
-      "low": 58,
-      "high": 59,
-      "opened_at": "2026-03-29T18:32:18.643296"
     },
     "1779506": {
       "strategy": "S2_lottery",
@@ -694,6 +679,51 @@
       "low": 56,
       "high": 57,
       "opened_at": "2026-03-30T14:47:42.946078"
+    },
+    "1780278": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 46-47\u00b0F on April 2?",
+      "outcome": "No",
+      "entry_price": 0.9895,
+      "effective_entry_price": 0.989706,
+      "shares": 28.88,
+      "cost": 28.59,
+      "city": "chicago",
+      "date_str": "2026-04-02",
+      "forecast_temp": 66,
+      "low": 46,
+      "high": 47,
+      "opened_at": "2026-03-30T18:12:06.550026"
+    },
+    "1757145": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 84-85\u00b0F on April 1?",
+      "outcome": "Yes",
+      "entry_price": 0.0545,
+      "effective_entry_price": 0.054556,
+      "shares": 18.33,
+      "cost": 1.0,
+      "city": "miami",
+      "date_str": "2026-04-01",
+      "forecast_temp": 80,
+      "low": 84,
+      "high": 85,
+      "opened_at": "2026-03-30T18:12:06.812616"
+    },
+    "1780261": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 76-77\u00b0F on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "effective_entry_price": 0.085132,
+      "shares": 11.75,
+      "cost": 1.0,
+      "city": "miami",
+      "date_str": "2026-04-02",
+      "forecast_temp": 80,
+      "low": 76,
+      "high": 77,
+      "opened_at": "2026-03-30T18:12:06.862855"
     }
   },
   "trades": [
@@ -7931,10 +7961,47 @@
       "entry_price": 0.0645,
       "size": 1.0,
       "opened_at": "2026-03-30T14:47:42.946084"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 58-59\u00b0F on March 30?",
+      "outcome": "No",
+      "entry_price": 0.98,
+      "exit_price": 1.0,
+      "pnl": 0.87,
+      "closed_at": "2026-03-30T18:12:00.570318"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 46-47\u00b0F on April 2?",
+      "outcome": "No",
+      "entry_price": 0.9895,
+      "size": 28.59,
+      "opened_at": "2026-03-30T18:12:06.550033"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 84-85\u00b0F on April 1?",
+      "outcome": "Yes",
+      "entry_price": 0.0545,
+      "size": 1.0,
+      "opened_at": "2026-03-30T18:12:06.812623"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 76-77\u00b0F on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "size": 1.0,
+      "opened_at": "2026-03-30T18:12:06.862861"
     }
   ],
-  "total_trades": 405,
-  "wins": 64,
+  "total_trades": 408,
+  "wins": 65,
   "losses": 295,
   "peak_balance": 500.0
 }
