@@ -1,7 +1,7 @@
 {
-  "balance": 38.06,
+  "balance": 37.06,
   "s1_balance": 0.0,
-  "s2_balance": 32.59,
+  "s2_balance": 31.59,
   "s3_balance": 5.47,
   "starting_balance": 500.0,
   "positions": {
@@ -754,6 +754,21 @@
       "low": 48,
       "high": 49,
       "opened_at": "2026-03-30T04:40:53.966054"
+    },
+    "1779899": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 70-71\u00b0F on April 1?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "effective_entry_price": 0.055057,
+      "shares": 18.16,
+      "cost": 1.0,
+      "city": "new-york-city",
+      "date_str": "2026-04-01",
+      "forecast_temp": 75,
+      "low": 70,
+      "high": 71,
+      "opened_at": "2026-03-30T06:26:48.224640"
     }
   },
   "trades": [
@@ -7685,9 +7700,18 @@
       "entry_price": 0.11,
       "size": 1.0,
       "opened_at": "2026-03-30T04:40:53.966061"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 70-71\u00b0F on April 1?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "size": 1.0,
+      "opened_at": "2026-03-30T06:26:48.224648"
     }
   ],
-  "total_trades": 391,
+  "total_trades": 392,
   "wins": 63,
   "losses": 278,
   "peak_balance": 500.0
