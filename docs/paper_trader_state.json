@@ -1,8 +1,8 @@
 {
-  "balance": 52.08,
+  "balance": 40.46,
   "s1_balance": 0.0,
-  "s2_balance": 41.15,
-  "s3_balance": 10.93,
+  "s2_balance": 34.99,
+  "s3_balance": 5.47,
   "starting_balance": 500.0,
   "positions": {
     "1714837": {
@@ -649,6 +649,96 @@
       "low": 46,
       "high": 47,
       "opened_at": "2026-03-29T23:33:17.973808"
+    },
+    "1780235": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 78\u00b0F or higher on April 2?",
+      "outcome": "No",
+      "entry_price": 0.959,
+      "effective_entry_price": 0.959754,
+      "shares": 5.69,
+      "cost": 5.46,
+      "city": "new-york-city",
+      "date_str": "2026-04-02",
+      "forecast_temp": 60,
+      "low": 78,
+      "high": 999,
+      "opened_at": "2026-03-30T01:52:37.962551"
+    },
+    "1780277": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 44-45\u00b0F on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.09,
+      "effective_entry_price": 0.090147,
+      "shares": 18.29,
+      "cost": 1.65,
+      "city": "chicago",
+      "date_str": "2026-04-02",
+      "forecast_temp": 47,
+      "low": 44,
+      "high": 45,
+      "opened_at": "2026-03-30T01:52:38.252189"
+    },
+    "1780264": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 82-83\u00b0F on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.13,
+      "effective_entry_price": 0.130294,
+      "shares": 9.41,
+      "cost": 1.23,
+      "city": "miami",
+      "date_str": "2026-04-02",
+      "forecast_temp": 81,
+      "low": 82,
+      "high": 83,
+      "opened_at": "2026-03-30T01:52:38.655642"
+    },
+    "1780265": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 84-85\u00b0F on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "effective_entry_price": 0.085132,
+      "shares": 12.82,
+      "cost": 1.09,
+      "city": "miami",
+      "date_str": "2026-04-02",
+      "forecast_temp": 81,
+      "low": 84,
+      "high": 85,
+      "opened_at": "2026-03-30T01:52:38.655662"
+    },
+    "1773976": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 46-47\u00b0F on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.05,
+      "effective_entry_price": 0.050048,
+      "shares": 21.96,
+      "cost": 1.1,
+      "city": "seattle",
+      "date_str": "2026-04-02",
+      "forecast_temp": 51,
+      "low": 46,
+      "high": 47,
+      "opened_at": "2026-03-30T01:52:39.514955"
+    },
+    "1780256": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 86-87\u00b0F on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.08,
+      "effective_entry_price": 0.080118,
+      "shares": 13.6,
+      "cost": 1.09,
+      "city": "atlanta",
+      "date_str": "2026-04-02",
+      "forecast_temp": 83,
+      "low": 86,
+      "high": 87,
+      "opened_at": "2026-03-30T01:52:39.921584"
     }
   },
   "trades": [
@@ -7498,9 +7588,63 @@
       "entry_price": 0.075,
       "size": 1.39,
       "opened_at": "2026-03-29T23:33:17.973815"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 78\u00b0F or higher on April 2?",
+      "outcome": "No",
+      "entry_price": 0.959,
+      "size": 5.46,
+      "opened_at": "2026-03-30T01:52:37.962558"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 44-45\u00b0F on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.09,
+      "size": 1.65,
+      "opened_at": "2026-03-30T01:52:38.252195"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 82-83\u00b0F on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.13,
+      "size": 1.23,
+      "opened_at": "2026-03-30T01:52:38.655648"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 84-85\u00b0F on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "size": 1.09,
+      "opened_at": "2026-03-30T01:52:38.655665"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 46-47\u00b0F on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.05,
+      "size": 1.1,
+      "opened_at": "2026-03-30T01:52:39.514960"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 86-87\u00b0F on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.08,
+      "size": 1.09,
+      "opened_at": "2026-03-30T01:52:39.921591"
     }
   ],
-  "total_trades": 383,
+  "total_trades": 389,
   "wins": 63,
   "losses": 277,
   "peak_balance": 500.0
