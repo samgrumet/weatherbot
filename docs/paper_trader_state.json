@@ -1,7 +1,7 @@
 {
-  "balance": 35.93,
+  "balance": 34.93,
   "s1_balance": 0.0,
-  "s2_balance": 22.94,
+  "s2_balance": 21.94,
   "s3_balance": 12.99,
   "starting_balance": 500.0,
   "positions": {
@@ -649,6 +649,21 @@
       "low": 88,
       "high": 999,
       "opened_at": "2026-03-30T10:57:06.654088"
+    },
+    "1773983": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be 58\u00b0F or higher on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.0545,
+      "effective_entry_price": 0.054556,
+      "shares": 18.33,
+      "cost": 1.0,
+      "city": "seattle",
+      "date_str": "2026-04-02",
+      "forecast_temp": 53,
+      "low": 58,
+      "high": 999,
+      "opened_at": "2026-03-30T13:03:25.311537"
     }
   },
   "trades": [
@@ -7859,9 +7874,18 @@
       "entry_price": 0.075,
       "size": 1.0,
       "opened_at": "2026-03-30T10:57:06.654096"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be 58\u00b0F or higher on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.0545,
+      "size": 1.0,
+      "opened_at": "2026-03-30T13:03:25.311544"
     }
   ],
-  "total_trades": 402,
+  "total_trades": 403,
   "wins": 64,
   "losses": 295,
   "peak_balance": 500.0
