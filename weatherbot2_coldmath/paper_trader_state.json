@@ -1,8 +1,8 @@
 {
-  "balance": 12.46,
+  "balance": 101.09,
   "s1_balance": 0.0,
-  "s2_balance": 8.94,
-  "s3_balance": 3.52,
+  "s2_balance": 7.94,
+  "s3_balance": 93.15,
   "starting_balance": 500.0,
   "positions": {
     "1741244": {
@@ -19,21 +19,6 @@
       "low": 66,
       "high": 67,
       "opened_at": "2026-03-28T01:28:14.406924"
-    },
-    "1741239": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in New York City be between 56-57\u00b0F on March 31?",
-      "outcome": "No",
-      "entry_price": 0.9705,
-      "effective_entry_price": 0.971056,
-      "shares": 181.91,
-      "cost": 176.65,
-      "city": "new-york-city",
-      "date_str": "2026-03-31",
-      "forecast_temp": 73,
-      "low": 56,
-      "high": 57,
-      "opened_at": "2026-03-28T21:51:48.428942"
     },
     "1757102": {
       "strategy": "S2_lottery",
@@ -170,21 +155,6 @@
       "high": 73,
       "opened_at": "2026-03-29T19:54:56.894989"
     },
-    "1779530": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Miami be between 82-83\u00b0F on March 30?",
-      "outcome": "Yes",
-      "entry_price": 0.085,
-      "effective_entry_price": 0.085132,
-      "shares": 11.75,
-      "cost": 1.0,
-      "city": "miami",
-      "date_str": "2026-03-30",
-      "forecast_temp": 79,
-      "low": 82,
-      "high": 83,
-      "opened_at": "2026-03-29T19:54:57.356425"
-    },
     "1779920": {
       "strategy": "S3_high_conviction",
       "question": "Will the highest temperature in Chicago be 33\u00b0F or below on April 1?",
@@ -214,21 +184,6 @@
       "low": 88,
       "high": 89,
       "opened_at": "2026-03-29T20:24:02.030893"
-    },
-    "1779523": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Atlanta be 76\u00b0F or higher on March 30?",
-      "outcome": "Yes",
-      "entry_price": 0.145,
-      "effective_entry_price": 0.14536,
-      "shares": 12.46,
-      "cost": 1.81,
-      "city": "atlanta",
-      "date_str": "2026-03-30",
-      "forecast_temp": 74,
-      "low": 76,
-      "high": 999,
-      "opened_at": "2026-03-29T20:24:02.579502"
     },
     "1757096": {
       "strategy": "S3_high_conviction",
@@ -799,6 +754,36 @@
       "low": 88,
       "high": 89,
       "opened_at": "2026-03-31T06:15:34.420422"
+    },
+    "1780809": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 44-45\u00b0F on April 3?",
+      "outcome": "No",
+      "entry_price": 0.9895,
+      "effective_entry_price": 0.989706,
+      "shares": 93.25,
+      "cost": 92.29,
+      "city": "chicago",
+      "date_str": "2026-04-03",
+      "forecast_temp": 61,
+      "low": 44,
+      "high": 45,
+      "opened_at": "2026-03-31T07:49:37.949937"
+    },
+    "1779913": {
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 78-79\u00b0F on April 1?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "effective_entry_price": 0.085132,
+      "shares": 11.75,
+      "cost": 1.0,
+      "city": "atlanta",
+      "date_str": "2026-04-01",
+      "forecast_temp": 82,
+      "low": 78,
+      "high": 79,
+      "opened_at": "2026-03-31T07:49:40.545359"
     }
   },
   "trades": [
@@ -8251,10 +8236,58 @@
       "entry_price": 0.105,
       "size": 1.0,
       "opened_at": "2026-03-31T06:15:34.420428"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 56-57\u00b0F on March 31?",
+      "outcome": "No",
+      "entry_price": 0.9705,
+      "exit_price": 1.0,
+      "pnl": 5.27,
+      "closed_at": "2026-03-31T07:49:26.640511"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 82-83\u00b0F on March 30?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-03-31T07:49:28.427087"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be 76\u00b0F or higher on March 30?",
+      "outcome": "Yes",
+      "entry_price": 0.145,
+      "exit_price": 0.0,
+      "pnl": -1.81,
+      "closed_at": "2026-03-31T07:49:28.806709"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 44-45\u00b0F on April 3?",
+      "outcome": "No",
+      "entry_price": 0.9895,
+      "size": 92.29,
+      "opened_at": "2026-03-31T07:49:37.949944"
+    },
+    {
+      "type": "entry",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 78-79\u00b0F on April 1?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "size": 1.0,
+      "opened_at": "2026-03-31T07:49:40.545366"
     }
   ],
-  "total_trades": 420,
-  "wins": 65,
-  "losses": 302,
+  "total_trades": 422,
+  "wins": 66,
+  "losses": 304,
   "peak_balance": 500.0
 }
