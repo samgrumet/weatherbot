@@ -1,8 +1,8 @@
 {
-  "balance": 109.33,
+  "balance": 120.29,
   "s1_balance": 0.0,
   "s2_balance": 0.94,
-  "s3_balance": 108.39,
+  "s3_balance": 119.35,
   "starting_balance": 500.0,
   "positions": {
     "1757102": {
@@ -79,21 +79,6 @@
       "low": 72,
       "high": 73,
       "opened_at": "2026-03-29T19:54:56.894989"
-    },
-    "1757096": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Dallas be between 70-71\u00b0F on April 1?",
-      "outcome": "No",
-      "entry_price": 0.989,
-      "effective_entry_price": 0.989215,
-      "shares": 10.96,
-      "cost": 10.84,
-      "city": "dallas",
-      "date_str": "2026-04-01",
-      "forecast_temp": 87,
-      "low": 70,
-      "high": 71,
-      "opened_at": "2026-03-29T20:56:08.963422"
     },
     "1779892": {
       "strategy": "S2_lottery",
@@ -245,21 +230,6 @@
       "high": 71,
       "opened_at": "2026-03-30T06:26:48.224640"
     },
-    "1779898": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in New York City be 69\u00b0F or below on April 1?",
-      "outcome": "Yes",
-      "entry_price": 0.065,
-      "effective_entry_price": 0.065079,
-      "shares": 16.93,
-      "cost": 1.1,
-      "city": "new-york-city",
-      "date_str": "2026-04-01",
-      "forecast_temp": 74,
-      "low": -999,
-      "high": 69,
-      "opened_at": "2026-03-30T08:08:08.547830"
-    },
     "1779929": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Chicago be between 50-51\u00b0F on April 1?",
@@ -289,21 +259,6 @@
       "low": 40,
       "high": 41,
       "opened_at": "2026-03-30T08:08:09.167391"
-    },
-    "1779888": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Seattle be between 44-45\u00b0F on April 1?",
-      "outcome": "Yes",
-      "entry_price": 0.07,
-      "effective_entry_price": 0.070091,
-      "shares": 14.28,
-      "cost": 1.0,
-      "city": "seattle",
-      "date_str": "2026-04-01",
-      "forecast_temp": 48,
-      "low": 44,
-      "high": 45,
-      "opened_at": "2026-03-30T08:08:10.829725"
     },
     "1780274": {
       "strategy": "S3_high_conviction",
@@ -514,21 +469,6 @@
       "low": 40,
       "high": 41,
       "opened_at": "2026-03-30T22:28:42.575702"
-    },
-    "1779923": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be between 38-39\u00b0F on April 1?",
-      "outcome": "Yes",
-      "entry_price": 0.053,
-      "effective_entry_price": 0.053053,
-      "shares": 18.85,
-      "cost": 1.0,
-      "city": "chicago",
-      "date_str": "2026-04-01",
-      "forecast_temp": 43,
-      "low": 38,
-      "high": 39,
-      "opened_at": "2026-03-30T23:04:21.291834"
     },
     "1780768": {
       "strategy": "S2_lottery",
@@ -8503,10 +8443,50 @@
       "exit_price": 1.0,
       "pnl": 0.89,
       "closed_at": "2026-04-01T09:13:54.998315"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be between 70-71\u00b0F on April 1?",
+      "outcome": "No",
+      "entry_price": 0.989,
+      "exit_price": 1.0,
+      "pnl": 0.12,
+      "closed_at": "2026-04-01T10:33:18.245147"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be 69\u00b0F or below on April 1?",
+      "outcome": "Yes",
+      "entry_price": 0.065,
+      "exit_price": 0.0,
+      "pnl": -1.1,
+      "closed_at": "2026-04-01T10:33:19.161467"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 44-45\u00b0F on April 1?",
+      "outcome": "Yes",
+      "entry_price": 0.07,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-01T10:33:19.331565"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 38-39\u00b0F on April 1?",
+      "outcome": "Yes",
+      "entry_price": 0.053,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-01T10:33:20.439273"
     }
   ],
   "total_trades": 433,
-  "wins": 68,
-  "losses": 311,
+  "wins": 69,
+  "losses": 314,
   "peak_balance": 500.0
 }
