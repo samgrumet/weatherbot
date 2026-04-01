@@ -1,8 +1,8 @@
 {
-  "balance": 47.52,
+  "balance": 12.66,
   "s1_balance": 0.0,
   "s2_balance": 0.94,
-  "s3_balance": 46.58,
+  "s3_balance": 11.72,
   "starting_balance": 500.0,
   "positions": {
     "1757102": {
@@ -799,6 +799,36 @@
       "low": 58,
       "high": 59,
       "opened_at": "2026-04-01T01:57:01.655395"
+    },
+    "1781190": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 42-43\u00b0F on April 4?",
+      "outcome": "No",
+      "entry_price": 0.9885,
+      "effective_entry_price": 0.988725,
+      "shares": 23.56,
+      "cost": 23.29,
+      "city": "new-york-city",
+      "date_str": "2026-04-04",
+      "forecast_temp": 72,
+      "low": 42,
+      "high": 43,
+      "opened_at": "2026-04-01T04:46:24.381221"
+    },
+    "1780812": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 50-51\u00b0F on April 3?",
+      "outcome": "No",
+      "entry_price": 0.9805,
+      "effective_entry_price": 0.980875,
+      "shares": 11.79,
+      "cost": 11.57,
+      "city": "chicago",
+      "date_str": "2026-04-03",
+      "forecast_temp": 66,
+      "low": 50,
+      "high": 51,
+      "opened_at": "2026-04-01T04:46:24.829158"
     }
   },
   "trades": [
@@ -8441,9 +8471,27 @@
       "entry_price": 0.11,
       "size": 1.0,
       "opened_at": "2026-04-01T01:57:01.655405"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 42-43\u00b0F on April 4?",
+      "outcome": "No",
+      "entry_price": 0.9885,
+      "size": 23.29,
+      "opened_at": "2026-04-01T04:46:24.381229"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 50-51\u00b0F on April 3?",
+      "outcome": "No",
+      "entry_price": 0.9805,
+      "size": 11.57,
+      "opened_at": "2026-04-01T04:46:24.829166"
     }
   ],
-  "total_trades": 430,
+  "total_trades": 432,
   "wins": 66,
   "losses": 311,
   "peak_balance": 500.0
