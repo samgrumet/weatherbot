@@ -1,8 +1,8 @@
 {
-  "balance": 12.66,
+  "balance": 18.06,
   "s1_balance": 0.0,
   "s2_balance": 0.94,
-  "s3_balance": 11.72,
+  "s3_balance": 17.12,
   "starting_balance": 500.0,
   "positions": {
     "1757102": {
@@ -94,21 +94,6 @@
       "low": 72,
       "high": 73,
       "opened_at": "2026-03-29T19:54:56.894989"
-    },
-    "1779920": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be 33\u00b0F or below on April 1?",
-      "outcome": "No",
-      "entry_price": 0.965,
-      "effective_entry_price": 0.965652,
-      "shares": 22.52,
-      "cost": 21.75,
-      "city": "chicago",
-      "date_str": "2026-04-01",
-      "forecast_temp": 50,
-      "low": -999,
-      "high": 33,
-      "opened_at": "2026-03-29T20:24:01.433455"
     },
     "1757096": {
       "strategy": "S3_high_conviction",
@@ -829,6 +814,21 @@
       "low": 50,
       "high": 51,
       "opened_at": "2026-04-01T04:46:24.829158"
+    },
+    "1781191": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 44-45\u00b0F on April 4?",
+      "outcome": "No",
+      "entry_price": 0.9885,
+      "effective_entry_price": 0.988725,
+      "shares": 17.32,
+      "cost": 17.12,
+      "city": "new-york-city",
+      "date_str": "2026-04-04",
+      "forecast_temp": 71,
+      "low": 44,
+      "high": 45,
+      "opened_at": "2026-04-01T07:59:47.538532"
     }
   },
   "trades": [
@@ -8489,10 +8489,29 @@
       "entry_price": 0.9805,
       "size": 11.57,
       "opened_at": "2026-04-01T04:46:24.829166"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be 33\u00b0F or below on April 1?",
+      "outcome": "No",
+      "entry_price": 0.965,
+      "exit_price": 1.0,
+      "pnl": 0.77,
+      "closed_at": "2026-04-01T07:59:41.976584"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 44-45\u00b0F on April 4?",
+      "outcome": "No",
+      "entry_price": 0.9885,
+      "size": 17.12,
+      "opened_at": "2026-04-01T07:59:47.538539"
     }
   ],
-  "total_trades": 432,
-  "wins": 66,
+  "total_trades": 433,
+  "wins": 67,
   "losses": 311,
   "peak_balance": 500.0
 }
