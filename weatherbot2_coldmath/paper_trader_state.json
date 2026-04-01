@@ -1,25 +1,10 @@
 {
-  "balance": 60.7,
+  "balance": 30.22,
   "s1_balance": 0.0,
   "s2_balance": 0.94,
-  "s3_balance": 59.76,
+  "s3_balance": 29.28,
   "starting_balance": 500.0,
   "positions": {
-    "1757102": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Dallas be between 76-77\u00b0F on April 1?",
-      "outcome": "Yes",
-      "entry_price": 0.085,
-      "effective_entry_price": 0.085132,
-      "shares": 16.33,
-      "cost": 1.39,
-      "city": "dallas",
-      "date_str": "2026-04-01",
-      "forecast_temp": 79,
-      "low": 76,
-      "high": 77,
-      "opened_at": "2026-03-29T01:50:29.964300"
-    },
     "1757106": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Dallas be between 80-81\u00b0F on April 1?",
@@ -739,6 +724,21 @@
       "low": 48,
       "high": 49,
       "opened_at": "2026-04-01T17:27:27.844421"
+    },
+    "1781196": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 54-55\u00b0F on April 4?",
+      "outcome": "No",
+      "entry_price": 0.99,
+      "effective_entry_price": 0.990196,
+      "shares": 30.78,
+      "cost": 30.48,
+      "city": "new-york-city",
+      "date_str": "2026-04-04",
+      "forecast_temp": 71,
+      "low": 54,
+      "high": 55,
+      "opened_at": "2026-04-01T19:35:35.231708"
     }
   },
   "trades": [
@@ -8497,10 +8497,29 @@
       "entry_price": 0.9885,
       "size": 59.59,
       "opened_at": "2026-04-01T17:27:27.844427"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 76-77\u00b0F on April 1?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "exit_price": 0.0,
+      "pnl": -1.39,
+      "closed_at": "2026-04-01T19:35:28.156715"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 54-55\u00b0F on April 4?",
+      "outcome": "No",
+      "entry_price": 0.99,
+      "size": 30.48,
+      "opened_at": "2026-04-01T19:35:35.231715"
     }
   ],
-  "total_trades": 434,
+  "total_trades": 435,
   "wins": 69,
-  "losses": 316,
+  "losses": 317,
   "peak_balance": 500.0
 }
