@@ -1,8 +1,8 @@
 {
-  "balance": 21.94,
+  "balance": 11.11,
   "s1_balance": 0.0,
   "s2_balance": 0.03,
-  "s3_balance": 21.91,
+  "s3_balance": 11.08,
   "starting_balance": 500.0,
   "positions": {
     "1780235": {
@@ -709,6 +709,21 @@
       "low": -999,
       "high": 63,
       "opened_at": "2026-04-02T07:04:20.849642"
+    },
+    "1815024": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Atlanta be between 84-85\u00b0F on April 5?",
+      "outcome": "No",
+      "entry_price": 0.9885,
+      "effective_entry_price": 0.988725,
+      "shares": 10.96,
+      "cost": 10.83,
+      "city": "atlanta",
+      "date_str": "2026-04-05",
+      "forecast_temp": 69,
+      "low": 84,
+      "high": 85,
+      "opened_at": "2026-04-02T14:21:05.020580"
     }
   },
   "trades": [
@@ -8734,9 +8749,18 @@
       "exit_price": 0.0,
       "pnl": -1.0,
       "closed_at": "2026-04-02T10:45:16.982307"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Atlanta be between 84-85\u00b0F on April 5?",
+      "outcome": "No",
+      "entry_price": 0.9885,
+      "size": 10.83,
+      "opened_at": "2026-04-02T14:21:05.020588"
     }
   ],
-  "total_trades": 447,
+  "total_trades": 448,
   "wins": 71,
   "losses": 329,
   "peak_balance": 500.0
