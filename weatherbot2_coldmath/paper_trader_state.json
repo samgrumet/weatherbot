@@ -215,21 +215,6 @@
       "high": 47,
       "opened_at": "2026-03-30T18:12:06.550026"
     },
-    "1780261": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Miami be between 76-77\u00b0F on April 2?",
-      "outcome": "Yes",
-      "entry_price": 0.085,
-      "effective_entry_price": 0.085132,
-      "shares": 11.75,
-      "cost": 1.0,
-      "city": "miami",
-      "date_str": "2026-04-02",
-      "forecast_temp": 80,
-      "low": 76,
-      "high": 77,
-      "opened_at": "2026-03-30T18:12:06.862855"
-    },
     "1780233": {
       "strategy": "S3_high_conviction",
       "question": "Will the highest temperature in New York City be between 74-75\u00b0F on April 2?",
@@ -8753,10 +8738,20 @@
       "exit_price": 1.0,
       "pnl": 0.16,
       "closed_at": "2026-04-02T16:51:06.482199"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 76-77\u00b0F on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-02T17:44:09.315766"
     }
   ],
   "total_trades": 448,
   "wins": 72,
-  "losses": 329,
+  "losses": 330,
   "peak_balance": 500.0
 }
