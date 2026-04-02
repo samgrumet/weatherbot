@@ -1,8 +1,8 @@
 {
-  "balance": 24.26,
+  "balance": 51.02,
   "s1_balance": 0.0,
   "s2_balance": 0.03,
-  "s3_balance": 24.23,
+  "s3_balance": 50.99,
   "starting_balance": 500.0,
   "positions": {
     "1780235": {
@@ -19,21 +19,6 @@
       "low": 78,
       "high": 999,
       "opened_at": "2026-03-30T01:52:37.962551"
-    },
-    "1780277": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be between 44-45\u00b0F on April 2?",
-      "outcome": "Yes",
-      "entry_price": 0.09,
-      "effective_entry_price": 0.090147,
-      "shares": 18.29,
-      "cost": 1.65,
-      "city": "chicago",
-      "date_str": "2026-04-02",
-      "forecast_temp": 47,
-      "low": 44,
-      "high": 45,
-      "opened_at": "2026-03-30T01:52:38.252189"
     },
     "1780264": {
       "strategy": "S2_lottery",
@@ -124,21 +109,6 @@
       "low": 48,
       "high": 49,
       "opened_at": "2026-03-30T04:40:53.966054"
-    },
-    "1780275": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be between 40-41\u00b0F on April 2?",
-      "outcome": "No",
-      "entry_price": 0.97,
-      "effective_entry_price": 0.970565,
-      "shares": 26.76,
-      "cost": 25.97,
-      "city": "chicago",
-      "date_str": "2026-04-02",
-      "forecast_temp": 62,
-      "low": 40,
-      "high": 41,
-      "opened_at": "2026-03-30T08:08:09.167391"
     },
     "1780257": {
       "strategy": "S2_lottery",
@@ -8748,10 +8718,30 @@
       "exit_price": 0.0,
       "pnl": -1.0,
       "closed_at": "2026-04-02T17:44:09.315766"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 44-45\u00b0F on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.09,
+      "exit_price": 0.0,
+      "pnl": -1.65,
+      "closed_at": "2026-04-02T18:46:31.132409"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 40-41\u00b0F on April 2?",
+      "outcome": "No",
+      "entry_price": 0.97,
+      "exit_price": 1.0,
+      "pnl": 0.79,
+      "closed_at": "2026-04-02T18:46:32.115830"
     }
   ],
   "total_trades": 448,
-  "wins": 72,
-  "losses": 330,
+  "wins": 73,
+  "losses": 331,
   "peak_balance": 500.0
 }
