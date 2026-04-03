@@ -1,8 +1,8 @@
 {
-  "balance": 64.9,
+  "balance": 258.28,
   "s1_balance": 0.0,
   "s2_balance": 0.39,
-  "s3_balance": 64.51,
+  "s3_balance": 257.89,
   "starting_balance": 500.0,
   "positions": {
     "1773983": {
@@ -80,21 +80,6 @@
       "high": 61,
       "opened_at": "2026-03-31T02:25:18.417967"
     },
-    "1780815": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be between 56-57\u00b0F on April 3?",
-      "outcome": "Yes",
-      "entry_price": 0.065,
-      "effective_entry_price": 0.065079,
-      "shares": 15.37,
-      "cost": 1.0,
-      "city": "chicago",
-      "date_str": "2026-04-03",
-      "forecast_temp": 59,
-      "low": 56,
-      "high": 57,
-      "opened_at": "2026-03-31T04:57:22.417118"
-    },
     "1780780": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Dallas be between 88-89\u00b0F on April 3?",
@@ -109,21 +94,6 @@
       "low": 88,
       "high": 89,
       "opened_at": "2026-03-31T06:15:34.420422"
-    },
-    "1780809": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be between 44-45\u00b0F on April 3?",
-      "outcome": "No",
-      "entry_price": 0.9895,
-      "effective_entry_price": 0.989706,
-      "shares": 93.25,
-      "cost": 92.29,
-      "city": "chicago",
-      "date_str": "2026-04-03",
-      "forecast_temp": 61,
-      "low": 44,
-      "high": 45,
-      "opened_at": "2026-03-31T07:49:37.949937"
     },
     "1780794": {
       "strategy": "S2_lottery",
@@ -229,21 +199,6 @@
       "low": 44,
       "high": 45,
       "opened_at": "2026-04-01T07:59:47.538532"
-    },
-    "1780811": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be between 48-49\u00b0F on April 3?",
-      "outcome": "No",
-      "entry_price": 0.9885,
-      "effective_entry_price": 0.988725,
-      "shares": 60.27,
-      "cost": 59.59,
-      "city": "chicago",
-      "date_str": "2026-04-03",
-      "forecast_temp": 66,
-      "low": 48,
-      "high": 49,
-      "opened_at": "2026-04-01T17:27:27.844421"
     },
     "1781196": {
       "strategy": "S3_high_conviction",
@@ -559,21 +514,6 @@
       "low": 76,
       "high": 77,
       "opened_at": "2026-04-02T23:59:12.373282"
-    },
-    "1780814": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be between 54-55\u00b0F on April 3?",
-      "outcome": "No",
-      "entry_price": 0.9895,
-      "effective_entry_price": 0.989706,
-      "shares": 39.86,
-      "cost": 39.45,
-      "city": "chicago",
-      "date_str": "2026-04-03",
-      "forecast_temp": 70,
-      "low": 54,
-      "high": 55,
-      "opened_at": "2026-04-03T02:40:14.104829"
     }
   },
   "trades": [
@@ -8898,10 +8838,50 @@
       "exit_price": 1.0,
       "pnl": 0.09,
       "closed_at": "2026-04-03T07:42:55.203172"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 56-57\u00b0F on April 3?",
+      "outcome": "Yes",
+      "entry_price": 0.065,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-03T08:44:35.252450"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 44-45\u00b0F on April 3?",
+      "outcome": "No",
+      "entry_price": 0.9895,
+      "exit_price": 1.0,
+      "pnl": 0.96,
+      "closed_at": "2026-04-03T08:44:35.439796"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 48-49\u00b0F on April 3?",
+      "outcome": "No",
+      "entry_price": 0.9885,
+      "exit_price": 1.0,
+      "pnl": 0.68,
+      "closed_at": "2026-04-03T08:44:36.276279"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 54-55\u00b0F on April 3?",
+      "outcome": "No",
+      "entry_price": 0.9895,
+      "exit_price": 1.0,
+      "pnl": 0.41,
+      "closed_at": "2026-04-03T08:44:38.020824"
     }
   ],
   "total_trades": 458,
-  "wins": 79,
-  "losses": 341,
+  "wins": 82,
+  "losses": 342,
   "peak_balance": 500.0
 }
