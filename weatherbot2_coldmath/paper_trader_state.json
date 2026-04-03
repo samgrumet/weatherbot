@@ -65,21 +65,6 @@
       "high": 89,
       "opened_at": "2026-03-31T06:15:34.420422"
     },
-    "1780755": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Seattle be between 52-53\u00b0F on April 3?",
-      "outcome": "Yes",
-      "entry_price": 0.085,
-      "effective_entry_price": 0.085132,
-      "shares": 11.75,
-      "cost": 1.0,
-      "city": "seattle",
-      "date_str": "2026-04-03",
-      "forecast_temp": 56,
-      "low": 52,
-      "high": 53,
-      "opened_at": "2026-03-31T19:32:52.553865"
-    },
     "1781192": {
       "strategy": "S3_high_conviction",
       "question": "Will the highest temperature in New York City be between 46-47\u00b0F on April 4?",
@@ -9011,10 +8996,20 @@
       "entry_price": 0.105,
       "size": 1.0,
       "opened_at": "2026-04-03T23:01:43.125233"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 52-53\u00b0F on April 3?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-03T23:55:40.561437"
     }
   ],
   "total_trades": 465,
   "wins": 84,
-  "losses": 347,
+  "losses": 348,
   "peak_balance": 500.0
 }
