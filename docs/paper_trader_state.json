@@ -350,21 +350,6 @@
       "high": 999,
       "opened_at": "2026-04-02T20:29:01.528365"
     },
-    "1780792": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Atlanta be between 78-79\u00b0F on April 3?",
-      "outcome": "Yes",
-      "entry_price": 0.095,
-      "effective_entry_price": 0.095163,
-      "shares": 10.51,
-      "cost": 1.0,
-      "city": "atlanta",
-      "date_str": "2026-04-03",
-      "forecast_temp": 81,
-      "low": 78,
-      "high": 79,
-      "opened_at": "2026-04-02T20:29:02.554875"
-    },
     "1781220": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Atlanta be 84\u00b0F or higher on April 4?",
@@ -8853,10 +8838,20 @@
       "exit_price": 0.0,
       "pnl": -1.0,
       "closed_at": "2026-04-03T20:36:30.157231"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Atlanta be between 78-79\u00b0F on April 3?",
+      "outcome": "Yes",
+      "entry_price": 0.095,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-03T21:27:09.971329"
     }
   ],
   "total_trades": 458,
   "wins": 83,
-  "losses": 346,
+  "losses": 347,
   "peak_balance": 500.0
 }
