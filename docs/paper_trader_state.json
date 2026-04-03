@@ -5,36 +5,6 @@
   "s3_balance": 269.69,
   "starting_balance": 500.0,
   "positions": {
-    "1773983": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Seattle be 58\u00b0F or higher on April 2?",
-      "outcome": "Yes",
-      "entry_price": 0.0545,
-      "effective_entry_price": 0.054556,
-      "shares": 18.33,
-      "cost": 1.0,
-      "city": "seattle",
-      "date_str": "2026-04-02",
-      "forecast_temp": 53,
-      "low": 58,
-      "high": 999,
-      "opened_at": "2026-03-30T13:03:25.311537"
-    },
-    "1773982": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Seattle be between 56-57\u00b0F on April 2?",
-      "outcome": "Yes",
-      "entry_price": 0.0645,
-      "effective_entry_price": 0.064578,
-      "shares": 15.49,
-      "cost": 1.0,
-      "city": "seattle",
-      "date_str": "2026-04-02",
-      "forecast_temp": 53,
-      "low": 56,
-      "high": 57,
-      "opened_at": "2026-03-30T14:47:42.946078"
-    },
     "1780768": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in New York City be between 70-71\u00b0F on April 3?",
@@ -8873,10 +8843,30 @@
       "exit_price": 1.0,
       "pnl": 0.23,
       "closed_at": "2026-04-03T11:33:11.284676"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be 58\u00b0F or higher on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.0545,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-03T12:46:30.746799"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 56-57\u00b0F on April 2?",
+      "outcome": "Yes",
+      "entry_price": 0.0645,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-03T12:46:30.918304"
     }
   ],
   "total_trades": 458,
   "wins": 83,
-  "losses": 342,
+  "losses": 344,
   "peak_balance": 500.0
 }
