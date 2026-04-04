@@ -1,8 +1,8 @@
 {
-  "balance": 68.81,
+  "balance": 115.98,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 68.54,
+  "s3_balance": 115.71,
   "starting_balance": 500.0,
   "positions": {
     "1780768": {
@@ -64,21 +64,6 @@
       "low": 88,
       "high": 89,
       "opened_at": "2026-03-31T06:15:34.420422"
-    },
-    "1781192": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in New York City be between 46-47\u00b0F on April 4?",
-      "outcome": "No",
-      "entry_price": 0.987,
-      "effective_entry_price": 0.987253,
-      "shares": 47.18,
-      "cost": 46.57,
-      "city": "new-york-city",
-      "date_str": "2026-04-04",
-      "forecast_temp": 72,
-      "low": 46,
-      "high": 47,
-      "opened_at": "2026-04-01T01:57:01.272151"
     },
     "1781234": {
       "strategy": "S2_lottery",
@@ -259,21 +244,6 @@
       "low": 84,
       "high": 85,
       "opened_at": "2026-04-02T14:21:05.020580"
-    },
-    "1780767": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in New York City be between 68-69\u00b0F on April 3?",
-      "outcome": "Yes",
-      "entry_price": 0.078,
-      "effective_entry_price": 0.078112,
-      "shares": 12.8,
-      "cost": 1.0,
-      "city": "new-york-city",
-      "date_str": "2026-04-03",
-      "forecast_temp": 66,
-      "low": 68,
-      "high": 69,
-      "opened_at": "2026-04-02T20:28:59.883894"
     },
     "1815043": {
       "strategy": "S2_lottery",
@@ -9049,10 +9019,30 @@
       "entry_price": 0.9885,
       "size": 67.96,
       "opened_at": "2026-04-04T04:11:19.405590"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 46-47\u00b0F on April 4?",
+      "outcome": "No",
+      "entry_price": 0.987,
+      "exit_price": 1.0,
+      "pnl": 0.6,
+      "closed_at": "2026-04-04T07:44:33.134829"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in New York City be between 68-69\u00b0F on April 3?",
+      "outcome": "Yes",
+      "entry_price": 0.078,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-04T07:44:34.180219"
     }
   ],
   "total_trades": 467,
-  "wins": 84,
-  "losses": 349,
+  "wins": 85,
+  "losses": 350,
   "peak_balance": 500.0
 }
