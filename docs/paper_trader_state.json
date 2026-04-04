@@ -5,21 +5,6 @@
   "s3_balance": 115.71,
   "starting_balance": 500.0,
   "positions": {
-    "1780781": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Dallas be between 90-91\u00b0F on April 3?",
-      "outcome": "Yes",
-      "entry_price": 0.0535,
-      "effective_entry_price": 0.053554,
-      "shares": 18.67,
-      "cost": 1.0,
-      "city": "dallas",
-      "date_str": "2026-04-03",
-      "forecast_temp": 86,
-      "low": 90,
-      "high": 91,
-      "opened_at": "2026-03-31T02:25:17.942191"
-    },
     "1780759": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Seattle be between 60-61\u00b0F on April 3?",
@@ -34,21 +19,6 @@
       "low": 60,
       "high": 61,
       "opened_at": "2026-03-31T02:25:18.417967"
-    },
-    "1780780": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Dallas be between 88-89\u00b0F on April 3?",
-      "outcome": "Yes",
-      "entry_price": 0.105,
-      "effective_entry_price": 0.105197,
-      "shares": 9.51,
-      "cost": 1.0,
-      "city": "dallas",
-      "date_str": "2026-04-03",
-      "forecast_temp": 86,
-      "low": 88,
-      "high": 89,
-      "opened_at": "2026-03-31T06:15:34.420422"
     },
     "1781234": {
       "strategy": "S2_lottery",
@@ -274,21 +244,6 @@
       "low": 84,
       "high": 999,
       "opened_at": "2026-04-02T20:29:02.603902"
-    },
-    "1780778": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Dallas be between 84-85\u00b0F on April 3?",
-      "outcome": "Yes",
-      "entry_price": 0.13,
-      "effective_entry_price": 0.130294,
-      "shares": 7.67,
-      "cost": 1.0,
-      "city": "dallas",
-      "date_str": "2026-04-03",
-      "forecast_temp": 83,
-      "low": 84,
-      "high": 85,
-      "opened_at": "2026-04-02T21:03:08.712376"
     },
     "1781181": {
       "strategy": "S2_lottery",
@@ -9034,10 +8989,40 @@
       "exit_price": 0.0,
       "pnl": -1.0,
       "closed_at": "2026-04-04T08:33:28.675889"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 90-91\u00b0F on April 3?",
+      "outcome": "Yes",
+      "entry_price": 0.0535,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-04T09:30:54.826592"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 88-89\u00b0F on April 3?",
+      "outcome": "Yes",
+      "entry_price": 0.105,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-04T09:30:55.051395"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 84-85\u00b0F on April 3?",
+      "outcome": "Yes",
+      "entry_price": 0.13,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-04T09:30:56.341413"
     }
   ],
   "total_trades": 467,
   "wins": 85,
-  "losses": 351,
+  "losses": 354,
   "peak_balance": 500.0
 }
