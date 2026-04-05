@@ -5,21 +5,6 @@
   "s3_balance": 49.76,
   "starting_balance": 500.0,
   "positions": {
-    "1781234": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be between 58-59\u00b0F on April 4?",
-      "outcome": "Yes",
-      "entry_price": 0.11,
-      "effective_entry_price": 0.110215,
-      "shares": 9.07,
-      "cost": 1.0,
-      "city": "chicago",
-      "date_str": "2026-04-04",
-      "forecast_temp": 60,
-      "low": 58,
-      "high": 59,
-      "opened_at": "2026-04-01T01:57:01.655395"
-    },
     "1781229": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Miami be between 84-85\u00b0F on April 4?",
@@ -124,21 +109,6 @@
       "low": 74,
       "high": 999,
       "opened_at": "2026-04-02T20:29:01.528365"
-    },
-    "1781204": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Dallas be between 76-77\u00b0F on April 4?",
-      "outcome": "Yes",
-      "entry_price": 0.07,
-      "effective_entry_price": 0.070091,
-      "shares": 14.27,
-      "cost": 1.0,
-      "city": "dallas",
-      "date_str": "2026-04-04",
-      "forecast_temp": 73,
-      "low": 76,
-      "high": 77,
-      "opened_at": "2026-04-02T21:58:33.936032"
     },
     "1815048": {
       "strategy": "S2_lottery",
@@ -9012,10 +8982,30 @@
       "exit_price": 0.0,
       "pnl": -1.0,
       "closed_at": "2026-04-05T08:36:05.639309"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 58-59\u00b0F on April 4?",
+      "outcome": "Yes",
+      "entry_price": 0.11,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-05T09:32:56.668070"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be between 76-77\u00b0F on April 4?",
+      "outcome": "Yes",
+      "entry_price": 0.07,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-05T09:32:57.424553"
     }
   ],
   "total_trades": 469,
   "wins": 89,
-  "losses": 361,
+  "losses": 363,
   "peak_balance": 500.0
 }
