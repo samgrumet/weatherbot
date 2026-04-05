@@ -5,21 +5,6 @@
   "s3_balance": 74.55,
   "starting_balance": 500.0,
   "positions": {
-    "1815030": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Miami be between 78-79\u00b0F on April 5?",
-      "outcome": "Yes",
-      "entry_price": 0.085,
-      "effective_entry_price": 0.085132,
-      "shares": 11.75,
-      "cost": 1.0,
-      "city": "miami",
-      "date_str": "2026-04-05",
-      "forecast_temp": 82,
-      "low": 78,
-      "high": 79,
-      "opened_at": "2026-04-02T04:24:45.284498"
-    },
     "1814985": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Seattle be between 58-59\u00b0F on April 5?",
@@ -9011,10 +8996,20 @@
       "entry_price": 0.964,
       "size": 74.03,
       "opened_at": "2026-04-05T15:25:26.228971"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Miami be between 78-79\u00b0F on April 5?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-05T18:33:35.721469"
     }
   ],
   "total_trades": 470,
   "wins": 89,
-  "losses": 366,
+  "losses": 367,
   "peak_balance": 500.0
 }
