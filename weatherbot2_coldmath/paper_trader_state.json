@@ -1,8 +1,8 @@
 {
-  "balance": 202.44,
+  "balance": 99.33,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 202.17,
+  "s3_balance": 99.06,
   "starting_balance": 500.0,
   "positions": {
     "1781234": {
@@ -139,21 +139,6 @@
       "low": 84,
       "high": 999,
       "opened_at": "2026-04-02T20:29:02.603902"
-    },
-    "1781181": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Seattle be between 56-57\u00b0F on April 4?",
-      "outcome": "Yes",
-      "entry_price": 0.055,
-      "effective_entry_price": 0.055057,
-      "shares": 18.16,
-      "cost": 1.0,
-      "city": "seattle",
-      "date_str": "2026-04-04",
-      "forecast_temp": 61,
-      "low": 56,
-      "high": 57,
-      "opened_at": "2026-04-02T21:03:09.061833"
     },
     "1781204": {
       "strategy": "S2_lottery",
@@ -304,6 +289,21 @@
       "low": 68,
       "high": 69,
       "opened_at": "2026-04-04T04:11:19.405583"
+    },
+    "1854574": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 48-49\u00b0F on April 8?",
+      "outcome": "No",
+      "entry_price": 0.99,
+      "effective_entry_price": 0.990196,
+      "shares": 104.13,
+      "cost": 103.11,
+      "city": "chicago",
+      "date_str": "2026-04-08",
+      "forecast_temp": 64,
+      "low": 48,
+      "high": 49,
+      "opened_at": "2026-04-05T01:51:48.061726"
     }
   },
   "trades": [
@@ -8979,10 +8979,29 @@
       "exit_price": 0.0,
       "pnl": -1.0,
       "closed_at": "2026-04-04T23:25:08.858608"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Seattle be between 56-57\u00b0F on April 4?",
+      "outcome": "Yes",
+      "entry_price": 0.055,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-05T01:51:45.988131"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 48-49\u00b0F on April 8?",
+      "outcome": "No",
+      "entry_price": 0.99,
+      "size": 103.11,
+      "opened_at": "2026-04-05T01:51:48.061734"
     }
   ],
-  "total_trades": 467,
+  "total_trades": 468,
   "wins": 89,
-  "losses": 358,
+  "losses": 359,
   "peak_balance": 500.0
 }
