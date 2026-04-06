@@ -5,36 +5,6 @@
   "s3_balance": 14.61,
   "starting_balance": 500.0,
   "positions": {
-    "1815015": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Dallas be 74\u00b0F or higher on April 5?",
-      "outcome": "Yes",
-      "entry_price": 0.105,
-      "effective_entry_price": 0.105197,
-      "shares": 9.51,
-      "cost": 1.0,
-      "city": "dallas",
-      "date_str": "2026-04-05",
-      "forecast_temp": 71,
-      "low": 74,
-      "high": 999,
-      "opened_at": "2026-04-02T20:29:01.528365"
-    },
-    "1815048": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be 56\u00b0F or higher on April 5?",
-      "outcome": "Yes",
-      "entry_price": 0.095,
-      "effective_entry_price": 0.095163,
-      "shares": 10.51,
-      "cost": 1.0,
-      "city": "chicago",
-      "date_str": "2026-04-05",
-      "forecast_temp": 52,
-      "low": 56,
-      "high": 999,
-      "opened_at": "2026-04-03T21:56:18.287488"
-    },
     "1827214": {
       "strategy": "S2_lottery",
       "question": "Will the highest temperature in Miami be between 78-79\u00b0F on April 6?",
@@ -9058,10 +9028,30 @@
       "entry_price": 0.982,
       "size": 14.61,
       "opened_at": "2026-04-06T08:09:44.615941"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Dallas be 74\u00b0F or higher on April 5?",
+      "outcome": "Yes",
+      "entry_price": 0.105,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-06T09:46:03.584373"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be 56\u00b0F or higher on April 5?",
+      "outcome": "Yes",
+      "entry_price": 0.095,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-06T09:46:03.805938"
     }
   ],
   "total_trades": 473,
   "wins": 90,
-  "losses": 370,
+  "losses": 372,
   "peak_balance": 500.0
 }
