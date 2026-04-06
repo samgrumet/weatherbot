@@ -1,8 +1,8 @@
 {
-  "balance": 74.82,
+  "balance": 36.8,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 74.55,
+  "s3_balance": 36.53,
   "starting_balance": 500.0,
   "positions": {
     "1815024": {
@@ -19,21 +19,6 @@
       "low": 84,
       "high": 85,
       "opened_at": "2026-04-02T14:21:05.020580"
-    },
-    "1815043": {
-      "strategy": "S2_lottery",
-      "question": "Will the highest temperature in Chicago be between 46-47\u00b0F on April 5?",
-      "outcome": "Yes",
-      "entry_price": 0.085,
-      "effective_entry_price": 0.085132,
-      "shares": 11.75,
-      "cost": 1.0,
-      "city": "chicago",
-      "date_str": "2026-04-05",
-      "forecast_temp": 50,
-      "low": 46,
-      "high": 47,
-      "opened_at": "2026-04-02T20:29:00.700465"
     },
     "1815015": {
       "strategy": "S2_lottery",
@@ -184,6 +169,21 @@
       "low": 48,
       "high": 49,
       "opened_at": "2026-04-05T15:25:26.228964"
+    },
+    "1871756": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 50-51\u00b0F on April 9?",
+      "outcome": "No",
+      "entry_price": 0.99,
+      "effective_entry_price": 0.990196,
+      "shares": 38.4,
+      "cost": 38.02,
+      "city": "chicago",
+      "date_str": "2026-04-09",
+      "forecast_temp": 67,
+      "low": 50,
+      "high": 51,
+      "opened_at": "2026-04-06T01:53:38.075523"
     }
   },
   "trades": [
@@ -8996,10 +8996,29 @@
       "exit_price": 0.0,
       "pnl": -1.0,
       "closed_at": "2026-04-05T23:33:58.760945"
+    },
+    {
+      "type": "exit",
+      "strategy": "S2_lottery",
+      "question": "Will the highest temperature in Chicago be between 46-47\u00b0F on April 5?",
+      "outcome": "Yes",
+      "entry_price": 0.085,
+      "exit_price": 0.0,
+      "pnl": -1.0,
+      "closed_at": "2026-04-06T01:53:35.860867"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 50-51\u00b0F on April 9?",
+      "outcome": "No",
+      "entry_price": 0.99,
+      "size": 38.02,
+      "opened_at": "2026-04-06T01:53:38.075532"
     }
   ],
-  "total_trades": 470,
+  "total_trades": 471,
   "wins": 89,
-  "losses": 369,
+  "losses": 370,
   "peak_balance": 500.0
 }
