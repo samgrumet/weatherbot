@@ -1,8 +1,8 @@
 {
-  "balance": 142.36,
+  "balance": 149.3,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 142.09,
+  "s3_balance": 149.03,
   "starting_balance": 500.0,
   "positions": {
     "1842779": {
@@ -94,21 +94,6 @@
       "low": 44,
       "high": 45,
       "opened_at": "2026-04-06T08:09:44.615933"
-    },
-    "1842771": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Seattle be 53\u00b0F or below on April 7?",
-      "outcome": "No",
-      "entry_price": 0.951,
-      "effective_entry_price": 0.951886,
-      "shares": 7.67,
-      "cost": 7.3,
-      "city": "seattle",
-      "date_str": "2026-04-07",
-      "forecast_temp": 73,
-      "low": -999,
-      "high": 53,
-      "opened_at": "2026-04-07T02:12:44.851555"
     }
   },
   "trades": [
@@ -9047,10 +9032,20 @@
       "exit_price": 1.0,
       "pnl": 1.59,
       "closed_at": "2026-04-07T08:55:19.936814"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be 53\u00b0F or below on April 7?",
+      "outcome": "No",
+      "entry_price": 0.951,
+      "exit_price": 0.9055,
+      "pnl": -0.36,
+      "closed_at": "2026-04-07T10:02:39.950329"
     }
   ],
   "total_trades": 474,
   "wins": 91,
-  "losses": 376,
+  "losses": 377,
   "peak_balance": 500.0
 }
