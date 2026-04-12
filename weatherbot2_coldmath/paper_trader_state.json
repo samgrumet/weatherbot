@@ -1,25 +1,10 @@
 {
-  "balance": 48.45,
+  "balance": 86.3,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 48.18,
+  "s3_balance": 86.03,
   "starting_balance": 500.0,
   "positions": {
-    "1901727": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Seattle be between 70-71\u00b0F on April 11?",
-      "outcome": "No",
-      "entry_price": 0.987,
-      "effective_entry_price": 0.987253,
-      "shares": 37.85,
-      "cost": 37.37,
-      "city": "seattle",
-      "date_str": "2026-04-11",
-      "forecast_temp": 53,
-      "low": 70,
-      "high": 71,
-      "opened_at": "2026-04-08T01:50:50.159134"
-    },
     "1953484": {
       "strategy": "S3_high_conviction",
       "question": "Will the highest temperature in Dallas be 63\u00b0F or below on April 14?",
@@ -9146,10 +9131,20 @@
       "entry_price": 0.9875,
       "size": 47.19,
       "opened_at": "2026-04-12T07:49:02.059995"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be between 70-71\u00b0F on April 11?",
+      "outcome": "No",
+      "entry_price": 0.987,
+      "exit_price": 1.0,
+      "pnl": 0.48,
+      "closed_at": "2026-04-12T11:29:01.329590"
     }
   ],
   "total_trades": 480,
-  "wins": 99,
+  "wins": 100,
   "losses": 377,
   "peak_balance": 500.0
 }
