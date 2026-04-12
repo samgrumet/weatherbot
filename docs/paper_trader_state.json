@@ -1,8 +1,8 @@
 {
-  "balance": 95.64,
+  "balance": 48.45,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 95.37,
+  "s3_balance": 48.18,
   "starting_balance": 500.0,
   "positions": {
     "1901727": {
@@ -49,6 +49,21 @@
       "low": -999,
       "high": 39,
       "opened_at": "2026-04-12T06:21:23.069596"
+    },
+    "1953486": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be between 66-67\u00b0F on April 14?",
+      "outcome": "No",
+      "entry_price": 0.9875,
+      "effective_entry_price": 0.987744,
+      "shares": 47.78,
+      "cost": 47.19,
+      "city": "dallas",
+      "date_str": "2026-04-14",
+      "forecast_temp": 82,
+      "low": 66,
+      "high": 67,
+      "opened_at": "2026-04-12T07:49:02.059988"
     }
   },
   "trades": [
@@ -9122,9 +9137,18 @@
       "entry_price": 0.988,
       "size": 95.37,
       "opened_at": "2026-04-12T06:21:23.069605"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be between 66-67\u00b0F on April 14?",
+      "outcome": "No",
+      "entry_price": 0.9875,
+      "size": 47.19,
+      "opened_at": "2026-04-12T07:49:02.059995"
     }
   ],
-  "total_trades": 479,
+  "total_trades": 480,
   "wins": 99,
   "losses": 377,
   "peak_balance": 500.0
