@@ -1,56 +1,10 @@
 {
-  "balance": 86.3,
+  "balance": 423.92,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 86.03,
+  "s3_balance": 423.65,
   "starting_balance": 500.0,
-  "positions": {
-    "1953484": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Dallas be 63\u00b0F or below on April 14?",
-      "outcome": "No",
-      "entry_price": 0.9855,
-      "effective_entry_price": 0.985782,
-      "shares": 193.33,
-      "cost": 190.58,
-      "city": "dallas",
-      "date_str": "2026-04-14",
-      "forecast_temp": 81,
-      "low": -999,
-      "high": 63,
-      "opened_at": "2026-04-12T04:45:25.736620"
-    },
-    "1953517": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be 39\u00b0F or below on April 14?",
-      "outcome": "No",
-      "entry_price": 0.988,
-      "effective_entry_price": 0.988234,
-      "shares": 96.51,
-      "cost": 95.37,
-      "city": "chicago",
-      "date_str": "2026-04-14",
-      "forecast_temp": 80,
-      "low": -999,
-      "high": 39,
-      "opened_at": "2026-04-12T06:21:23.069596"
-    },
-    "1953486": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Dallas be between 66-67\u00b0F on April 14?",
-      "outcome": "No",
-      "entry_price": 0.9875,
-      "effective_entry_price": 0.987744,
-      "shares": 47.78,
-      "cost": 47.19,
-      "city": "dallas",
-      "date_str": "2026-04-14",
-      "forecast_temp": 82,
-      "low": 66,
-      "high": 67,
-      "opened_at": "2026-04-12T07:49:02.059988"
-    }
-  },
+  "positions": {},
   "trades": [
     {
       "type": "entry",
@@ -9141,10 +9095,40 @@
       "exit_price": 1.0,
       "pnl": 0.48,
       "closed_at": "2026-04-12T11:29:01.329590"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be 63\u00b0F or below on April 14?",
+      "outcome": "No",
+      "entry_price": 0.9855,
+      "exit_price": 1.0,
+      "pnl": 2.75,
+      "closed_at": "2026-04-14T09:00:27.463389"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be 39\u00b0F or below on April 14?",
+      "outcome": "No",
+      "entry_price": 0.988,
+      "exit_price": 1.0,
+      "pnl": 1.14,
+      "closed_at": "2026-04-14T09:00:27.535531"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be between 66-67\u00b0F on April 14?",
+      "outcome": "No",
+      "entry_price": 0.9875,
+      "exit_price": 1.0,
+      "pnl": 0.59,
+      "closed_at": "2026-04-14T09:00:27.601127"
     }
   ],
   "total_trades": 480,
-  "wins": 100,
+  "wins": 103,
   "losses": 377,
   "peak_balance": 500.0
 }
