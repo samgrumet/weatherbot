@@ -1,10 +1,26 @@
 {
-  "balance": 423.92,
+  "balance": 214.93,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 423.65,
+  "s3_balance": 214.66,
   "starting_balance": 500.0,
-  "positions": {},
+  "positions": {
+    "1985918": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Miami be 67\u00b0F or below on April 16?",
+      "outcome": "No",
+      "entry_price": 0.989,
+      "effective_entry_price": 0.989215,
+      "shares": 211.27,
+      "cost": 208.99,
+      "city": "miami",
+      "date_str": "2026-04-16",
+      "forecast_temp": 82,
+      "low": -999,
+      "high": 67,
+      "opened_at": "2026-04-14T23:09:13.736489"
+    }
+  },
   "trades": [
     {
       "type": "entry",
@@ -9125,9 +9141,18 @@
       "exit_price": 1.0,
       "pnl": 0.59,
       "closed_at": "2026-04-14T09:00:27.601127"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Miami be 67\u00b0F or below on April 16?",
+      "outcome": "No",
+      "entry_price": 0.989,
+      "size": 208.99,
+      "opened_at": "2026-04-14T23:09:13.736495"
     }
   ],
-  "total_trades": 480,
+  "total_trades": 481,
   "wins": 103,
   "losses": 377,
   "peak_balance": 500.0
