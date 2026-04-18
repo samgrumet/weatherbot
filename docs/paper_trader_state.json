@@ -1,8 +1,8 @@
 {
-  "balance": 40.19,
+  "balance": 39.11,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 39.92,
+  "s3_balance": 38.84,
   "starting_balance": 500.0,
   "positions": {
     "1996363": {
@@ -50,20 +50,20 @@
       "high": 45,
       "opened_at": "2026-04-17T04:47:59.296029"
     },
-    "1996414": {
+    "1996413": {
       "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be between 58-59\u00b0F on April 18?",
+      "question": "Will the highest temperature in Chicago be between 56-57\u00b0F on April 18?",
       "outcome": "No",
-      "entry_price": 0.9835,
-      "effective_entry_price": 0.983819,
-      "shares": 40.57,
-      "cost": 39.91,
+      "entry_price": 0.973,
+      "effective_entry_price": 0.973511,
+      "shares": 39.89,
+      "cost": 38.83,
       "city": "chicago",
       "date_str": "2026-04-18",
-      "forecast_temp": 79,
-      "low": 58,
-      "high": 59,
-      "opened_at": "2026-04-18T01:48:11.864820"
+      "forecast_temp": 77,
+      "low": 56,
+      "high": 57,
+      "opened_at": "2026-04-18T04:27:16.429089"
     }
   },
   "trades": [
@@ -9241,10 +9241,29 @@
       "entry_price": 0.9835,
       "size": 39.91,
       "opened_at": "2026-04-18T01:48:11.864828"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 58-59\u00b0F on April 18?",
+      "outcome": "No",
+      "entry_price": 0.9835,
+      "exit_price": 0.9305,
+      "pnl": -2.16,
+      "closed_at": "2026-04-18T04:27:15.260860"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 56-57\u00b0F on April 18?",
+      "outcome": "No",
+      "entry_price": 0.973,
+      "size": 38.83,
+      "opened_at": "2026-04-18T04:27:16.429095"
     }
   ],
-  "total_trades": 485,
+  "total_trades": 486,
   "wins": 104,
-  "losses": 377,
+  "losses": 378,
   "peak_balance": 500.0
 }
