@@ -1,10 +1,26 @@
 {
-  "balance": 433.25,
+  "balance": 217.7,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 432.98,
+  "s3_balance": 217.43,
   "starting_balance": 500.0,
-  "positions": {},
+  "positions": {
+    "2049489": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 60-61\u00b0F on April 24?",
+      "outcome": "No",
+      "entry_price": 0.9705,
+      "effective_entry_price": 0.971056,
+      "shares": 221.97,
+      "cost": 215.55,
+      "city": "chicago",
+      "date_str": "2026-04-24",
+      "forecast_temp": 76,
+      "low": 60,
+      "high": 61,
+      "opened_at": "2026-04-22T05:19:21.750911"
+    }
+  },
   "trades": [
     {
       "type": "entry",
@@ -9296,9 +9312,18 @@
       "exit_price": 1.0,
       "pnl": 0.23,
       "closed_at": "2026-04-21T08:29:59.682797"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 60-61\u00b0F on April 24?",
+      "outcome": "No",
+      "entry_price": 0.9705,
+      "size": 215.55,
+      "opened_at": "2026-04-22T05:19:21.750919"
     }
   ],
-  "total_trades": 489,
+  "total_trades": 490,
   "wins": 111,
   "losses": 378,
   "peak_balance": 500.0
