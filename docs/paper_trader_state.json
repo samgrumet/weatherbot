@@ -1,40 +1,10 @@
 {
-  "balance": 42.71,
+  "balance": 306.47,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 42.44,
+  "s3_balance": 306.2,
   "starting_balance": 500.0,
   "positions": {
-    "2056985": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be between 46-47\u00b0F on April 25?",
-      "outcome": "No",
-      "entry_price": 0.988,
-      "effective_entry_price": 0.988234,
-      "shares": 109.96,
-      "cost": 108.66,
-      "city": "chicago",
-      "date_str": "2026-04-25",
-      "forecast_temp": 65,
-      "low": 46,
-      "high": 47,
-      "opened_at": "2026-04-23T06:01:12.447397"
-    },
-    "2056989": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be between 54-55\u00b0F on April 25?",
-      "outcome": "No",
-      "entry_price": 0.9685,
-      "effective_entry_price": 0.969091,
-      "shares": 169.95,
-      "cost": 164.7,
-      "city": "chicago",
-      "date_str": "2026-04-25",
-      "forecast_temp": 70,
-      "low": 54,
-      "high": 55,
-      "opened_at": "2026-04-25T03:37:56.509371"
-    },
     "2074385": {
       "strategy": "S3_high_conviction",
       "question": "Will the highest temperature in Chicago be between 56-57\u00b0F on April 27?",
@@ -9412,10 +9382,30 @@
       "entry_price": 0.9885,
       "size": 41.51,
       "opened_at": "2026-04-25T05:44:32.239943"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 46-47\u00b0F on April 25?",
+      "outcome": "No",
+      "entry_price": 0.988,
+      "exit_price": 1.0,
+      "pnl": 1.29,
+      "closed_at": "2026-04-25T09:27:00.021003"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 54-55\u00b0F on April 25?",
+      "outcome": "No",
+      "entry_price": 0.9685,
+      "exit_price": 0.905,
+      "pnl": -10.89,
+      "closed_at": "2026-04-25T09:27:00.082308"
     }
   ],
   "total_trades": 494,
-  "wins": 112,
-  "losses": 378,
+  "wins": 113,
+  "losses": 379,
   "peak_balance": 500.0
 }
