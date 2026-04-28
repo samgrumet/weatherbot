@@ -1,10 +1,41 @@
 {
-  "balance": 433.43,
+  "balance": 108.58,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 433.16,
+  "s3_balance": 108.31,
   "starting_balance": 500.0,
-  "positions": {},
+  "positions": {
+    "2102213": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be 74\u00b0F or higher on April 30?",
+      "outcome": "No",
+      "entry_price": 0.9875,
+      "effective_entry_price": 0.987744,
+      "shares": 219.23,
+      "cost": 216.55,
+      "city": "chicago",
+      "date_str": "2026-04-30",
+      "forecast_temp": 55,
+      "low": 74,
+      "high": 999,
+      "opened_at": "2026-04-28T19:01:31.136538"
+    },
+    "2102149": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be between 46-47\u00b0F on April 30?",
+      "outcome": "No",
+      "entry_price": 0.97,
+      "effective_entry_price": 0.970565,
+      "shares": 111.59,
+      "cost": 108.3,
+      "city": "seattle",
+      "date_str": "2026-04-30",
+      "forecast_temp": 70,
+      "low": 46,
+      "high": 47,
+      "opened_at": "2026-04-28T19:01:34.989844"
+    }
+  },
   "trades": [
     {
       "type": "entry",
@@ -9410,9 +9441,27 @@
       "exit_price": 1.0,
       "pnl": 1.95,
       "closed_at": "2026-04-28T10:29:19.861397"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be 74\u00b0F or higher on April 30?",
+      "outcome": "No",
+      "entry_price": 0.9875,
+      "size": 216.55,
+      "opened_at": "2026-04-28T19:01:31.136546"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be between 46-47\u00b0F on April 30?",
+      "outcome": "No",
+      "entry_price": 0.97,
+      "size": 108.3,
+      "opened_at": "2026-04-28T19:01:34.989851"
     }
   ],
-  "total_trades": 495,
+  "total_trades": 497,
   "wins": 116,
   "losses": 379,
   "peak_balance": 500.0
