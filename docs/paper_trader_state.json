@@ -1,41 +1,10 @@
 {
-  "balance": 110.45,
+  "balance": 445.71,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 110.18,
+  "s3_balance": 445.44,
   "starting_balance": 500.0,
-  "positions": {
-    "2186673": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Dallas be between 62-63\u00b0F on May 10?",
-      "outcome": "No",
-      "entry_price": 0.978,
-      "effective_entry_price": 0.978421,
-      "shares": 224.41,
-      "cost": 219.56,
-      "city": "dallas",
-      "date_str": "2026-05-10",
-      "forecast_temp": 85,
-      "low": 62,
-      "high": 63,
-      "opened_at": "2026-05-08T05:15:22.383425"
-    },
-    "2186676": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Dallas be between 68-69\u00b0F on May 10?",
-      "outcome": "No",
-      "entry_price": 0.9865,
-      "effective_entry_price": 0.986763,
-      "shares": 110.86,
-      "cost": 109.39,
-      "city": "dallas",
-      "date_str": "2026-05-10",
-      "forecast_temp": 85,
-      "low": 68,
-      "high": 69,
-      "opened_at": "2026-05-08T08:53:35.997533"
-    }
-  },
+  "positions": {},
   "trades": [
     {
       "type": "entry",
@@ -9497,10 +9466,30 @@
       "entry_price": 0.9865,
       "size": 109.39,
       "opened_at": "2026-05-08T08:53:35.997540"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be between 62-63\u00b0F on May 10?",
+      "outcome": "No",
+      "entry_price": 0.978,
+      "exit_price": 1.0,
+      "pnl": 4.84,
+      "closed_at": "2026-05-10T09:43:04.065921"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be between 68-69\u00b0F on May 10?",
+      "outcome": "No",
+      "entry_price": 0.9865,
+      "exit_price": 1.0,
+      "pnl": 1.47,
+      "closed_at": "2026-05-10T09:43:04.099746"
     }
   ],
   "total_trades": 499,
-  "wins": 118,
+  "wins": 120,
   "losses": 379,
   "peak_balance": 500.0
 }
