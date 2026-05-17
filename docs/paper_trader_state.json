@@ -1,8 +1,8 @@
 {
-  "balance": 13.91,
+  "balance": 66.62,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 13.64,
+  "s3_balance": 66.35,
   "starting_balance": 500.0,
   "positions": {
     "2274243": {
@@ -34,21 +34,6 @@
       "low": 70,
       "high": 71,
       "opened_at": "2026-05-16T07:53:59.454879"
-    },
-    "2274205": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in New York City be 88\u00b0F or higher on May 18?",
-      "outcome": "No",
-      "entry_price": 0.9605,
-      "effective_entry_price": 0.961229,
-      "shares": 57.2,
-      "cost": 54.98,
-      "city": "new-york-city",
-      "date_str": "2026-05-18",
-      "forecast_temp": 73,
-      "low": 88,
-      "high": 999,
-      "opened_at": "2026-05-16T09:24:27.094737"
     },
     "2281791": {
       "strategy": "S3_high_conviction",
@@ -9645,10 +9630,20 @@
       "entry_price": 0.99,
       "size": 14.2,
       "opened_at": "2026-05-17T14:41:36.025550"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 88\u00b0F or higher on May 18?",
+      "outcome": "No",
+      "entry_price": 0.9605,
+      "exit_price": 0.9215,
+      "pnl": -2.27,
+      "closed_at": "2026-05-17T18:58:00.896400"
     }
   ],
   "total_trades": 506,
   "wins": 121,
-  "losses": 380,
+  "losses": 381,
   "peak_balance": 500.0
 }
