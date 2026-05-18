@@ -1,8 +1,8 @@
 {
-  "balance": 66.62,
+  "balance": 16.95,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 66.35,
+  "s3_balance": 16.68,
   "starting_balance": 500.0,
   "positions": {
     "2274243": {
@@ -64,6 +64,36 @@
       "low": 100,
       "high": 999,
       "opened_at": "2026-05-17T14:41:36.025544"
+    },
+    "2289647": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 102-103\u00b0F on May 20?",
+      "outcome": "No",
+      "entry_price": 0.975,
+      "effective_entry_price": 0.975475,
+      "shares": 33.83,
+      "cost": 33.0,
+      "city": "new-york-city",
+      "date_str": "2026-05-20",
+      "forecast_temp": 87,
+      "low": 102,
+      "high": 103,
+      "opened_at": "2026-05-18T05:41:27.729934"
+    },
+    "2289627": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be 49\u00b0F or below on May 20?",
+      "outcome": "No",
+      "entry_price": 0.988,
+      "effective_entry_price": 0.988234,
+      "shares": 16.87,
+      "cost": 16.67,
+      "city": "seattle",
+      "date_str": "2026-05-20",
+      "forecast_temp": 68,
+      "low": -999,
+      "high": 49,
+      "opened_at": "2026-05-18T05:41:29.201323"
     }
   },
   "trades": [
@@ -9640,9 +9670,27 @@
       "exit_price": 0.9215,
       "pnl": -2.27,
       "closed_at": "2026-05-17T18:58:00.896400"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 102-103\u00b0F on May 20?",
+      "outcome": "No",
+      "entry_price": 0.975,
+      "size": 33.0,
+      "opened_at": "2026-05-18T05:41:27.729940"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be 49\u00b0F or below on May 20?",
+      "outcome": "No",
+      "entry_price": 0.988,
+      "size": 16.67,
+      "opened_at": "2026-05-18T05:41:29.201330"
     }
   ],
-  "total_trades": 506,
+  "total_trades": 508,
   "wins": 121,
   "losses": 381,
   "peak_balance": 500.0
