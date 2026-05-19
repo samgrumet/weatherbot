@@ -1,8 +1,8 @@
 {
-  "balance": 16.95,
+  "balance": 0.32,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 16.68,
+  "s3_balance": 0.05,
   "starting_balance": 500.0,
   "positions": {
     "2274243": {
@@ -94,6 +94,81 @@
       "low": -999,
       "high": 49,
       "opened_at": "2026-05-18T05:41:29.201323"
+    },
+    "2289685": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 76-77\u00b0F on May 20?",
+      "outcome": "No",
+      "entry_price": 0.955,
+      "effective_entry_price": 0.955821,
+      "shares": 8.72,
+      "cost": 8.34,
+      "city": "chicago",
+      "date_str": "2026-05-20",
+      "forecast_temp": 58,
+      "low": 76,
+      "high": 77,
+      "opened_at": "2026-05-19T18:56:00.758967"
+    },
+    "2299401": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be 94\u00b0F or higher on May 21?",
+      "outcome": "No",
+      "entry_price": 0.9705,
+      "effective_entry_price": 0.971056,
+      "shares": 4.29,
+      "cost": 4.17,
+      "city": "dallas",
+      "date_str": "2026-05-21",
+      "forecast_temp": 77,
+      "low": 94,
+      "high": 999,
+      "opened_at": "2026-05-19T18:56:01.674063"
+    },
+    "2289628": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be between 50-51\u00b0F on May 20?",
+      "outcome": "No",
+      "entry_price": 0.951,
+      "effective_entry_price": 0.951886,
+      "shares": 2.19,
+      "cost": 2.08,
+      "city": "seattle",
+      "date_str": "2026-05-20",
+      "forecast_temp": 67,
+      "low": 50,
+      "high": 51,
+      "opened_at": "2026-05-19T18:56:02.021969"
+    },
+    "2299370": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be between 56-57\u00b0F on May 21?",
+      "outcome": "No",
+      "entry_price": 0.9695,
+      "effective_entry_price": 0.970073,
+      "shares": 1.07,
+      "cost": 1.04,
+      "city": "seattle",
+      "date_str": "2026-05-21",
+      "forecast_temp": 72,
+      "low": 56,
+      "high": 57,
+      "opened_at": "2026-05-19T18:56:02.068688"
+    },
+    "2299410": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Atlanta be between 102-103\u00b0F on May 21?",
+      "outcome": "No",
+      "entry_price": 0.955,
+      "effective_entry_price": 0.955821,
+      "shares": 1.05,
+      "cost": 1.0,
+      "city": "atlanta",
+      "date_str": "2026-05-21",
+      "forecast_temp": 86,
+      "low": 102,
+      "high": 103,
+      "opened_at": "2026-05-19T18:56:02.505846"
     }
   },
   "trades": [
@@ -9688,9 +9763,54 @@
       "entry_price": 0.988,
       "size": 16.67,
       "opened_at": "2026-05-18T05:41:29.201330"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 76-77\u00b0F on May 20?",
+      "outcome": "No",
+      "entry_price": 0.955,
+      "size": 8.34,
+      "opened_at": "2026-05-19T18:56:00.758976"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be 94\u00b0F or higher on May 21?",
+      "outcome": "No",
+      "entry_price": 0.9705,
+      "size": 4.17,
+      "opened_at": "2026-05-19T18:56:01.674072"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be between 50-51\u00b0F on May 20?",
+      "outcome": "No",
+      "entry_price": 0.951,
+      "size": 2.08,
+      "opened_at": "2026-05-19T18:56:02.021977"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be between 56-57\u00b0F on May 21?",
+      "outcome": "No",
+      "entry_price": 0.9695,
+      "size": 1.04,
+      "opened_at": "2026-05-19T18:56:02.068696"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Atlanta be between 102-103\u00b0F on May 21?",
+      "outcome": "No",
+      "entry_price": 0.955,
+      "size": 1.0,
+      "opened_at": "2026-05-19T18:56:02.505855"
     }
   ],
-  "total_trades": 508,
+  "total_trades": 513,
   "wins": 121,
   "losses": 381,
   "peak_balance": 500.0
