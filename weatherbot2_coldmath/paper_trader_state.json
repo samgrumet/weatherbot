@@ -1,40 +1,10 @@
 {
-  "balance": 0.32,
+  "balance": 335.74,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 0.05,
+  "s3_balance": 335.47,
   "starting_balance": 500.0,
   "positions": {
-    "2274243": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be between 66-67\u00b0F on May 18?",
-      "outcome": "No",
-      "entry_price": 0.986,
-      "effective_entry_price": 0.986272,
-      "shares": 222.67,
-      "cost": 219.62,
-      "city": "chicago",
-      "date_str": "2026-05-18",
-      "forecast_temp": 85,
-      "low": 66,
-      "high": 67,
-      "opened_at": "2026-05-16T05:38:58.402613"
-    },
-    "2274245": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be between 70-71\u00b0F on May 18?",
-      "outcome": "No",
-      "entry_price": 0.97,
-      "effective_entry_price": 0.970565,
-      "shares": 112.74,
-      "cost": 109.42,
-      "city": "chicago",
-      "date_str": "2026-05-18",
-      "forecast_temp": 86,
-      "low": 70,
-      "high": 71,
-      "opened_at": "2026-05-16T07:53:59.454879"
-    },
     "2281791": {
       "strategy": "S3_high_conviction",
       "question": "Will the highest temperature in Chicago be between 68-69\u00b0F on May 19?",
@@ -9808,10 +9778,30 @@
       "entry_price": 0.955,
       "size": 1.0,
       "opened_at": "2026-05-19T18:56:02.505855"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 66-67\u00b0F on May 18?",
+      "outcome": "No",
+      "entry_price": 0.986,
+      "exit_price": 1.0,
+      "pnl": 3.06,
+      "closed_at": "2026-05-20T00:07:28.058926"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 70-71\u00b0F on May 18?",
+      "outcome": "No",
+      "entry_price": 0.97,
+      "exit_price": 1.0,
+      "pnl": 3.32,
+      "closed_at": "2026-05-20T00:07:28.099253"
     }
   ],
   "total_trades": 513,
-  "wins": 121,
+  "wins": 123,
   "losses": 381,
   "peak_balance": 500.0
 }
