@@ -1,8 +1,8 @@
 {
-  "balance": 83.32,
+  "balance": 84.39,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 83.05,
+  "s3_balance": 84.12,
   "starting_balance": 500.0,
   "positions": {
     "2281791": {
@@ -49,21 +49,6 @@
       "low": 94,
       "high": 999,
       "opened_at": "2026-05-19T18:56:01.674063"
-    },
-    "2299370": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Seattle be between 56-57\u00b0F on May 21?",
-      "outcome": "No",
-      "entry_price": 0.9695,
-      "effective_entry_price": 0.970073,
-      "shares": 1.07,
-      "cost": 1.04,
-      "city": "seattle",
-      "date_str": "2026-05-21",
-      "forecast_temp": 72,
-      "low": 56,
-      "high": 57,
-      "opened_at": "2026-05-19T18:56:02.068688"
     },
     "2299410": {
       "strategy": "S3_high_conviction",
@@ -9874,10 +9859,20 @@
       "exit_price": 1.0,
       "pnl": 0.39,
       "closed_at": "2026-05-21T06:46:58.692577"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be between 56-57\u00b0F on May 21?",
+      "outcome": "No",
+      "entry_price": 0.9695,
+      "exit_price": 1.0,
+      "pnl": 0.03,
+      "closed_at": "2026-05-21T18:55:39.047032"
     }
   ],
   "total_trades": 517,
-  "wins": 127,
+  "wins": 128,
   "losses": 381,
   "peak_balance": 500.0
 }
