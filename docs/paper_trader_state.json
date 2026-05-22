@@ -1,8 +1,8 @@
 {
-  "balance": 305.04,
+  "balance": 413.61,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 304.77,
+  "s3_balance": 413.34,
   "starting_balance": 500.0,
   "positions": {
     "2281791": {
@@ -34,36 +34,6 @@
       "low": 100,
       "high": 999,
       "opened_at": "2026-05-17T14:41:36.025544"
-    },
-    "2309183": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Seattle be between 46-47\u00b0F on May 22?",
-      "outcome": "No",
-      "entry_price": 0.965,
-      "effective_entry_price": 0.965652,
-      "shares": 87.22,
-      "cost": 84.22,
-      "city": "seattle",
-      "date_str": "2026-05-22",
-      "forecast_temp": 74,
-      "low": 46,
-      "high": 47,
-      "opened_at": "2026-05-20T04:43:52.185539"
-    },
-    "2309189": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Seattle be between 58-59\u00b0F on May 22?",
-      "outcome": "No",
-      "entry_price": 0.9855,
-      "effective_entry_price": 0.985782,
-      "shares": 21.36,
-      "cost": 21.05,
-      "city": "seattle",
-      "date_str": "2026-05-22",
-      "forecast_temp": 74,
-      "low": 58,
-      "high": 59,
-      "opened_at": "2026-05-20T08:21:07.403182"
     }
   },
   "trades": [
@@ -9849,10 +9819,30 @@
       "exit_price": 1.0,
       "pnl": 0.6,
       "closed_at": "2026-05-22T06:43:20.799871"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be between 46-47\u00b0F on May 22?",
+      "outcome": "No",
+      "entry_price": 0.965,
+      "exit_price": 1.0,
+      "pnl": 3.0,
+      "closed_at": "2026-05-22T10:20:06.427592"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be between 58-59\u00b0F on May 22?",
+      "outcome": "No",
+      "entry_price": 0.9855,
+      "exit_price": 1.0,
+      "pnl": 0.3,
+      "closed_at": "2026-05-22T10:20:06.578336"
     }
   ],
   "total_trades": 517,
-  "wins": 132,
+  "wins": 134,
   "losses": 381,
   "peak_balance": 500.0
 }
