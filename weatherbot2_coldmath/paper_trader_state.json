@@ -1,41 +1,10 @@
 {
-  "balance": 413.61,
+  "balance": 456.16,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 413.34,
+  "s3_balance": 455.89,
   "starting_balance": 500.0,
-  "positions": {
-    "2281791": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be between 68-69\u00b0F on May 19?",
-      "outcome": "No",
-      "entry_price": 0.976,
-      "effective_entry_price": 0.976457,
-      "shares": 28.21,
-      "cost": 27.55,
-      "city": "chicago",
-      "date_str": "2026-05-19",
-      "forecast_temp": 84,
-      "low": 68,
-      "high": 69,
-      "opened_at": "2026-05-17T06:01:51.596126"
-    },
-    "2281755": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in New York City be 100\u00b0F or higher on May 19?",
-      "outcome": "No",
-      "entry_price": 0.99,
-      "effective_entry_price": 0.990196,
-      "shares": 14.34,
-      "cost": 14.2,
-      "city": "new-york-city",
-      "date_str": "2026-05-19",
-      "forecast_temp": 84,
-      "low": 100,
-      "high": 999,
-      "opened_at": "2026-05-17T14:41:36.025544"
-    }
-  },
+  "positions": {},
   "trades": [
     {
       "type": "entry",
@@ -9839,10 +9808,30 @@
       "exit_price": 1.0,
       "pnl": 0.3,
       "closed_at": "2026-05-22T10:20:06.578336"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 68-69\u00b0F on May 19?",
+      "outcome": "No",
+      "entry_price": 0.976,
+      "exit_price": 1.0,
+      "pnl": 0.66,
+      "closed_at": "2026-05-25T17:02:11.019902"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 100\u00b0F or higher on May 19?",
+      "outcome": "No",
+      "entry_price": 0.99,
+      "exit_price": 1.0,
+      "pnl": 0.14,
+      "closed_at": "2026-05-25T17:02:11.291343"
     }
   ],
   "total_trades": 517,
-  "wins": 134,
+  "wins": 136,
   "losses": 381,
   "peak_balance": 500.0
 }
