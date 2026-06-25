@@ -1,26 +1,10 @@
 {
-  "balance": 234.05,
+  "balance": 431.39,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 233.78,
+  "s3_balance": 431.12,
   "starting_balance": 500.0,
-  "positions": {
-    "2661795": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Seattle be between 62-63\u00b0F on June 25?",
-      "outcome": "No",
-      "entry_price": 0.9865,
-      "effective_entry_price": 0.986763,
-      "shares": 236.91,
-      "cost": 233.77,
-      "city": "seattle",
-      "date_str": "2026-06-25",
-      "forecast_temp": 86,
-      "low": 62,
-      "high": 63,
-      "opened_at": "2026-06-25T04:41:21.306907"
-    }
-  },
+  "positions": {},
   "trades": [
     {
       "type": "entry",
@@ -9929,10 +9913,20 @@
       "entry_price": 0.9865,
       "size": 233.77,
       "opened_at": "2026-06-25T04:41:21.306914"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be between 62-63\u00b0F on June 25?",
+      "outcome": "No",
+      "entry_price": 0.9865,
+      "exit_price": 0.833,
+      "pnl": -36.43,
+      "closed_at": "2026-06-25T20:32:31.571194"
     }
   ],
   "total_trades": 522,
   "wins": 139,
-  "losses": 382,
+  "losses": 383,
   "peak_balance": 500.0
 }
