@@ -1,10 +1,26 @@
 {
-  "balance": 431.39,
+  "balance": 216.82,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 431.12,
+  "s3_balance": 216.55,
   "starting_balance": 500.0,
-  "positions": {},
+  "positions": {
+    "2749916": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 114-115\u00b0F on July 2?",
+      "outcome": "No",
+      "entry_price": 0.9895,
+      "effective_entry_price": 0.989706,
+      "shares": 216.8,
+      "cost": 214.57,
+      "city": "new-york-city",
+      "date_str": "2026-07-02",
+      "forecast_temp": 98,
+      "low": 114,
+      "high": 115,
+      "opened_at": "2026-07-01T01:37:13.224527"
+    }
+  },
   "trades": [
     {
       "type": "entry",
@@ -9923,9 +9939,18 @@
       "exit_price": 0.833,
       "pnl": -36.43,
       "closed_at": "2026-06-25T20:32:31.571194"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be between 114-115\u00b0F on July 2?",
+      "outcome": "No",
+      "entry_price": 0.9895,
+      "size": 214.57,
+      "opened_at": "2026-07-01T01:37:13.224536"
     }
   ],
-  "total_trades": 522,
+  "total_trades": 523,
   "wins": 139,
   "losses": 383,
   "peak_balance": 500.0
