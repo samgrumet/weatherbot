@@ -1,10 +1,26 @@
 {
-  "balance": 433.62,
+  "balance": 217.34,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 433.35,
+  "s3_balance": 217.07,
   "starting_balance": 500.0,
-  "positions": {},
+  "positions": {
+    "2790094": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be 85\u00b0F or below on July 5?",
+      "outcome": "No",
+      "entry_price": 0.97,
+      "effective_entry_price": 0.970565,
+      "shares": 222.84,
+      "cost": 216.28,
+      "city": "dallas",
+      "date_str": "2026-07-05",
+      "forecast_temp": 101,
+      "low": -999,
+      "high": 85,
+      "opened_at": "2026-07-04T01:05:55.452003"
+    }
+  },
   "trades": [
     {
       "type": "entry",
@@ -9942,9 +9958,18 @@
       "exit_price": 1.0,
       "pnl": 2.23,
       "closed_at": "2026-07-03T06:06:47.058201"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Dallas be 85\u00b0F or below on July 5?",
+      "outcome": "No",
+      "entry_price": 0.97,
+      "size": 216.28,
+      "opened_at": "2026-07-04T01:05:55.452009"
     }
   ],
-  "total_trades": 523,
+  "total_trades": 524,
   "wins": 140,
   "losses": 383,
   "peak_balance": 500.0
