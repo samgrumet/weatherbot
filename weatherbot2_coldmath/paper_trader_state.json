@@ -1,10 +1,26 @@
 {
-  "balance": 428.41,
+  "balance": 214.46,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 428.14,
+  "s3_balance": 214.19,
   "starting_balance": 500.0,
-  "positions": {},
+  "positions": {
+    "3234432": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be between 66-67\u00b0F on August 1?",
+      "outcome": "No",
+      "entry_price": 0.9685,
+      "effective_entry_price": 0.969091,
+      "shares": 220.78,
+      "cost": 213.95,
+      "city": "seattle",
+      "date_str": "2026-08-01",
+      "forecast_temp": 84,
+      "low": 66,
+      "high": 67,
+      "opened_at": "2026-08-01T02:06:50.516520"
+    }
+  },
   "trades": [
     {
       "type": "entry",
@@ -10056,9 +10072,18 @@
       "exit_price": 1.0,
       "pnl": 2.14,
       "closed_at": "2026-07-27T08:52:26.874099"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Seattle be between 66-67\u00b0F on August 1?",
+      "outcome": "No",
+      "entry_price": 0.9685,
+      "size": 213.95,
+      "opened_at": "2026-08-01T02:06:50.516527"
     }
   ],
-  "total_trades": 529,
+  "total_trades": 530,
   "wins": 144,
   "losses": 385,
   "peak_balance": 500.0
