@@ -1,25 +1,10 @@
 {
-  "balance": 104.7,
+  "balance": 328.73,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 104.43,
+  "s3_balance": 328.46,
   "starting_balance": 500.0,
   "positions": {
-    "3323994": {
-      "strategy": "S3_high_conviction",
-      "question": "Will the highest temperature in Chicago be between 92-93\u00b0F on August 5?",
-      "outcome": "No",
-      "entry_price": 0.99,
-      "effective_entry_price": 0.990196,
-      "shares": 224.02,
-      "cost": 221.83,
-      "city": "chicago",
-      "date_str": "2026-08-05",
-      "forecast_temp": 77,
-      "low": 92,
-      "high": 93,
-      "opened_at": "2026-08-04T01:51:29.886956"
-    },
     "3350852": {
       "strategy": "S3_high_conviction",
       "question": "Will the highest temperature in Chicago be 92\u00b0F or higher on August 6?",
@@ -10124,10 +10109,20 @@
       "entry_price": 0.99,
       "size": 108.7,
       "opened_at": "2026-08-05T02:33:32.785503"
+    },
+    {
+      "type": "exit",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in Chicago be between 92-93\u00b0F on August 5?",
+      "outcome": "No",
+      "entry_price": 0.99,
+      "exit_price": 1.0,
+      "pnl": 2.2,
+      "closed_at": "2026-08-06T07:58:47.084175"
     }
   ],
   "total_trades": 532,
-  "wins": 145,
+  "wins": 146,
   "losses": 385,
   "peak_balance": 500.0
 }
