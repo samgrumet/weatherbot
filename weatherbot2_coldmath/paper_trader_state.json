@@ -1,10 +1,26 @@
 {
-  "balance": 441.75,
+  "balance": 216.6,
   "s1_balance": 0.0,
   "s2_balance": 0.27,
-  "s3_balance": 441.48,
+  "s3_balance": 216.33,
   "starting_balance": 500.0,
-  "positions": {},
+  "positions": {
+    "3555620": {
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 100\u00b0F or higher on August 14?",
+      "outcome": "No",
+      "entry_price": 0.99,
+      "effective_entry_price": 0.990196,
+      "shares": 227.38,
+      "cost": 225.15,
+      "city": "new-york-city",
+      "date_str": "2026-08-14",
+      "forecast_temp": 84,
+      "low": 100,
+      "high": 999,
+      "opened_at": "2026-08-13T01:18:16.486857"
+    }
+  },
   "trades": [
     {
       "type": "entry",
@@ -10132,9 +10148,18 @@
       "exit_price": 1.0,
       "pnl": 3.24,
       "closed_at": "2026-08-11T05:48:44.689628"
+    },
+    {
+      "type": "entry",
+      "strategy": "S3_high_conviction",
+      "question": "Will the highest temperature in New York City be 100\u00b0F or higher on August 14?",
+      "outcome": "No",
+      "entry_price": 0.99,
+      "size": 225.15,
+      "opened_at": "2026-08-13T01:18:16.486865"
     }
   ],
-  "total_trades": 533,
+  "total_trades": 534,
   "wins": 148,
   "losses": 385,
   "peak_balance": 500.0
